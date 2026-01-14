@@ -39,7 +39,7 @@ const page = () => {
       {/* <OurNetworkSection /> */}
       {/* Flow Sections there are three files see which one is looking good*/}
       {/* <FlowSection2 /> */}
-      <FlowSection1 />
+      {/* <FlowSection1 /> */}
       <FlowSection />
       {/* <BusinessFlowDiagram /> */}
       {/* <FlowDiagram /> */}

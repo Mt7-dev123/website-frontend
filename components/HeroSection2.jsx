@@ -19,7 +19,7 @@ export default function HeroSection2() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-[#050000] overflow-hidden flex items-center pt-24">
+    <section className="relative min-h-screen bg-[#050000] overflow-hidden flex items-center pt-24 pb-20 md:pb-0">
       {/* ================= BACKGROUND ENVIRONMENT ================= */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -73,7 +73,7 @@ export default function HeroSection2() {
               filter: "blur(1px)",
               transform: "translateY(10%)",
               mixBlendMode: "screen",
-              boxShadow: "inset 0 0 60px rgba(255,69,0,0.3)"
+              boxShadow: "inset 0 0 60px rgba(255,140,0,0.3)"
             }}
           />
         </div>
@@ -92,7 +92,7 @@ export default function HeroSection2() {
             className="absolute w-[72vw] h-[72vw] rounded-full"
             style={{
               background: "transparent",
-              border: "2.5px solid rgba(255,69,0,0.4)",
+              border: "2.5px solid rgba(255,174,66,0.4)",
               filter: "blur(5px)",
               transform: "translateY(-5%)",
               mixBlendMode: "screen"
@@ -184,12 +184,12 @@ export default function HeroSection2() {
             </div>
           </motion.div>
 
-          {/* RIGHT CONTENT */}
-          <motion.div className="relative mt-12 lg:mt-0">
+          {/* RIGHT CONTENT - Vertical spacing adjusted for mobile */}
+          <motion.div className="relative mt-20 md:mt-12 lg:mt-0 mb-10 md:mb-0">
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full h-[350px] md:h-[450px] rounded-3xl overflow-hidden bg-red-950/10 backdrop-blur-xl border border-white/10 shadow-2xl shadow-red-500/5"
+              className="relative w-full h-[320px] md:h-[450px] rounded-3xl overflow-hidden bg-red-950/10 backdrop-blur-xl border border-white/10 shadow-2xl shadow-red-500/5"
             >
               <Image
                 src="/work.png"
@@ -200,12 +200,10 @@ export default function HeroSection2() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#050000] via-transparent to-transparent" />
             </motion.div>
 
-            {/* RESPONSIVE 4.6K CONNECTED CARD */}
-            <div className="absolute -bottom-4 -left-4 md:-bottom-5 md:-left-5 w-28 h-28 md:w-36 md:h-36 flex items-center justify-center">
-              {/* Outer Pulse Ring */}
+            {/* RESPONSIVE 4.6K CONNECTED CARD - Positioned safer for phone screens */}
+            <div className="absolute -bottom-8 md:-bottom-5 -left-4 md:-left-5 w-28 h-28 md:w-36 md:h-36 flex items-center justify-center">
               <div className="absolute inset-0 rounded-2xl border-2 md:border-4 border-[#ff4500]/20 blur-[2px] animate-pulse" />
               
-              {/* Card Body */}
               <div className="relative w-full h-full rounded-2xl bg-black/90 backdrop-blur-xl border-2 md:border-4 border-[#ff4500]/50 p-4 md:p-6 shadow-[0_0_40px_rgba(255,69,0,0.25)] flex flex-col justify-center text-center lg:text-left">
                 <div className="text-gray-300 text-[10px] md:text-[11px] mb-1 font-medium tracking-wide">Connected</div>
                 <div className="text-xl md:text-2xl lg:text-3xl font-bold text-[#ff4500] drop-shadow-[0_0_12px_rgba(255,69,0,0.6)] whitespace-nowrap">4.6K+</div>
