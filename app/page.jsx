@@ -55,9 +55,9 @@ const page = () => {
 
       
       {/* <ComparisonSection /> */}
-      <Comparison />
-      <ComparisonTable />
-      <CompSection />
+      {/* <Comparison /> */}
+      {/* <ComparisonTable /> */}
+      {/* <CompSection /> */}
 
       <Testimonials />
 
