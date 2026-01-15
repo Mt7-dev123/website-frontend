@@ -123,7 +123,7 @@ export default function Navbar() {
           initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="pointer-events-auto flex items-center justify-between px-10 py-3 rounded-full min-w-[80vw] max-w-[1200px] bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl"
+          className="pointer-events-auto flex items-center justify-between px-10 py-3 rounded-full min-w-[80vw] max-w-300 bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl"
         >
           <span className={`${montserrat.className} font-bold text-white text-xl`}>
             MT7<span className="text-red-500">.in</span>
@@ -145,7 +145,7 @@ export default function Navbar() {
                 >
                   {label}
                   <span
-                    className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all ${
+                    className={`absolute left-0 -bottom-1 h-0.5 bg-red-500 transition-all ${
                       active ? "w-full" : "w-0"
                     }`}
                   />
@@ -202,7 +202,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-60"
             />
 
             <motion.aside
@@ -210,7 +210,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 350 }}
-              className="fixed inset-y-0 right-0 z-[70] w-full max-w-[280px] bg-zinc-950 border-l border-white/10 p-8 flex flex-col shadow-2xl"
+              className="fixed inset-y-0 right-0 z-70 w-full max-w-70 bg-zinc-950 border-l border-white/10 p-8 flex flex-col shadow-2xl"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 blur-[100px] rounded-full pointer-events-none" />
 
