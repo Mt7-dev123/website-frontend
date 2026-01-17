@@ -452,6 +452,7 @@ import {
   Twitter, 
   Linkedin, 
   Facebook,
+  MessageCircle,
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -514,11 +515,11 @@ export default function Footer() {
 
   return (
     <>
-      <div className="relative h-12 -mt-12 overflow-hidden pointer-events-none">
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black to-transparent" />
-      </div>
+      <footer className="relative bg-transparent pt-16 pb-8 overflow-hidden">
+        {/* Blended Flame Line at the very top */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-orange-600/40 to-transparent" />
 
-      <footer className="relative bg-black pt-16 pb-8 overflow-hidden">
+        {/* Background Glow Ambiance */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-[120px] opacity-20" />
         </div>
@@ -595,7 +596,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* LINKS COLUMNS - Updated grid-cols-3 for Mobile Row Alignment */}
             <div className="lg:col-span-5 grid grid-cols-3 gap-4 lg:gap-8">
               {Object.entries(footerLinks).map(([category, links]) => (
                 <div key={category}>
