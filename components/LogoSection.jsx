@@ -78,27 +78,28 @@ const LogoSection = () => {
                 {[...LOGOS, ...LOGOS].map((logo, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-4 group transition-all duration-300"
+                    className="flex items-center gap-5 group transition-all duration-300"
                   >
                     <div
                       className="
-                        w-12 h-12 rounded-xl
-                        bg-white/5 border border-white/10
+                        w-14 h-14 rounded-xl
+                        bg-white/10 border border-white/10
                         flex items-center justify-center
                         transition-all duration-300
-                        group-hover:bg-orange-500/15
-                        group-hover:border-orange-500/40
+                        group-hover:bg-orange-500/20
+                        group-hover:border-orange-500/50
+                        group-hover:shadow-[0_0_20px_rgba(249,115,22,0.2)]
                       "
                     >
                       <Image
                         src={logo.src}
                         alt={logo.name}
-                        width={24}
-                        height={24}
+                        width={28}
+                        height={28}
                         className="
-                          opacity-40
+                          opacity-55
                           transition-all duration-300
-                          group-hover:opacity-90
+                          group-hover:opacity-100
                           group-hover:scale-110
                           grayscale
                           group-hover:grayscale-0
@@ -109,7 +110,7 @@ const LogoSection = () => {
                     <span
                       className={`${montserrat.className}
                         text-lg md:text-xl font-semibold
-                        text-white/30
+                        text-white/40
                         transition-colors duration-300
                         group-hover:text-white
                       `}

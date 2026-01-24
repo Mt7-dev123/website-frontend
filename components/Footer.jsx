@@ -9,8 +9,6 @@ import {
   Instagram, 
   Twitter, 
   Linkedin, 
-  Facebook,
-  MessageCircle,
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -67,13 +65,14 @@ export default function Footer() {
     { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    // { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
     { isWhatsApp: true, href: "https://wa.me/yournumber", label: "WhatsApp" },
   ];
 
   return (
     <>
-      <footer className="relative bg-transparent pt-16 pb-8 overflow-hidden">
+      {/* Translucent Background applied here with bg-zinc-900/40 and backdrop-blur-md */}
+      <footer className="relative bg-zinc-900/40 backdrop-blur-md pt-16 pb-8 overflow-hidden">
+        
         {/* Blended Flame Line at the very top */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-orange-600/40 to-transparent" />
 

@@ -28,12 +28,6 @@ const FlowSection = () => {
 
   return (
     <section className="relative py-10 md:py-20 bg-transparent overflow-hidden flex justify-center w-full">
-      {/* Background Atmosphere */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 -left-32 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-orange-600/5 blur-[100px] rounded-full" />
-        <div className="absolute -bottom-32 -right-32 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-red-800/5 blur-[100px] rounded-full" />
-      </div> */}
-
       <div className="relative z-30 w-full max-w-[1300px] px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-10 max-w-2xl flex flex-col items-start">
@@ -103,7 +97,9 @@ const FlowSection = () => {
               <motion.path d="M 200,170 C 200,50 400,50 450,170" stroke="#f97316" strokeWidth="1.5" fill="none" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={draw} markerEnd="url(#arrow)" />
               <motion.path d="M 450,230 C 400,350 200,350 200,230" stroke="#f97316" strokeWidth="1.5" fill="none" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={draw} markerEnd="url(#arrow)" />
               <motion.path d="M 230,200 L 380,200" stroke="#f97316" strokeWidth="1.5" fill="none" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={draw} markerEnd="url(#arrow)" />
-              <path className="hidden lg:block" d="M 520,200 L 650,200" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
+              
+              {/* UPDATED: Path extended to 750 for a longer horizontal arrow */}
+              <path className="hidden lg:block" d="M 520,200 L 750,200" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
 
               <circle r="2.5" fill="#fb923c">
                 <animateMotion dur="3s" repeatCount="indefinite" path="M 200,170 C 200,50 400,50 450,170" />
@@ -127,7 +123,6 @@ const FlowSection = () => {
 
           {/* 3. FAR RIGHT: OUTCOMES (Exiting Flow) */}
           <div className="relative flex flex-row lg:flex-col gap-4 w-full lg:w-auto justify-center">
-            {/* Arrow pointing DOWN towards outcomes boxes */}
             <div className="absolute -top-8 left-1/2 w-px h-8 bg-[#f97316] lg:hidden">
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }}

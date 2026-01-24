@@ -3,19 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
-import {
-  FiCheck,
-  FiStar,
-  FiChevronRight,
-} from "react-icons/fi";
-import {
-  FaFire,
-  FaCrown,
-  FaBolt,
-  FaShieldAlt,
-  FaRocket,
-  FaGem,
-} from "react-icons/fa";
+import { FiCheck, FiStar, FiChevronRight } from "react-icons/fi";
+import { FaFire, FaCrown, FaBolt, FaShieldAlt, FaRocket, FaGem } from "react-icons/fa";
 
 import {
   Carousel,
@@ -91,8 +80,8 @@ const plans = [
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="relative pt-32 pb-32 overflow-hidden">
-      {/* BACKGROUND DECO */}
+    // 1. EDIT SECTION PADDING HERE (changed pt-32/pb-32 to py-16)
+    <section id="pricing" className="relative py-16 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(8)].map((_, i) => (
           <motion.div
@@ -106,8 +95,7 @@ const Pricing = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* HEADER */}
-        <div className="flex flex-col items-start max-w-3xl mb-16">
+        <div className="flex flex-col items-start max-w-3xl mb-12">
           <div className="inline-block">
             <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
               Pricing
@@ -120,52 +108,49 @@ const Pricing = () => {
               className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
             />
           </div>
-          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-8 leading-[1.15] bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]`}>
+          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]`}>
             Affordable pricing plan
           </h2>
         </div>
 
-        {/* ✅ CAROUSEL WITH OVERFLOW FIXES */}
         <div className="relative w-full">
           <Carousel
             opts={{ align: "start", loop: true }}
-            className="w-full group overflow-visible"
+            className="w-full group"
           >
-            <CarouselContent className="-ml-4 overflow-visible py-12 px-2"> 
+            {/* 2. EDIT INTERNAL CAROUSEL SPACE HERE (py-12 px-2 removed extra gaps) */}
+            <CarouselContent className="-ml-4 py-8"> 
               {plans.map((plan, index) => (
                 <CarouselItem
                   key={plan.name}
-                  className="pl-4 basis-full md:basis-1/2 lg:basis-1/3 overflow-visible"
+                  className="pl-4 basis-full md:basis-1/2 lg:basis-1/3"
                 >
                   <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
-                    whileHover={{ y: -15 }}
+                    whileHover={{ y: -10 }}
                     className="relative h-full"
                   >
-                    {/* POPULAR BADGE - Higher Z-index and positioned clearly above */}
                     {plan.popular && (
-                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 w-max">
-                        <div className="flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-orange-500 to-red-600 shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                          <FiStar className="text-white fill-white" />
-                          <span className={`${montserrat.className} text-[10px] font-black text-white tracking-widest`}>
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-30 w-max">
+                        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-red-600 shadow-lg">
+                          <FiStar className="text-white fill-white text-xs" />
+                          <span className={`${montserrat.className} text-[9px] font-black text-white tracking-widest`}>
                             MOST POPULAR
                           </span>
                         </div>
                       </div>
                     )}
 
-                    {/* GLOW - Now visible due to overflow-visible */}
                     {plan.highlight && (
-                      <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-[2rem] blur-xl opacity-30" />
+                      <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-[2rem] blur-lg opacity-20" />
                     )}
 
-                    {/* CARD BODY */}
                     <div className={`relative h-full rounded-[2rem] p-8 border backdrop-blur-xl flex flex-col transition-all duration-300 ${
                       plan.highlight 
-                        ? "bg-zinc-900/90 border-orange-500/50 shadow-2xl" 
+                        ? "bg-zinc-900/90 border-orange-500/50" 
                         : "bg-black/50 border-white/10"
                     }`}>
                       <div className="mb-6">
@@ -177,7 +162,7 @@ const Pricing = () => {
                             <h3 className={`${montserrat.className} text-xl font-bold text-white`}>
                               {plan.name}
                             </h3>
-                            <p className="text-orange-400 text-xs font-semibold uppercase tracking-wider">
+                            <p className="text-orange-400 text-[10px] font-semibold uppercase tracking-wider">
                               {plan.subtitle}
                             </p>
                           </div>
@@ -185,29 +170,29 @@ const Pricing = () => {
                         <p className="text-gray-400 text-sm leading-relaxed">{plan.description}</p>
                       </div>
 
-                      <div className="mb-8">
+                      <div className="mb-6">
                         <div className="flex items-end gap-1">
-                          <span className={`${montserrat.className} text-5xl font-black text-white`}>{plan.price}</span>
-                          <span className="text-gray-500 mb-2 font-medium">/mo</span>
+                          <span className={`${montserrat.className} text-4xl font-black text-white`}>{plan.price}</span>
+                          <span className="text-gray-500 mb-1.5 font-medium text-sm">/mo</span>
                         </div>
                       </div>
 
                       <div className="flex-1 mb-8">
-                        <div className="flex items-center gap-2 mb-4 text-white/90 text-sm font-bold uppercase tracking-tighter">
+                        <div className="flex items-center gap-2 mb-4 text-white/90 text-xs font-bold uppercase tracking-tighter">
                           <FaShieldAlt className="text-orange-500" />
                           Key Features
                         </div>
                         <ul className="space-y-3">
                           {plan.features.map((f, i) => (
-                            <li key={i} className="flex gap-3 text-gray-400 text-sm">
-                              <FiCheck className="text-orange-500 mt-1 flex-shrink-0" />
+                            <li key={i} className="flex gap-3 text-gray-400 text-xs">
+                              <FiCheck className="text-orange-500 mt-0.5 flex-shrink-0" />
                               <span className="leading-tight">{f}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <button className={`w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all active:scale-95 ${
+                      <button className={`w-full py-3.5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 transition-all active:scale-95 ${
                         plan.highlight 
                           ? "bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg shadow-orange-500/20" 
                           : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
@@ -221,10 +206,9 @@ const Pricing = () => {
               ))}
             </CarouselContent>
 
-            {/* THEMED CONTROLS */}
             <div className="hidden md:block">
-              <CarouselPrevious className="bg-orange-600 hover:bg-orange-500 border-none text-white h-12 w-12 -left-6 lg:-left-12 transition-opacity opacity-0 group-hover:opacity-100 shadow-xl shadow-orange-900/20" />
-              <CarouselNext className="bg-orange-600 hover:bg-orange-500 border-none text-white h-12 w-12 -right-6 lg:-right-12 transition-opacity opacity-0 group-hover:opacity-100 shadow-xl shadow-orange-900/20" />
+              <CarouselPrevious className="bg-orange-600 hover:bg-orange-500 border-none text-white h-10 w-10 -left-4 lg:-left-8 opacity-0 group-hover:opacity-100" />
+              <CarouselNext className="bg-orange-600 hover:bg-orange-500 border-none text-white h-10 w-10 -right-4 lg:-right-8 opacity-0 group-hover:opacity-100" />
             </div>
           </Carousel>
         </div>
