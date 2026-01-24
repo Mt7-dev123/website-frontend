@@ -34,7 +34,7 @@ const AboutSection = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden" />
 
       {/* Adjusted px-6 for mobile to match FlowSection */}
-      <div className="relative z-30 w-full max-w-[1300px] px-6 md:px-14 grid md:grid-cols-2 gap-16 items-center">
+      <div className="relative z-30 w-full max-w-325 px-6 md:px-14 grid md:grid-cols-2 gap-16 items-center">
         
         {/* LEFT CONTENT */}
         <div className="flex flex-col items-start md:-mt-10">
@@ -47,7 +47,7 @@ const AboutSection = () => {
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "circOut", delay: 0.5 }}
-              className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
+              className="h-0.5 bg-linear-to-r from-orange-500 to-transparent"
             />
           </div>
 

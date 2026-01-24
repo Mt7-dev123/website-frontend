@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
-import LightPillar from "../components/hero/LightPillar";
+import LightPillar from "./mainBackground/LightPillar";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

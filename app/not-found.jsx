@@ -33,8 +33,8 @@ export default function NotFound() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="
             text-[120px] md:text-[150px] font-extralight leading-none
-            bg-gradient-to-r from-[#ffefe0] via-[#ffb870] to-[#ff6a00]
-            bg-[length:300%_300%]
+            bg-linear-to-r from-[#ffefe0] via-[#ffb870] to-[#ff6a00]
+            bg-size-[300%_300%]
             bg-clip-text text-transparent
           "
         >
@@ -100,19 +100,19 @@ function BackgroundAnimation() {
     <div className="absolute inset-0 pointer-events-none">
 
       {/* BASE GRADIENT */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#120200] to-black" />
+      <div className="absolute inset-0 bg-linear-to-br from-black via-[#120200] to-black" />
 
       {/* SOFT GLOWS */}
       <motion.div
         animate={{ opacity: [0.25, 0.4, 0.25] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-orange-500/20 blur-[140px]"
+        className="absolute -top-40 -left-40 w-125 h-125 rounded-full bg-orange-500/20 blur-[140px]"
       />
 
       <motion.div
         animate={{ opacity: [0.2, 0.35, 0.2] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[-120px] right-[-120px] w-[450px] h-[450px] rounded-full bg-red-600/25 blur-[160px]"
+        className="absolute -bottom-30 -right-30 w-112.5 h-112.5 rounded-full bg-red-600/25 blur-[160px]"
       />
 
       {/* FLOATING PARTICLES */}
