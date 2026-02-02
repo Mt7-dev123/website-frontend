@@ -10,6 +10,7 @@ import {
   Twitter,
   Linkedin,
   ArrowRight,
+  MapPin, // Added MapPin import
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,6 +24,7 @@ const montserrat = Montserrat({
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [toast, setToast] = useState(null);
+
   const handleSubscribe = useCallback(
     async (e) => {
       e.preventDefault();
@@ -116,7 +118,7 @@ export default function Footer() {
       </AnimatePresence>
 
       <footer className="relative bg-zinc-900/40 backdrop-blur-md pt-14 pb-6 overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-red-500/40 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
@@ -208,38 +210,54 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-6" />
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
 
           <div className="flex flex-col items-center gap-4 text-center text-sm text-gray-400">
-            <div className="flex flex-wrap justify-center gap-6">
+            {/* Contact Row: Emails, Phone, and Address */}
+            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3">
               <a
                 href="mailto:founder@Mt7.in"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 hover:text-white transition-colors"
               >
                 <Mail size={14} className="text-red-500" />
                 founder@Mt7.in
               </a>
               <a
                 href="mailto:support@Mt7.in"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 hover:text-white transition-colors"
               >
                 <Mail size={14} className="text-red-500" />
                 support@Mt7.in
               </a>
-              <a href="tel:+917800007500" className="flex items-center gap-2">
+              <a
+                href="tel:+917800007500"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
                 <Phone size={14} className="text-red-500" />
                 +91 7800007500
               </a>
+
+              {/* Added Address Link Here */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Bahraich,+Uttar+Pradesh,+India"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors"
+              >
+                <MapPin size={14} className="text-red-500" />
+                Bahraich, Uttar Pradesh, India
+              </a>
             </div>
 
-            <div className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            {/* GSTIN & Disclaimer */}
+            <div className="text-xs text-gray-500 max-w-3xl leading-relaxed mt-2">
               <div>Mt7 Private Limited | GSTIN: 09AATCM9258Q1Z2</div>
               <div className="mt-1">
                 Services delivered through vetted agency partners.
               </div>
             </div>
 
-            <div className="text-xs text-gray-500 mt-2">
+            <div className="text-xs text-gray-500">
               © 2026 Mt7 Private Limited. All rights reserved.
             </div>
           </div>

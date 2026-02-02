@@ -134,17 +134,25 @@ export default function HeroSection() {
             <motion.h1
               className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-6`}
             >
-              <span className="block bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]">
-                Grow business
+              {/* EYEBROW */}
+              <span className="block text-sm tracking-wider uppercase mb-3 bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent opacity-90">
+                For Startups Drowning in Agency Chaos
               </span>
+
+              {/* MAIN LINE 1 */}
+              <span className="block bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent">
+                Stop Juggling Agencies.
+              </span>
+
+              {/* MAIN LINE 2 + UNDERLINE */}
               <span className="block relative mt-2">
                 <span className="bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]">
-                  with great advise
+                  Start Growing Your Business.
                 </span>
                 <motion.span
                   className="absolute -bottom-3 left-0 h-1 bg-[#ff4500] rounded-full shadow-[0_0_15px_#ff4500]"
                   initial={{ width: 0 }}
-                  animate={{ width: "200px" }}
+                  animate={{ width: "220px" }}
                   transition={{ delay: 0.8, duration: 1 }}
                 />
               </span>
@@ -153,9 +161,9 @@ export default function HeroSection() {
             <p
               className={`${montserrat.className} text-lg text-gray-200 font-light leading-relaxed mb-10 max-w-xl opacity-90`}
             >
-              Empower your business to thrive with expert advice tailored to
-              your goals, ensuring growth, innovation, and long-term success.
-              Unlock your potential with trusted guidance.
+              We find, vet, and manage all your Marketing, Finance & HR
+              agencies— so you get professional operations without the
+              headaches. One point of contact. One invoice. Zero vendor drama.
             </p>
 
             <div className="flex flex-col gap-6 mb-12">
@@ -178,23 +186,33 @@ export default function HeroSection() {
                 <p
                   className={`${montserrat.className} text-gray-300 text-sm font-medium`}
                 >
-                  Join 4,600+ members
+                  Currently onboarding founding clients
                 </p>
               </div>
 
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 0 20px rgba(255, 69, 0, 0.4)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className={`${montserrat.className} w-fit px-8 py-4 bg-[#ff4500] text-white font-semibold rounded-xl transition-all shadow-lg shadow-red-900/20`}
-              >
-                Get started now
-              </motion.button>
+              <div className="flex flex-wrap gap-4">
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(255, 69, 0, 0.4)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-semibold rounded-xl shadow-lg`}
+                >
+                  See How It Works →
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`${montserrat.className} px-8 py-4 border border-[#ff4500] text-[#ffae42] font-semibold rounded-xl`}
+                >
+                  Book Free Consultation
+                </motion.button>
+              </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 border-t border-red-900/30 pt-8 max-w-lg">
+            {/* <div className="grid grid-cols-3 gap-6 border-t border-red-900/30 pt-8 max-w-lg">
               {[
                 { value: "99%", label: "Satisfaction" },
                 { value: "24/7", label: "Support" },
@@ -209,7 +227,7 @@ export default function HeroSection() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </motion.div>
 
           {/* RIGHT CONTENT - Vertical spacing adjusted for mobile */}

@@ -70,7 +70,7 @@ const ClientsSection = () => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="clients" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="clients" className="relative py-24 md:py-10 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div

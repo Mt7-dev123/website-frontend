@@ -18,6 +18,8 @@ import Navbar from "@/components/Navbar";
 import Pricing from "@/components/Pricing";
 import ScrollToTop from "@/components/ScrollToTop";
 import Services from "@/components/Services";
+import ProblemSection from "@/components/ProblemSection";
+import Plans from "@/components/PlansSection";
 
 const Page = () => {
   const servicesRef = useRef(null);
@@ -29,21 +31,23 @@ const Page = () => {
     <>
       <Navbar />
       <HeroSection />
-      <LogoSection />
-      <ClientsSection />
-      <FlowSection />
-      <AboutUs />
-
-      {/* MODAL TRIGGER SECTION */}
-      <Services ref={servicesRef} />
-
+      {/* stats bar */}
+      <ProblemSection />
+      {/* Solution section */} <FlowSection />
       <Pricing />
+      <Plans />
+      {/* THE GUARANTEE - NEW SECTION*/}
+      {/* Testimonials     */} <ClientsSection />
+      {/* WHO THIS IS FOR - NEW SECTION */}
+      {/* FAQ - NEW SECTION*/}
+      <AboutUs />
+      <LogoSection />
       <Footer />
       <ScrollToTop />
 
+      
       {/* LEAD MODAL */}
-      <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} />
-
+      {/* <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} /> */}
       {/* <ComparisonSection /> */}
       {/* <Comparison /> */}
       {/* <ComparisonTable /> */}
@@ -53,4 +57,3 @@ const Page = () => {
 };
 
 export default Page;
-

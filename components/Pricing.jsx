@@ -3,16 +3,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
-import { FiCheck, FiStar, FiChevronRight } from "react-icons/fi";
-import { FaFire, FaCrown, FaBolt, FaShieldAlt, FaRocket, FaGem } from "react-icons/fa";
-
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+  Check,
+  CheckCircle2,
+  ArrowRight,
+  HelpCircle,
+  Clock,
+  ShieldCheck,
+  Users,
+  Zap,
+  Briefcase,
+  Star,
+  Rocket,
+} from "lucide-react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -20,201 +23,304 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+
 const plans = [
   {
-    name: "Spark",
-    icon: <FaFire className="text-orange-500" />,
-    price: "$599",
-    subtitle: "Ignite your journey",
-    description: "Perfect for startups ready to make their first mark",
-    highlight: false,
-    popular: false,
-    features: ["Single page website design", "Basic logo concept", "Social media graphics pack", "3 revisions included", "72-hour delivery", "Email support"],
-    buttonText: "Start Igniting",
+    id: 1,
+    title: "COORDINATOR",
+    subtitle: "Manage Your Existing Agencies",
+    description: "You already have agencies? We'll manage them for you.",
+    icon: <Users className="text-blue-400" size={22} />,
+    features: [
+      "Daily task coordination",
+      "Quality oversight",
+      "Deadline tracking",
+      "Weekly reports",
+    ],
+    perfectFor:
+      "Companies with existing vendors who need professional management",
+    cta: "Get Custom Quote",
   },
   {
-    name: "Blaze",
-    icon: <FaBolt className="text-yellow-400" />,
-    price: "$799",
-    subtitle: "Fuel rapid growth",
-    description: "Ideal for growing businesses needing consistent output",
+    id: 2,
+    title: "SOURCING",
+    subtitle: "We Find, You Manage",
+    description: "Need agencies but want to manage them yourself?",
+    icon: <Zap className="text-yellow-400" size={22} />,
+    features: [
+      "Pre-vetted agency matching",
+      "Budget-tier options",
+      "Contract negotiation",
+      "Then you take over",
+    ],
+    perfectFor: "DIY founders who want quality partners without the search",
+    cta: "Get Custom Quote",
+  },
+  {
+    id: 3,
+    title: "FULL STACK",
+    subtitle: "We Find + Manage Everything",
+    description: "Complete hands-off operations. We handle it all.",
+    icon: <ShieldCheck className="text-orange-500" size={22} />,
+    features: [
+      "Agency matching & vetting",
+      "Daily coordination & QA",
+      "Performance tracking",
+      "Free agency switching",
+      "Dedicated manager (your POC)",
+    ],
+    extra: "Choose: Marketing, Finance, HR (or all 3 bundled)",
+    perfectFor:
+      "Founders who want professional ops without the overhead",
+    badge: "MOST POPULAR",
     highlight: true,
-    popular: true,
-    features: ["2 concurrent requests", "Multi-page website design", "Full branding package", "Unlimited revisions", "48-hour delivery", "Priority support", "Content calendar setup", "Slide deck templates"],
-    buttonText: "Fuel Growth",
+    cta: "See Full Stack Details",
   },
   {
-    name: "Inferno",
-    icon: <FaCrown className="text-red-500" />,
-    price: "$999",
-    subtitle: "Dominate your market",
-    description: "Complete solutions for established enterprises",
-    highlight: false,
-    popular: false,
-    features: ["3 concurrent requests", "Complete app UI/UX design", "Full brand system", "Dedicated project manager", "24-hour delivery", "VIP phone support", "Analytics dashboard", "Team training sessions"],
-    buttonText: "Dominate Now",
-  },
-  {
-    name: "Nova",
-    icon: <FaRocket className="text-blue-400" />,
-    price: "$1,299",
-    subtitle: "Reach for the stars",
-    description: "Advanced automation and custom motion graphics",
-    highlight: false,
-    popular: false,
-    features: ["4 concurrent requests", "Custom Motion Graphics", "Automated Workflow Setup", "E-commerce Optimization", "Bi-weekly Strategy Calls", "Quarterly Brand Audit"],
-    buttonText: "Launch Now",
-  },
-  {
-    name: "Aura",
-    icon: <FaGem className="text-purple-500" />,
-    price: "$1,599",
-    subtitle: "Unmatched Prestige",
-    description: "The ultimate tier for global luxury brands",
-    highlight: false,
-    popular: false,
-    features: ["Unlimited requests", "On-site team workshop", "Global Brand Guidelines", "24/7 Concierge Support", "White-glove Service", "Lifetime Asset Storage"],
-    buttonText: "Join the Elite",
+    id: 4,
+    title: "MINI (BETA)",
+    subtitle: "For Bootstrap Startups",
+    description: "Budget-friendly bundled ops for early-stage companies.",
+    icon: <Briefcase className="text-purple-400" size={22} />,
+    features: [
+      "2+ departments minimum",
+      "Budget-tier agencies",
+      "Full management included",
+      "12-month commitment",
+    ],
+    perfectFor: "Pre-seed to Seed startups with tight budgets",
+    badge: "LIMITED SLOTS",
+    slots: "Only 10 slots available",
+    cta: "Apply for Beta",
   },
 ];
 
-const Pricing = () => {
-  return (
-    // 1. EDIT SECTION PADDING HERE (changed pt-32/pb-32 to py-16)
-    <section id="pricing" className="relative py-16 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-orange-500/40 rounded-full"
-            style={{ left: `${20 + i * 10}%`, top: `${30 + i * 5}%` }}
-            animate={{ y: [0, -30, 0], opacity: [0, 1, 0] }}
-            transition={{ duration: 3 + i, repeat: Infinity, delay: i * 0.4 }}
-          />
-        ))}
-      </div>
+const steps = [
+  { num: "01", title: "Book Consultation", desc: "Tell us what you need." },
+  { num: "02", title: "We Get Quotes", desc: "Budget-matched to requirements." },
+  { num: "03", title: "Transparent Margin", desc: "You see our markup clearly." },
+  { num: "04", title: "You Approve", desc: "7–10 days to go live." },
+];
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-start max-w-3xl mb-12">
+const included = [
+  "Dedicated POC",
+  "Daily oversight",
+  "Weekly updates",
+  "Monthly reviews",
+  "Free agency switching",
+  "24-hour response time",
+];
+
+const faqs = [
+  {
+    q: "Why custom pricing?",
+    a: "Every business has different needs. Pricing is based on actual scope: number of agencies, complexity, and hours required.",
+  },
+  {
+    q: "Can pricing change later?",
+    a: "Not without approval. Any scope change requires a new quote. No surprises.",
+  },
+];
+
+/* ---------------- COMPONENT ---------------- */
+
+export default function PlansAndPricing() {
+  return (
+    <section className="relative py-10 bg-transparent overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
+
+        {/* ================= HEADER ================= */}
+        <div className="max-w-3xl mb-20">
+          {/* Section label + underline */}
           <div className="inline-block">
-            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
-              Pricing
+            <p
+              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}
+            >
+              Choose Your Plan
             </p>
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: "circOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: "circOut", delay: 0.4 }}
               className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
             />
           </div>
-          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]`}>
-            Affordable pricing plan
-          </h2>
-        </div>
 
-        <div className="relative w-full">
-          <Carousel
-            opts={{ align: "start", loop: true }}
-            className="w-full group"
+          {/* Gradient headline */}
+          <h2
+            className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
+            bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500]
+            bg-clip-text text-transparent
+            drop-shadow-[0_4px_12px_rgba(255,69,0,0.25)]`}
           >
-            {/* 2. EDIT INTERNAL CAROUSEL SPACE HERE (py-12 px-2 removed extra gaps) */}
-            <CarouselContent className="-ml-4 py-8"> 
-              {plans.map((plan, index) => (
-                <CarouselItem
-                  key={plan.name}
-                  className="pl-4 basis-full md:basis-1/2 lg:basis-1/3"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    whileHover={{ y: -10 }}
-                    className="relative h-full"
-                  >
-                    {plan.popular && (
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-30 w-max">
-                        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-red-600 shadow-lg">
-                          <FiStar className="text-white fill-white text-xs" />
-                          <span className={`${montserrat.className} text-[9px] font-black text-white tracking-widest`}>
-                            MOST POPULAR
-                          </span>
-                        </div>
-                      </div>
-                    )}
+            From Coordination to Complete Management
+          </h2>
 
-                    {plan.highlight && (
-                      <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-[2rem] blur-lg opacity-20" />
-                    )}
-
-                    <div className={`relative h-full rounded-[2rem] p-8 border backdrop-blur-xl flex flex-col transition-all duration-300 ${
-                      plan.highlight 
-                        ? "bg-zinc-900/90 border-orange-500/50" 
-                        : "bg-black/50 border-white/10"
-                    }`}>
-                      <div className="mb-6">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                            {plan.icon}
-                          </div>
-                          <div>
-                            <h3 className={`${montserrat.className} text-xl font-bold text-white`}>
-                              {plan.name}
-                            </h3>
-                            <p className="text-orange-400 text-[10px] font-semibold uppercase tracking-wider">
-                              {plan.subtitle}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="text-gray-400 text-sm leading-relaxed">{plan.description}</p>
-                      </div>
-
-                      <div className="mb-6">
-                        <div className="flex items-end gap-1">
-                          <span className={`${montserrat.className} text-4xl font-black text-white`}>{plan.price}</span>
-                          <span className="text-gray-500 mb-1.5 font-medium text-sm">/mo</span>
-                        </div>
-                      </div>
-
-                      <div className="flex-1 mb-8">
-                        <div className="flex items-center gap-2 mb-4 text-white/90 text-xs font-bold uppercase tracking-tighter">
-                          <FaShieldAlt className="text-orange-500" />
-                          Key Features
-                        </div>
-                        <ul className="space-y-3">
-                          {plan.features.map((f, i) => (
-                            <li key={i} className="flex gap-3 text-gray-400 text-xs">
-                              <FiCheck className="text-orange-500 mt-0.5 flex-shrink-0" />
-                              <span className="leading-tight">{f}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <button className={`w-full py-3.5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 transition-all active:scale-95 ${
-                        plan.highlight 
-                          ? "bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg shadow-orange-500/20" 
-                          : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
-                      }`}>
-                        {plan.buttonText}
-                        <FiChevronRight />
-                      </button>
-                    </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-
-            <div className="hidden md:block">
-              <CarouselPrevious className="bg-orange-600 hover:bg-orange-500 border-none text-white h-10 w-10 -left-4 lg:-left-8 opacity-0 group-hover:opacity-100" />
-              <CarouselNext className="bg-orange-600 hover:bg-orange-500 border-none text-white h-10 w-10 -right-4 lg:-right-8 opacity-0 group-hover:opacity-100" />
-            </div>
-          </Carousel>
+          <p className="text-zinc-400 mt-4">
+            Whether you have agencies or need us to find them, we have a plan that fits.
+          </p>
         </div>
+
+        {/* ================= PLANS GRID ================= */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className={`relative p-6 rounded-2xl border backdrop-blur-md flex flex-col
+                ${plan.highlight
+                  ? "bg-zinc-900/90 border-orange-500/50 shadow-xl shadow-orange-900/20"
+                  : "bg-zinc-900/50 border-white/10"}
+              `}
+            >
+              {plan.badge && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold bg-orange-500 text-black flex items-center gap-1">
+                  {plan.highlight ? <Star size={12} /> : <Rocket size={12} />}
+                  {plan.badge}
+                </div>
+              )}
+
+              <div className="mb-4 p-3 bg-white/5 rounded-xl w-fit">
+                {plan.icon}
+              </div>
+
+              <h3 className="text-white font-bold">{plan.title}</h3>
+              <p className="text-orange-400 text-xs font-semibold mb-3">
+                {plan.subtitle}
+              </p>
+
+              <p className="text-zinc-300 text-sm mb-5">{plan.description}</p>
+
+              <ul className="space-y-2 text-xs text-zinc-300 mb-5">
+                {plan.features.map((f, idx) => (
+                  <li key={idx} className="flex gap-2">
+                    <CheckCircle2 size={14} className="text-orange-500 mt-0.5" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              {plan.extra && (
+                <p className="text-orange-400/80 text-xs italic mb-4">
+                  {plan.extra}
+                </p>
+              )}
+
+              <p className="text-[11px] text-zinc-400 mb-5">
+                <span className="text-white font-semibold">Perfect for:</span>{" "}
+                {plan.perfectFor}
+              </p>
+
+              {plan.slots && (
+                <p className="text-red-400 text-[10px] font-semibold mb-3">
+                  {plan.slots}
+                </p>
+              )}
+
+              <button
+                className={`mt-auto w-full py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2
+                  ${plan.highlight
+                    ? "bg-orange-500 text-white hover:bg-orange-600"
+                    : "bg-white/10 text-white border border-white/20 hover:bg-white hover:text-black"}
+                `}
+              >
+                {plan.cta}
+                <ArrowRight size={14} />
+              </button>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ================= HOW PRICING WORKS ================= */}
+        <div className="mb-24">
+          <h3 className="text-white text-2xl font-bold mb-10 text-center">
+            How Pricing Works
+          </h3>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            {steps.map((s, i) => (
+              <div
+                key={i}
+                className="p-6 rounded-2xl bg-white/5 border border-white/10"
+              >
+                <div className="text-4xl font-black text-white/10 mb-3">
+                  {s.num}
+                </div>
+                <h4 className="text-white font-bold mb-1">{s.title}</h4>
+                <p className="text-zinc-400 text-sm">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ================= INCLUDED + TERMS ================= */}
+        <div className="grid md:grid-cols-3 gap-8 mb-24">
+          <div className="md:col-span-2 p-8 rounded-3xl bg-zinc-900/50 border border-white/10">
+            <h3 className="text-white font-bold mb-6 flex items-center gap-2">
+              <Zap className="text-orange-500" size={18} />
+              All Plans Include
+            </h3>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {included.map((item, i) => (
+                <div key={i} className="flex gap-2 text-zinc-300 text-sm">
+                  <Check className="text-green-500 mt-0.5" size={16} />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-8 rounded-3xl bg-zinc-900/50 border border-white/10">
+            <h3 className="text-white font-bold mb-6 flex items-center gap-2">
+              <Clock className="text-orange-500" size={18} />
+              Payment Terms
+            </h3>
+            <ul className="space-y-2 text-zinc-400 text-sm list-disc list-inside">
+              <li>Prepaid monthly</li>
+              <li>3-month minimum</li>
+              <li>14-day cancellation</li>
+              <li>Late fee: ₹1K/day after 5th</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ================= FAQ ================= */}
+        <div className="max-w-3xl mx-auto mb-24">
+          <h3 className="text-white text-2xl font-bold mb-8 text-center">
+            Frequently Asked Questions
+          </h3>
+          <div className="space-y-6">
+            {faqs.map((f, i) => (
+              <div
+                key={i}
+                className="p-6 rounded-2xl bg-zinc-900/40 border border-white/10"
+              >
+                <h4 className="text-white font-bold flex items-center gap-2 mb-2">
+                  <HelpCircle size={16} className="text-orange-500" />
+                  {f.q}
+                </h4>
+                <p className="text-zinc-400 text-sm pl-6">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ================= FINAL CTA ================= */}
+        <div className="text-center">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-10 py-5 bg-orange-500 text-white font-bold text-lg rounded-full shadow-xl hover:bg-orange-600"
+          >
+            Get Your Custom Quote →
+          </motion.button>
+        </div>
+
       </div>
     </section>
   );
-};
-
-export default Pricing;
+}

@@ -2,8 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GlobalBackground from "./../components/mainBackground/GlobalBackground";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import ClientLayout from "./ClientLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,10 +47,15 @@ export default function RootLayout({ children }) {
         {/* 🔥 GLOBAL ANIMATED BACKGROUND */}
         <GlobalBackground />
 
-        {/* 🧱 APP CONTENT */}
+        {/* 🧱 APP CONTENT + LOADER CONTROL */}
         <main className="relative z-10">
-          {children}
+          <ClientLayout>
+            {children}
+          </ClientLayout>
         </main>
+
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
