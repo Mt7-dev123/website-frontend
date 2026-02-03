@@ -20,6 +20,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Services from "@/components/Services";
 import ProblemSection from "@/components/ProblemSection";
 import Plans from "@/components/PlansSection";
+import Guarantee from "@/components/Guarantee";
 
 const Page = () => {
   const servicesRef = useRef(null);
@@ -39,6 +40,7 @@ const Page = () => {
       {/* <Plans /> */}
       {/* THE GUARANTEE - NEW SECTION*/}
       {/* Testimonials     */}
+      <Guarantee />
        <ClientsSection />
       {/* WHO THIS IS FOR - NEW SECTION */}
       {/* FAQ - NEW SECTION*/}
