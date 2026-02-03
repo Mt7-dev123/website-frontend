@@ -33,11 +33,13 @@ const Page = () => {
       <HeroSection />
       {/* stats bar */}
       <ProblemSection />
-      {/* Solution section */} <FlowSection />
+      {/* Solution section */}
+       <FlowSection />
       <Pricing />
-      <Plans />
+      {/* <Plans /> */}
       {/* THE GUARANTEE - NEW SECTION*/}
-      {/* Testimonials     */} <ClientsSection />
+      {/* Testimonials     */}
+       <ClientsSection />
       {/* WHO THIS IS FOR - NEW SECTION */}
       {/* FAQ - NEW SECTION*/}
       <AboutUs />
