@@ -108,7 +108,7 @@ const Guarantee = () => {
           
           <div className="space-y-4 mb-10">
             <p className="text-zinc-300 text-lg">
-              If we're not adding value, cancel with <span className="font-bold text-white underline decoration-orange-500">14 days notice.</span>
+              If we&apos;re not adding value, cancel with <span className="font-bold text-white underline decoration-orange-500">14 days notice.</span>
             </p>
             <p className="text-zinc-500 text-sm uppercase tracking-widest font-bold">
               No Penalties • No Breakup Fees
@@ -116,7 +116,7 @@ const Guarantee = () => {
           </div>
 
           <p className="text-zinc-400 italic text-sm">
-            "We only succeed when you succeed. That's why we guarantee quality."
+            &quot;We only succeed when you succeed. That&apos;s why we guarantee quality.&quot;
           </p>
         </motion.div>
 

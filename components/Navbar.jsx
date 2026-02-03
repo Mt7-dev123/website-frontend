@@ -42,73 +42,75 @@ export default function Navbar() {
 
   /* ================= SCROLL (OPTIMIZED) ================= */
 
-  useEffect(() => {
-    const onScroll = () => {
-      if (rafRef.current) return;
+useEffect(() => {
+  if (open) return;
 
-      rafRef.current = true;
-      requestAnimationFrame(() => {
-        const atTop = window.scrollY < TOP_OFFSET;
+  const onScroll = () => {
+    if (rafRef.current) return;
 
-        if (isAtTopRef.current !== atTop) {
-          isAtTopRef.current = atTop;
+    rafRef.current = true;
+    requestAnimationFrame(() => {
+      const atTop = window.scrollY < TOP_OFFSET;
 
-          if (atTop) {
-            setActiveSection(null);
-          }
-        }
+      if (isAtTopRef.current !== atTop) {
+        isAtTopRef.current = atTop;
+        if (atTop) setActiveSection(null);
+      }
 
-        rafRef.current = false;
-      });
-    };
+      rafRef.current = false;
+    });
+  };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  return () => window.removeEventListener("scroll", onScroll);
+}, [open]);
+
 
   /* ================= INTERSECTION OBSERVER ================= */
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (isAtTopRef.current) return;
+useEffect(() => {
+  if (open) return;
 
-        let closest = null;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (isAtTopRef.current) return;
 
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
+      let closest = null;
 
-          const offset = Math.abs(
-            entry.boundingClientRect.top -
-              window.innerHeight / 2
-          );
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
 
-          if (!closest || offset < closest.offset) {
-            closest = {
-              id: entry.target.id,
-              offset,
-            };
-          }
+        const offset = Math.abs(
+          entry.boundingClientRect.top - window.innerHeight / 2
+        );
+
+        if (!closest || offset < closest.offset) {
+          closest = {
+            id: entry.target.id,
+            offset,
+          };
         }
+      }
 
-        if (closest) {
-          setActiveSection((prev) =>
-            prev === closest.id ? prev : closest.id
-          );
-        }
-      },
-      { threshold: 0.3 }
-    );
+      if (closest) {
+        setActiveSection((prev) =>
+          prev === closest.id ? prev : closest.id
+        );
+      }
+    },
+    { threshold: 0.3 }
+  );
 
-    SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+  SECTIONS.forEach(({ id }) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
 
-    return () => observer.disconnect();
-  }, []);
+  return () => observer.disconnect();
+}, [open]);
+
 
   const activeLabel =
     SECTIONS.find((s) => s.id === activeSection)?.label ?? "";

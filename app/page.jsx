@@ -35,7 +35,7 @@ const Page = () => {
       {/* stats bar */}
       <ProblemSection />
       {/* Solution section */}
-       <FlowSection />
+      <FlowSection />
       <Pricing />
       {/* <Plans /> */}
       {/* THE GUARANTEE - NEW SECTION*/}
