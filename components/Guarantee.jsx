@@ -34,7 +34,8 @@ const STRIKES = [
 
 const Guarantee = () => {
   return (
-    <section className="relative py-24 overflow-hidden flex flex-col items-center w-full bg-black">
+    // Changed bg-black to bg-transparent
+    <section className="relative py-24 overflow-hidden flex flex-col items-center w-full bg-transparent">
       {/* Background Atmosphere - Flame Gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-orange-600/10 blur-[120px] rounded-full" />
@@ -97,6 +98,7 @@ const Guarantee = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto p-10 md:p-16 rounded-[3rem] border border-orange-500/20 bg-gradient-to-br from-orange-600/5 to-red-600/5 backdrop-blur-sm text-center relative overflow-hidden"
         >
+          {/* Subtle watermark or icon */}
           <FiCheckCircle className="absolute -top-10 -right-10 text-[200px] text-orange-500/5 rotate-12" />
 
           <h4 className={`${montserrat.className} text-xl md:text-2xl font-bold text-white mb-6 leading-relaxed`}>

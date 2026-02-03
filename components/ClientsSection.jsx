@@ -3,7 +3,7 @@
 import React, { memo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Montserrat } from "next/font/google";
-import { Quote } from "lucide-react";
+import { Quote, CheckCircle2 } from "lucide-react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -11,58 +11,27 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const CLIENT_LOGO_ROWS = [
-  [
-    { name: "GLOBAL HOMES", type: "Real Estate" },
-    { name: "CREATIVE", type: "Design Agency" },
-    { name: "LUXURY Homes", type: "Real Estate" },
-    { name: "Duplex Estates", type: "Real Estate" },
-    { name: "GREEN HOUSE", type: "Eco Tech" },
-  ],
-  [
-    { name: "TECHNOVA", type: "Technology" },
-    { name: "URBAN LIVING", type: "Property" },
-    { name: "INNOVATE", type: "Consulting" },
-    { name: "PRIME SPACES", type: "Real Estate" },
-    { name: "MODERN LIVING", type: "Interior Design" },
-  ],
-];
-
-const CLIENT_STATS = [
-  { value: "150+", label: "Projects Completed" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "24/7", label: "Support Available" },
-  { value: "50+", label: "Industries Served" },
-];
-
-const testimonials = [
+const founderQuotes = [
   {
-    name: "Alex Morgan",
-    role: "Founder, Fintech Startup",
+    name: "Rahul M.",
+    role: "SaaS Founder, Bangalore",
     quote:
-      "MT7.IO helped us move from chaos to clarity. Their engineering decisions saved us months of rework.",
+      "I'm managing 4 different agencies right now. Every Monday is 5 back-to-back calls. I don't have time to actually run my business.",
     img: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    name: "Sarah Williams",
-    role: "Product Lead, SaaS",
+    name: "Priya S.",
+    role: "E-commerce Founder, Mumbai",
     quote:
-      "The team understands scale. Everything was built with long-term growth in mind.",
+      "Our marketing agency kept missing deadlines. When we tried to switch, they held our content hostage. Took 3 months to transition.",
     img: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
-    name: "Daniel Chen",
-    role: "CTO, AI Company",
+    name: "Amit K.",
+    role: "Fintech Founder, Delhi",
     quote:
-      "Clean architecture, solid delivery, zero drama. Exactly what you want from a technical partner.",
+      "We're paying ₹3.5L/month across finance, marketing, and HR. No one talks to each other. It's complete chaos.",
     img: "https://randomuser.me/api/portraits/men/65.jpg",
-  },
-  {
-    name: "Priya Sharma",
-    role: "Operations Head, Enterprise",
-    quote:
-      "Their systems scaled seamlessly under real production load. Strong engineering culture.",
-    img: "https://randomuser.me/api/portraits/women/68.jpg",
   },
 ];
 
@@ -70,15 +39,14 @@ const ClientsSection = () => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="clients" className="relative py-24 md:py-10 overflow-hidden">
+    // Explicitly set bg-transparent here
+    <section id="clients" className="relative py-24 overflow-hidden bg-transparent">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={
-            reduceMotion ? { opacity: 0.35 } : { opacity: [0.25, 0.45, 0.25] }
-          }
+          animate={reduceMotion ? { opacity: 0.35 } : { opacity: [0.25, 0.45, 0.25] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-gradient-to-r from-red-900/10 via-transparent to-orange-900/10 blur-[100px]"
+          className="absolute inset-0 bg-gradient-to-r from-red-900/10 via-transparent to-orange-900/10 blur-[120px]"
         />
       </div>
 
@@ -86,131 +54,100 @@ const ClientsSection = () => {
         {/* Header */}
         <div className="flex flex-col items-start md:-mt-5 max-w-3xl mb-16">
           <div className="inline-block">
-            <p
-              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}
-            >
-              Our Clients
+            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
+              WHAT FOUNDERS SAY
             </p>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: "circOut", delay: 0.5 }}
+              transition={{ duration: 1, ease: "circOut", delay: 0.3 }}
               className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
             />
           </div>
 
-          {/* FONT SIZE EXACTLY MATCHED TO SERVICES (text-2xl md:text-3xl lg:text-4xl) */}
-          <h2
-            className={`
-                    ${montserrat.className} 
-                    text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-8 leading-[1.15]
-                    bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500]
-                    bg-clip-text text-transparent
-                    drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]
-                  `}
-          >
-            Trusted by Industry Leaders
+          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-6 leading-[1.15] bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]`}>
+            The Problem Every Startup Faces
           </h2>
-          <p
-            className={`${montserrat.className} text-gray-400 text-lg max-w-3xl mx-auto`}
-          >
-            From early-stage startups to enterprises, we build systems that
-            scale without surprises.
+          <p className={`${montserrat.className} text-gray-400 text-lg leading-relaxed`}>
+            We spoke to dozens of founders about their operation struggles. <br className="hidden md:block" />
+            The feedback was always the same.
           </p>
         </div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
-        >
-          {CLIENT_STATS.map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-black/40 border border-white/10 rounded-xl p-6 text-center"
-            >
-              <div className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-                {stat.value}
-              </div>
-              <div className="text-gray-400 text-sm mt-2">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Marquees */}
-        <div className="overflow-hidden mb-24">
-          {[CLIENT_LOGO_ROWS[0], CLIENT_LOGO_ROWS[1]].map((row, idx) => (
+        {/* Founder Quote Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          {founderQuotes.map((t, index) => (
             <motion.div
-              key={idx}
-              className="flex gap-12 mb-10 will-change-transform"
-              animate={
-                reduceMotion
-                  ? false
-                  : { x: idx === 0 ? ["0%", "-50%"] : ["-50%", "0%"] }
-              }
-              transition={{
-                duration: idx === 0 ? 40 : 45,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              {[...row, ...row].map((client, i) => (
-                <div
-                  key={i}
-                  className="min-w-[200px] p-6 rounded-2xl bg-black/30 border border-white/10 text-center"
-                >
-                  <div className="text-white font-bold">{client.name}</div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    {client.type}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-        >
-          {testimonials.map((t) => (
-            <div
               key={t.name}
-              className="relative p-8 rounded-2xl bg-zinc-900/40 border border-white/5"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="relative p-8 rounded-[2.5rem] bg-zinc-900/40 border border-white/5 backdrop-blur-sm flex flex-col h-full"
             >
-              <p className="text-gray-300 italic mb-8">“{t.quote}”</p>
-              <div className="flex items-center gap-4">
+              <Quote size={40} className="text-orange-500/20 mb-6" />
+              <p className={`${montserrat.className} text-gray-300 italic mb-8 flex-1 leading-relaxed text-base`}>
+                “{t.quote}”
+              </p>
+              
+              <div className="flex items-center gap-4 pt-6 border-t border-white/5">
                 <img
                   src={t.img}
                   alt={t.name}
-                  loading="lazy"
-                  decoding="async"
-                  width={48}
-                  height={48}
-                  className="rounded-full"
+                  width={44}
+                  height={44}
+                  className="rounded-full grayscale"
                 />
                 <div>
-                  <p className="text-white font-bold">{t.name}</p>
-                  <p className="text-orange-400 text-xs font-semibold">
+                  <p className="text-white font-bold text-sm">{t.name}</p>
+                  <p className="text-orange-500/80 text-[10px] uppercase font-bold tracking-widest">
                     {t.role}
                   </p>
                 </div>
               </div>
-              <Quote
-                size={96}
-                className="absolute bottom-[-12px] right-[-12px] text-orange-500/10"
-              />
-            </div>
+            </motion.div>
           ))}
+        </div>
+
+        {/* CTA Area */}
+        <motion.div 
+           initial={{ opacity: 0, scale: 0.95 }}
+           whileInView={{ opacity: 1, scale: 1 }}
+           className="p-10 rounded-[3rem] border border-orange-500/20 bg-gradient-to-br from-orange-600/5 to-transparent text-center flex flex-col items-center gap-6"
+        >
+          <p className={`${montserrat.className} text-zinc-300 text-xl font-medium`}>
+            These are the founders <span className="text-orange-500 font-bold">Mt7</span> was built for.
+          </p>
+          
+          <div className="flex flex-col items-center gap-4">
+            <h4 className="text-white text-lg font-bold">Ready to end the chaos?</h4>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-full transition-all shadow-lg shadow-orange-900/20 flex items-center gap-2 group"
+            >
+              Book Free Consultation
+              <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+                →
+              </motion.span>
+            </motion.button>
+          </div>
         </motion.div>
+
+        {/* Re-entry of Founder Beta Offer */}
+        <div className="mt-20 flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+             <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold uppercase tracking-widest">
+                <CheckCircle2 size={14} className="text-orange-500" /> Founder pricing (30% off)
+             </div>
+             <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold uppercase tracking-widest">
+                <CheckCircle2 size={14} className="text-orange-500" /> Priority Onboarding
+             </div>
+             <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold uppercase tracking-widest">
+                <CheckCircle2 size={14} className="text-orange-500" /> Lifetime Benefits
+             </div>
+        </div>
       </div>
     </section>
   );
