@@ -34,8 +34,8 @@ const STRIKES = [
 
 const Guarantee = () => {
   return (
-    // Changed bg-black to bg-transparent
-    <section className="relative py-24 overflow-hidden flex flex-col items-center w-full bg-transparent">
+    // Reduced py-24 to py-10 to remove extra top/bottom padding
+    <section className="relative py-10 overflow-hidden flex flex-col items-center w-full bg-transparent">
       {/* Background Atmosphere - Flame Gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-orange-600/10 blur-[120px] rounded-full" />
@@ -120,8 +120,8 @@ const Guarantee = () => {
           </p>
         </motion.div>
 
-        {/* CTA BUTTON */}
-        <div className="mt-20 flex justify-center w-full">
+        {/* CTA BUTTON - Reduced mt-20 to mt-12 */}
+        <div className="mt-12 flex justify-center w-full">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

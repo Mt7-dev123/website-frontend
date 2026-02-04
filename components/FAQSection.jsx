@@ -72,13 +72,14 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="relative py-24 bg-transparent overflow-hidden">
+    // Updated py-24 to py-10 to remove extra top/bottom padding
+    <section id="faq" className="relative py-10 bg-transparent overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
         
-        {/* ================= HEADER (MATCHING "WhoThisIsFor" STYLE) ================= */}
+        {/* ================= HEADER ================= */}
         <div className="flex flex-col items-start max-w-3xl mb-16">
           <div className="inline-flex flex-col items-start">
             <span
@@ -102,7 +103,7 @@ export default function FAQSection() {
           </h2>
         </div>
 
-        {/* ================= FAQ GRID (CARD STYLE) ================= */}
+        {/* ================= FAQ GRID ================= */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
           {faqs.map((faq, index) => (
             <motion.div

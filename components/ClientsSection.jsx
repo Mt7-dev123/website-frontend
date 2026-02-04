@@ -63,7 +63,8 @@ const ClientsSection = () => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="clients" className="relative py-24 overflow-hidden bg-transparent">
+    // Updated padding from py-24 md:py-32 to py-10
+    <section id="clients" className="relative py-10 overflow-hidden bg-transparent">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -74,7 +75,7 @@ const ClientsSection = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
-        {/* HEADER SECTION - Aligned exactly to Guarantee Code */}
+        {/* Header */}
         <div className="max-w-3xl mb-20 text-left">
           <div className="inline-block">
             <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>

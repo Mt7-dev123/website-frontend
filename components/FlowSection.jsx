@@ -204,7 +204,8 @@ const STEPS = [
 
 const FlowSection = () => {
   return (
-    <section className="relative py-20 bg-transparent overflow-hidden flex flex-col items-center w-full">
+    // Updated py-20 to py-10 to remove top/bottom extra space
+    <section className="relative py-10 bg-transparent overflow-hidden flex flex-col items-center w-full">
       <div className="relative z-30 w-full max-w-7xl px-6 md:px-14 mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl mb-12">
@@ -261,9 +262,8 @@ const FlowSection = () => {
           ))}
         </div>
 
-        {/* VISUAL DIAGRAM AREA - Optimized for Mobile */}
-        <div className="relative w-full max-w-[1100px] mx-auto p-6 md:p-16 rounded-[2.5rem] md:rounded-[4rem] border border-white/5 bg-black/20 backdrop-blur-sm">
-          {/* Grid: 1 col on mobile, 3 cols on desktop */}
+        {/* VISUAL DIAGRAM AREA - Optimized padding md:py-10 */}
+        <div className="relative w-full max-w-[1100px] mx-auto p-6 md:py-10 md:px-16 rounded-[2.5rem] md:rounded-[4rem] border border-white/5 bg-black/20 backdrop-blur-sm">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center justify-center w-full gap-8 md:gap-0">
             
             {/* LEFT: YOU */}
@@ -297,13 +297,11 @@ const FlowSection = () => {
 
             {/* RIGHT: AGENCIES */}
             <div className="flex flex-col md:flex-row items-center justify-center md:justify-end gap-4">
-              {/* Desktop Arrow */}
               <div className="flex-1 h-[2px] bg-orange-500/20 hidden md:flex items-center justify-end relative min-w-[80px]">
                   <div className="absolute left-0 w-full h-full bg-gradient-to-r from-transparent to-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]" />
                   <FiArrowRight className="text-orange-400 text-xl relative z-10 translate-x-1 drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]" />
               </div>
 
-              {/* Mobile Arrow Down */}
               <div className="md:hidden flex flex-col items-center py-2">
                 <FiArrowDown className="text-orange-500 text-2xl drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
               </div>
@@ -319,12 +317,12 @@ const FlowSection = () => {
           </div>
         </div>
 
-        {/* CTA BUTTON */}
-        <div className="mt-16 md:mt-20 flex justify-center w-full">
+        {/* CTA BUTTON - Reduced mt from 16/20 to 10/12 */}
+        <div className="mt-10 md:mt-12 flex justify-center w-full">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 md:px-10 py-4 md:py-5 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white text-sm md:text-base font-bold flex items-center gap-3 shadow-[0_10px_30px_rgba(249,115,22,0.3)] transition-shadow hover:shadow-orange-500/40"
+            className="px-8 md:px-10 py-4 md:py-5 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold flex items-center gap-3 shadow-[0_10px_30px_rgba(249,115,22,0.3)] transition-shadow hover:shadow-orange-500/40"
           >
             See Our Plans & Pricing
             <FiArrowRight />
