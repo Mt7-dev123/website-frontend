@@ -44,10 +44,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative bg-black text-white`}
       >
-        {/* 🔥 GLOBAL ANIMATED BACKGROUND */}
         <GlobalBackground />
 
-        {/* 🧱 APP CONTENT + LOADER CONTROL */}
         <main className="relative z-10">
           <ClientLayout>
             {children}

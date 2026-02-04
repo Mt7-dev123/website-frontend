@@ -65,7 +65,7 @@ const Guarantee = () => {
             drop-shadow-[0_4px_12px_rgba(255,69,0,0.25)]`}
           >
             You’re Never Stuck With <br />
-            <span className="text-orange-500 italic">Bad Vendors</span>
+            <span className="text-orange-500 ">Bad Vendors</span>
           </h2>
           <p className="text-zinc-400 mt-4">
             Our unique 3-Strike Replacement System ensures your business never loses momentum.

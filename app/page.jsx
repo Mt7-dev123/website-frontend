@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { useScrollTrigger } from "@/hooks/useScrollTrigger";
-import LeadModal from "@/components/LeadModal";
 
 import AboutUs from "@/components/AboutUs";
 import ClientsSection from "@/components/ClientsSection";
@@ -17,16 +15,13 @@ import LogoSection from "@/components/LogoSection";
 import Navbar from "@/components/Navbar";
 import Pricing from "@/components/Pricing";
 import ScrollToTop from "@/components/ScrollToTop";
-import Services from "@/components/Services";
 import ProblemSection from "@/components/ProblemSection";
-import Plans from "@/components/PlansSection";
 import Guarantee from "@/components/Guarantee";
+import GetQuotesButton from "@/components/GetQuotesButton";
+import WhoThisIsFor from "@/components/WhoThisIsFor";
+import FAQSection from "@/components/FAQSection";
 
 const Page = () => {
-  const servicesRef = useRef(null);
-  const [modalOpen, setModalOpen] = useState(false);
-
-  useScrollTrigger(servicesRef, () => setModalOpen(true));
 
   return (
     <>
@@ -37,21 +32,18 @@ const Page = () => {
       {/* Solution section */}
       <FlowSection />
       <Pricing />
-      {/* <Plans /> */}
-      {/* THE GUARANTEE - NEW SECTION*/}
       {/* Testimonials     */}
       <Guarantee />
-       <ClientsSection />
-      {/* WHO THIS IS FOR - NEW SECTION */}
-      {/* FAQ - NEW SECTION*/}
+      <ClientsSection />
+      <WhoThisIsFor />
+      <FAQSection />
       <AboutUs />
       <LogoSection />
       <Footer />
       <ScrollToTop />
+      <GetQuotesButton />
 
       
-      {/* LEAD MODAL */}
-      {/* <LeadModal open={modalOpen} onClose={() => setModalOpen(false)} /> */}
       {/* <ComparisonSection /> */}
       {/* <Comparison /> */}
       {/* <ComparisonTable /> */}
