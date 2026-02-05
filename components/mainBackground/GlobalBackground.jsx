@@ -105,62 +105,193 @@
 // export default GlobalBackground;
 
 /* eslint-disable react-hooks/purity */
+// "use client";
+
+// import React, { useEffect, useCallback, useMemo } from "react";
+// import { motion, useMotionValue, useSpring } from "framer-motion";
+
+// const GlobalBackground = () => {
+//   const mouseX = useMotionValue(0);
+//   const mouseY = useMotionValue(0);
+
+//   const springConfig = { damping: 25, stiffness: 150 };
+//   const dx = useSpring(mouseX, springConfig);
+//   const dy = useSpring(mouseY, springConfig);
+
+//   const handleMouseMove = useCallback(
+//     (e) => {
+//       mouseX.set(e.clientX);
+//       mouseY.set(e.clientY);
+//     },
+//     [mouseX, mouseY],
+//   );
+
+//   useEffect(() => {
+//     window.addEventListener("mousemove", handleMouseMove);
+//     return () => window.removeEventListener("mousemove", handleMouseMove);
+//   }, [handleMouseMove]);
+
+//   // Floating particles similar to loading screen
+//   const floatingParticles = useMemo(() => {
+//     return [...Array(30)].map((_, i) => ({
+//       id: i,
+//       randomDuration: 3 + Math.random() * 2,
+//       randomDelay: Math.random() * 2,
+//       randomX: Math.random() * 100,
+//       randomYStart: Math.random() * 100,
+//       randomYEnd: Math.random() * 100,
+//     }));
+//   }, []);
+
+//   return (
+//     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-gradient-to-br from-black via-gray-950 to-black">
+//       {/* RADIAL GRADIENT GLOW - matching loading screen */}
+//       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/10 via-transparent to-transparent" />
+
+//       {/* SCANNING LIGHT - horizontal sweep */}
+//       <motion.div
+//         className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff4500] to-transparent blur-sm"
+//         animate={{ y: ["0%", "100%"] }}
+//         transition={{
+//           duration: 3,
+//           repeat: Infinity,
+//           ease: "linear",
+//         }}
+//         style={{ opacity: 0.4 }}
+//       />
+
+//       {/* Interactive Cursor Glow - softer red/orange */}
+//       <motion.div
+//         style={{
+//           left: dx,
+//           top: dy,
+//           translateX: "-50%",
+//           translateY: "-50%",
+//         }}
+//         className="absolute w-96 h-96 bg-red-500/10 blur-[120px] rounded-full z-10 will-change-transform"
+//       />
+
+//       {/* FLOATING PARTICLES - matching loading screen aesthetic */}
+//       {floatingParticles.map((p) => (
+//         <motion.div
+//           key={p.id}
+//           className="absolute w-1 h-1 bg-red-500/30 rounded-full will-change-transform"
+//           initial={{
+//             x: `${p.randomX}vw`,
+//             y: `${p.randomYStart}vh`,
+//           }}
+//           animate={{
+//             y: `${p.randomYEnd}vh`,
+//             opacity: [0, 1, 0],
+//           }}
+//           transition={{
+//             duration: p.randomDuration,
+//             repeat: Infinity,
+//             delay: p.randomDelay,
+//             ease: "linear",
+//           }}
+//         />
+//       ))}
+
+//       {/* CORNER ACCENTS - matching loading screen */}
+//       {["top-left", "top-right", "bottom-left", "bottom-right"].map((corner) => {
+//         const positions = {
+//           "top-left": "top-0 left-0",
+//           "top-right": "top-0 right-0 rotate-90",
+//           "bottom-left": "bottom-0 left-0 -rotate-90",
+//           "bottom-right": "bottom-0 right-0 rotate-180",
+//         };
+        
+//         return (
+//           <motion.div
+//             key={corner}
+//             className={`absolute ${positions[corner]} w-24 h-24 opacity-20 z-20`}
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 0.2 }}
+//             transition={{ duration: 1, delay: 0.5 }}
+//           >
+//             <div className="w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent" />
+//             <div className="w-[2px] h-full bg-gradient-to-b from-red-500 to-transparent" />
+//           </motion.div>
+//         );
+//       })}
+
+//       {/* Subtle atmospheric glows - more controlled */}
+//       <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-red-900/5 blur-[150px] rounded-full" />
+//       <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-900/5 blur-[150px] rounded-full" />
+
+//       {/* Bottom vignette */}
+//       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+//     </div>
+//   );
+// };
+
+// export default GlobalBackground;
+
+
+
+//NEW CODE WITH BG AND OPTIMISED FOR SMOOTHER SCOLLING
+
+
 "use client";
 
+/* eslint-disable react-hooks/purity */
 import React, { useEffect, useCallback, useMemo } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import LightPillar from './LightPillar';
 
 const GlobalBackground = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 150 };
+  // Slightly increased damping to prevent "over-stiffness" lag
+  const springConfig = { damping: 30, stiffness: 120 };
   const dx = useSpring(mouseX, springConfig);
   const dy = useSpring(mouseY, springConfig);
 
   const handleMouseMove = useCallback(
     (e) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      // Use requestAnimationFrame for smoother updates
+      window.requestAnimationFrame(() => {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+      });
     },
     [mouseX, mouseY],
   );
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [handleMouseMove]);
 
-  // Floating particles similar to loading screen
-  const floatingParticles = useMemo(() => {
-    return [...Array(30)].map((_, i) => ({
+  // Reduced to 15 particles for better performance on mobile/low-end devices
+  const emberParticles = useMemo(() => {
+    return [...Array(15)].map((_, i) => ({
       id: i,
-      randomDuration: 3 + Math.random() * 2,
-      randomDelay: Math.random() * 2,
-      randomX: Math.random() * 100,
-      randomYStart: Math.random() * 100,
-      randomYEnd: Math.random() * 100,
+      duration: 6 + Math.random() * 6,
+      delay: Math.random() * 5,
+      scale: 0.8 + Math.random() * 0.5,
+      drift: (Math.random() - 0.5) * 100,
+      left: `${15 + Math.random() * 70}%`,
     }));
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-gradient-to-br from-black via-gray-950 to-black">
-      {/* RADIAL GRADIENT GLOW - matching loading screen */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/10 via-transparent to-transparent" />
+    <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-[#050202] transform-gpu">
+      {/* ================= LIGHT PILLAR ================= */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <LightPillar
+          topColor="#FFA500"
+          bottomColor="#E65100"
+          intensity={1.1}
+          pillarWidth={0.5}
+          pillarHeight={1.0}
+          pillarRotation={103}
+        />
+      </div>
 
-      {/* SCANNING LIGHT - horizontal sweep */}
-      <motion.div
-        className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff4500] to-transparent blur-sm"
-        animate={{ y: ["0%", "100%"] }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        style={{ opacity: 0.4 }}
-      />
-
-      {/* Interactive Cursor Glow - softer red/orange */}
+      {/* Interactive Cursor Glow - Optimized with will-change */}
       <motion.div
         style={{
           left: dx,
@@ -168,60 +299,44 @@ const GlobalBackground = () => {
           translateX: "-50%",
           translateY: "-50%",
         }}
-        className="absolute w-96 h-96 bg-red-500/10 blur-[120px] rounded-full z-10 will-change-transform"
+        className="absolute w-96 h-96 bg-orange-600/10 blur-[100px] rounded-full z-10 will-change-transform pointer-events-none"
       />
 
-      {/* FLOATING PARTICLES - matching loading screen aesthetic */}
-      {floatingParticles.map((p) => (
+      {/* Static Atmospheric Glows */}
+      <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-red-900/15 blur-[120px] rounded-full" />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-900/5 blur-[120px] rounded-full" />
+
+      {/* Realistic Fire Embers */}
+      {emberParticles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute w-1 h-1 bg-red-500/30 rounded-full will-change-transform"
-          initial={{
-            x: `${p.randomX}vw`,
-            y: `${p.randomYStart}vh`,
-          }}
+          initial={{ opacity: 0, y: "105vh", x: 0 }}
           animate={{
-            y: `${p.randomYEnd}vh`,
-            opacity: [0, 1, 0],
+            opacity: [0, 0.8, 0.4, 0],
+            y: ["105vh", "-10vh"],
+            x: [0, p.drift],
           }}
           transition={{
-            duration: p.randomDuration,
+            duration: p.duration,
             repeat: Infinity,
-            delay: p.randomDelay,
+            delay: p.delay,
             ease: "linear",
           }}
-        />
+          style={{
+            left: p.left,
+            scale: p.scale,
+          }}
+          className="absolute w-1 h-1 bg-amber-200 rounded-full transform-gpu will-change-transform"
+        >
+          <div 
+            className="w-full h-full rounded-full shadow-[0_0_8px_#ff7800]"
+            style={{ filter: "blur(0.5px)" }}
+          />
+        </motion.div>
       ))}
 
-      {/* CORNER ACCENTS - matching loading screen */}
-      {["top-left", "top-right", "bottom-left", "bottom-right"].map((corner) => {
-        const positions = {
-          "top-left": "top-0 left-0",
-          "top-right": "top-0 right-0 rotate-90",
-          "bottom-left": "bottom-0 left-0 -rotate-90",
-          "bottom-right": "bottom-0 right-0 rotate-180",
-        };
-        
-        return (
-          <motion.div
-            key={corner}
-            className={`absolute ${positions[corner]} w-24 h-24 opacity-20 z-20`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.2 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent" />
-            <div className="w-[2px] h-full bg-gradient-to-b from-red-500 to-transparent" />
-          </motion.div>
-        );
-      })}
-
-      {/* Subtle atmospheric glows - more controlled */}
-      <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-red-900/5 blur-[150px] rounded-full" />
-      <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-900/5 blur-[150px] rounded-full" />
-
       {/* Bottom vignette */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
     </div>
   );
 };
