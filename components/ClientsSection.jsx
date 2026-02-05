@@ -238,7 +238,7 @@
 
 
 
-//new clients code :
+//NEW CLIENTS CODE :
 
 
 "use client";
@@ -247,7 +247,7 @@ import React, { memo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Montserrat } from "next/font/google";
 import { FiArrowRight, FiZap, FiCheckCircle } from "react-icons/fi";
-import { CheckCircle2 } from "lucide-react"; // Correctly imported from lucide-react
+import { CheckCircle2, Quote } from "lucide-react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -264,6 +264,30 @@ const CLIENT_STATS = [
 
 const INDUSTRIES = [
   "SaaS", "E-commerce", "Fintech", "Healthtech", "D2C Brands"
+];
+
+const founderQuotes = [
+  {
+    name: "Rahul M.",
+    role: "SaaS Founder, Bangalore",
+    quote:
+      "I'm managing 4 different agencies right now. Every Monday is 5 back-to-back calls. I don't have time to actually run my business.",
+    img: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    name: "Priya S.",
+    role: "E-commerce Founder, Mumbai",
+    quote:
+      "Our marketing agency kept missing deadlines. When we tried to switch, they held our content hostage. Took 3 months to transition.",
+    img: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    name: "Amit K.",
+    role: "Fintech Founder, Delhi",
+    quote:
+      "We're paying ₹3.5L/month across finance, marketing, and HR. No one talks to each other. It's complete chaos.",
+    img: "https://randomuser.me/api/portraits/men/65.jpg",
+  },
 ];
 
 const ClientsSection = () => {
@@ -296,13 +320,14 @@ const ClientsSection = () => {
             />
           </div>
 
+          {/* UPDATED: Removed italic class from Client Portfolio span */}
           <h2 className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
             bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500]
             bg-clip-text text-transparent
             drop-shadow-[0_4px_12px_rgba(255,69,0,0.25)]`}
           >
             Building Our Founding <br />
-            <span className="text-orange-500 italic">Client Portfolio</span>
+            <span className="text-orange-500">Client Portfolio</span>
           </h2>
           <p className="text-zinc-400 mt-4 leading-relaxed">
             We are currently hand-picking 10 ambitious companies to join our founding cohort. 
@@ -330,6 +355,42 @@ const ClientsSection = () => {
             </div>
           ))}
         </motion.div>
+
+        {/* Founder Quote Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          {founderQuotes.map((t, index) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="relative p-8 rounded-[2.5rem] bg-zinc-900/40 border border-white/5 backdrop-blur-sm flex flex-col h-full"
+            >
+              <Quote size={40} className="text-orange-500/20 mb-6" />
+              <p className={`${montserrat.className} text-gray-300 italic mb-8 flex-1 leading-relaxed text-base`}>
+                “{t.quote}”
+              </p>
+              
+              <div className="flex items-center gap-4 pt-6 border-t border-white/5">
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  width={44}
+                  height={44}
+                  className="rounded-full grayscale group-hover:grayscale-0 transition-all"
+                />
+                <div>
+                  <p className="text-white font-bold text-sm">{t.name}</p>
+                  <p className="text-orange-500/80 text-[10px] uppercase font-bold tracking-widest">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Main Onboarding Card */}
         <motion.div 
