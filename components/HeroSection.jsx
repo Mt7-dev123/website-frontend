@@ -13,10 +13,10 @@ const montserrat = Montserrat({
 
 export default function HeroSection() {
   const memberImages = [
-    "/person1.png",
-    "/person2.png",
-    "/person3.png",
-    "/person4.png",
+    "/person1.jpeg",
+    "/person2.jpeg",
+    "/person3.jpeg",
+    "/person4.jpeg",
   ];
 
   return (
