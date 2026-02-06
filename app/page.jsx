@@ -1,13 +1,9 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import AboutUs from "@/components/AboutUs";
 import ClientsSection from "@/components/ClientsSection";
-import Comparison from "@/components/Comparison";
-import ComparisonSection from "@/components/ComparisonSection";
-import ComparisonTable from "@/components/ComparisonTable";
-import CompSection from "@/components/CompSection";
 import FlowSection from "@/components/FlowSection";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
@@ -20,9 +16,9 @@ import Guarantee from "@/components/Guarantee";
 import GetQuotesButton from "@/components/GetQuotesButton";
 import WhoThisIsFor from "@/components/WhoThisIsFor";
 import FAQSection from "@/components/FAQSection";
+import ComparisonSection from "@/components/ComparisonSection";
 
 const Page = () => {
-
   return (
     <>
       <Navbar />
@@ -36,18 +32,13 @@ const Page = () => {
       <Guarantee />
       <ClientsSection />
       <WhoThisIsFor />
+      <ComparisonSection />
       <FAQSection />
       <AboutUs />
       <LogoSection />
       <Footer />
       <ScrollToTop />
       <GetQuotesButton />
-
-      
-      {/* <ComparisonSection /> */}
-      {/* <Comparison /> */}
-      {/* <ComparisonTable /> */}
-      {/* <CompSection /> */}
     </>
   );
 };
