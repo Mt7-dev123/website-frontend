@@ -272,21 +272,24 @@ const founderQuotes = [
     role: "SaaS Founder, Bangalore",
     quote:
       "I'm managing 4 different agencies right now. Every Monday is 5 back-to-back calls. I don't have time to actually run my business.",
-    img: "https://randomuser.me/api/portraits/men/32.jpg",
+    // Updated to point to public/founders/rahul.jpg
+    img: "/founders/rahul.jpg", 
   },
   {
     name: "Priya S.",
     role: "E-commerce Founder, Mumbai",
     quote:
       "Our marketing agency kept missing deadlines. When we tried to switch, they held our content hostage. Took 3 months to transition.",
-    img: "https://randomuser.me/api/portraits/women/44.jpg",
+    // Updated to point to public/founders/priya.jpg
+    img: "/founders/priya.jpg",
   },
   {
     name: "Amit K.",
     role: "Fintech Founder, Delhi",
     quote:
       "We're paying ₹3.5L/month across finance, marketing, and HR. No one talks to each other. It's complete chaos.",
-    img: "https://randomuser.me/api/portraits/men/65.jpg",
+    // Updated to point to public/founders/amit.jpg
+    img: "/founders/amit.jpg",
   },
 ];
 
@@ -320,7 +323,6 @@ const ClientsSection = () => {
             />
           </div>
 
-          {/* UPDATED: Removed italic class from Client Portfolio span */}
           <h2 className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
             bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500]
             bg-clip-text text-transparent
@@ -379,7 +381,7 @@ const ClientsSection = () => {
                   alt={t.name}
                   width={44}
                   height={44}
-                  className="rounded-full grayscale group-hover:grayscale-0 transition-all"
+                  className="rounded-full grayscale group-hover:grayscale-0 transition-all object-cover aspect-square"
                 />
                 <div>
                   <p className="text-white font-bold text-sm">{t.name}</p>
