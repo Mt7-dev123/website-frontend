@@ -115,134 +115,134 @@
 
 
 // /* eslint-disable react-hooks/purity */
-// "use client";
+"use client";
 
-// import React, { useEffect, useCallback, useMemo } from "react";
-// import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useEffect, useCallback, useMemo } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
-// const GlobalBackground = () => {
-//   const mouseX = useMotionValue(0);
-//   const mouseY = useMotionValue(0);
+const GlobalBackground = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-//   const springConfig = { damping: 25, stiffness: 150 };
-//   const dx = useSpring(mouseX, springConfig);
-//   const dy = useSpring(mouseY, springConfig);
+  const springConfig = { damping: 25, stiffness: 150 };
+  const dx = useSpring(mouseX, springConfig);
+  const dy = useSpring(mouseY, springConfig);
 
-//   const handleMouseMove = useCallback(
-//     (e) => {
-//       mouseX.set(e.clientX);
-//       mouseY.set(e.clientY);
-//     },
-//     [mouseX, mouseY],
-//   );
+  const handleMouseMove = useCallback(
+    (e) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    },
+    [mouseX, mouseY],
+  );
 
-//   useEffect(() => {
-//     window.addEventListener("mousemove", handleMouseMove);
-//     return () => window.removeEventListener("mousemove", handleMouseMove);
-//   }, [handleMouseMove]);
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [handleMouseMove]);
 
-//   // Floating particles (bottom → top)
-//   const floatingParticles = useMemo(() => {
-//     return [...Array(30)].map((_, i) => ({
-//       id: i,
-//       randomDuration: 3 + Math.random() * 2,
-//       randomDelay: Math.random() * 2,
-//       randomX: Math.random() * 100,
-//     }));
-//   }, []);
+  // Floating particles (bottom → top)
+  const floatingParticles = useMemo(() => {
+    return [...Array(30)].map((_, i) => ({
+      id: i,
+      randomDuration: 3 + Math.random() * 2,
+      randomDelay: Math.random() * 2,
+      randomX: Math.random() * 100,
+    }));
+  }, []);
 
-//   return (
-//     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-gradient-to-br from-black via-gray-950 to-black">
-//       {/* RADIAL GRADIENT GLOW */}
-//       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/20 via-transparent to-transparent" />
+  return (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 bg-gradient-to-br from-black via-gray-950 to-black">
+      {/* RADIAL GRADIENT GLOW */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/20 via-transparent to-transparent" />
 
-//       {/* SCANNING LIGHT */}
-//       <motion.div
-//         className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff4500] to-transparent blur-sm"
-//         animate={{ y: ["0%", "100%"] }}
-//         transition={{
-//           duration: 3,
-//           repeat: Infinity,
-//           ease: "linear",
-//         }}
-//         style={{ opacity: 0.4 }}
-//       />
+      {/* SCANNING LIGHT */}
+      <motion.div
+        className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff4500] to-transparent blur-sm"
+        animate={{ y: ["0%", "100%"] }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        style={{ opacity: 0.4 }}
+      />
 
-//       {/* INTERACTIVE CURSOR GLOW */}
-//       <motion.div
-//         style={{
-//           left: dx,
-//           top: dy,
-//           translateX: "-50%",
-//           translateY: "-50%",
-//         }}
-//         className="absolute w-96 h-96 bg-red-500/18 blur-[110px] rounded-full z-10 will-change-transform"
-//       />
+      {/* INTERACTIVE CURSOR GLOW */}
+      <motion.div
+        style={{
+          left: dx,
+          top: dy,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        className="absolute w-96 h-96 bg-red-500/18 blur-[110px] rounded-full z-10 will-change-transform"
+      />
 
-//       {/* FLOATING PARTICLES — bottom to top */}
-//       {floatingParticles.map((p) => (
-//         <motion.div
-//           key={p.id}
-//           className="
-//             absolute
-//             w-[2px] h-[2px]
-//             bg-red-400
-//             rounded-full
-//             shadow-[0_0_6px_rgba(255,69,0,0.6)]
-//             will-change-transform
-//           "
-//           initial={{
-//             x: `${p.randomX}vw`,
-//             y: "110vh",
-//             opacity: 0,
-//           }}
-//           animate={{
-//             y: "-10vh",
-//             opacity: [0, 1, 0],
-//           }}
-//           transition={{
-//             duration: p.randomDuration,
-//             repeat: Infinity,
-//             delay: p.randomDelay,
-//             ease: "linear",
-//           }}
-//         />
-//       ))}
+      {/* FLOATING PARTICLES — bottom to top */}
+      {floatingParticles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="
+            absolute
+            w-[2px] h-[2px]
+            bg-red-400
+            rounded-full
+            shadow-[0_0_6px_rgba(255,69,0,0.6)]
+            will-change-transform
+          "
+          initial={{
+            x: `${p.randomX}vw`,
+            y: "110vh",
+            opacity: 0,
+          }}
+          animate={{
+            y: "-10vh",
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: p.randomDuration,
+            repeat: Infinity,
+            delay: p.randomDelay,
+            ease: "linear",
+          }}
+        />
+      ))}
 
-//       {/* CORNER ACCENTS */}
-//       {["top-left", "top-right", "bottom-left", "bottom-right"].map((corner) => {
-//         const positions = {
-//           "top-left": "top-0 left-0",
-//           "top-right": "top-0 right-0 rotate-90",
-//           "bottom-left": "bottom-0 left-0 -rotate-90",
-//           "bottom-right": "bottom-0 right-0 rotate-180",
-//         };
+      {/* CORNER ACCENTS */}
+      {["top-left", "top-right", "bottom-left", "bottom-right"].map((corner) => {
+        const positions = {
+          "top-left": "top-0 left-0",
+          "top-right": "top-0 right-0 rotate-90",
+          "bottom-left": "bottom-0 left-0 -rotate-90",
+          "bottom-right": "bottom-0 right-0 rotate-180",
+        };
 
-//         return (
-//           <motion.div
-//             key={corner}
-//             className={`absolute ${positions[corner]} w-24 h-24 opacity-20 z-20`}
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 0.2 }}
-//             transition={{ duration: 1, delay: 0.5 }}
-//           >
-//             <div className="w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent" />
-//             <div className="w-[2px] h-full bg-gradient-to-b from-red-500 to-transparent" />
-//           </motion.div>
-//         );
-//       })}
+        return (
+          <motion.div
+            key={corner}
+            className={`absolute ${positions[corner]} w-24 h-24 opacity-20 z-20`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.2 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <div className="w-full h-[2px] bg-gradient-to-r from-red-500 to-transparent" />
+            <div className="w-[2px] h-full bg-gradient-to-b from-red-500 to-transparent" />
+          </motion.div>
+        );
+      })}
 
-//       {/* ATMOSPHERIC GLOWS */}
-//       <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-red-900/10 blur-[140px] rounded-full" />
-//       <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-900/10 blur-[140px] rounded-full" />
+      {/* ATMOSPHERIC GLOWS */}
+      <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-red-900/10 blur-[140px] rounded-full" />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-900/10 blur-[140px] rounded-full" />
 
-//       {/* VIGNETTE */}
-//       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-45" />
-//     </div>
-//   );
-// };
+      {/* VIGNETTE */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-45" />
+    </div>
+  );
+};
 
-// export default GlobalBackground;
+export default GlobalBackground;
 
 
 /////////////////////////////////////
@@ -370,64 +370,64 @@
 ////////////////////////////////////
 
 
-"use client";
+// "use client";
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
-export default function GlobalBackground() {
-  return (
-    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+// export default function GlobalBackground() {
+//   return (
+//     <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
 
-      {/* BASE GRADIENT */}
-      <div className="absolute inset-0 bg-linear-to-br from-black via-[#120200] to-black" />
+//       {/* BASE GRADIENT */}
+//       <div className="absolute inset-0 bg-linear-to-br from-black via-[#120200] to-black" />
 
-      {/* PRIMARY WARM GLOW */}
-      <motion.div
-        animate={{ opacity: [0.25, 0.4, 0.25] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-40 -left-40 w-125 h-125 rounded-full bg-orange-500/20 blur-[140px]"
-      />
+//       {/* PRIMARY WARM GLOW */}
+//       <motion.div
+//         animate={{ opacity: [0.25, 0.4, 0.25] }}
+//         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+//         className="absolute -top-40 -left-40 w-125 h-125 rounded-full bg-orange-500/20 blur-[140px]"
+//       />
 
-      {/* SECONDARY RED GLOW */}
-      <motion.div
-        animate={{ opacity: [0.2, 0.35, 0.2] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-30 -right-30 w-112.5 h-112.5 rounded-full bg-red-600/25 blur-[160px]"
-      />
+//       {/* SECONDARY RED GLOW */}
+//       <motion.div
+//         animate={{ opacity: [0.2, 0.35, 0.2] }}
+//         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+//         className="absolute -bottom-30 -right-30 w-112.5 h-112.5 rounded-full bg-red-600/25 blur-[160px]"
+//       />
 
-      {/* FLOATING PARTICLES */}
-      {[...Array(14)].map((_, i) => (
-        <motion.span
-          key={i}
-          animate={{
-            y: [0, -50, 0],
-            opacity: [0.2, 0.6, 0.2],
-          }}
-          transition={{
-            duration: 7 + i * 0.6,
-            delay: i * 0.4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute w-1 h-1 rounded-full bg-orange-400"
-          style={{
-            left: `${(i * 11) % 100}%`,
-            top: `${(i * 17) % 100}%`,
-          }}
-        />
-      ))}
+//       {/* FLOATING PARTICLES */}
+//       {[...Array(14)].map((_, i) => (
+//         <motion.span
+//           key={i}
+//           animate={{
+//             y: [0, -50, 0],
+//             opacity: [0.2, 0.6, 0.2],
+//           }}
+//           transition={{
+//             duration: 7 + i * 0.6,
+//             delay: i * 0.4,
+//             repeat: Infinity,
+//             ease: "easeInOut",
+//           }}
+//           className="absolute w-1 h-1 rounded-full bg-orange-400"
+//           style={{
+//             left: `${(i * 11) % 100}%`,
+//             top: `${(i * 17) % 100}%`,
+//           }}
+//         />
+//       ))}
 
-      {/* FILM GRAIN */}
-      <motion.div
-        className="absolute inset-0 opacity-[0.05]"
-        animate={{ opacity: [0.03, 0.06, 0.03] }}
-        transition={{ duration: 5, repeat: Infinity }}
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)",
-          backgroundSize: "18px 18px",
-        }}
-      />
-    </div>
-  );
-}
+//       {/* FILM GRAIN */}
+//       <motion.div
+//         className="absolute inset-0 opacity-[0.05]"
+//         animate={{ opacity: [0.03, 0.06, 0.03] }}
+//         transition={{ duration: 5, repeat: Infinity }}
+//         style={{
+//           backgroundImage:
+//             "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)",
+//           backgroundSize: "18px 18px",
+//         }}
+//       />
+//     </div>
+//   );
+// }
