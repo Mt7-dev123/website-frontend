@@ -2,14 +2,21 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Montserrat } from "next/font/google";
-import LightPillar from "./mainBackground/LightPillar";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
+
+const scrollToHowItWorks = () => {
+  const el = document.getElementById("flow");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 
 export default function HeroSection() {
   const memberImages = [
@@ -20,7 +27,10 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-transparent overflow-hidden flex items-center pt-24 pb-20 md:pb-0">
+    <section
+      id="hero"
+      className="relative min-h-screen bg-transparent overflow-hidden flex items-center pt-24 pb-20 md:pb-0"
+    >
       {/* ================= BACKGROUND ENVIRONMENT ================= */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* <Image
@@ -192,23 +202,26 @@ export default function HeroSection() {
 
               <div className="flex flex-wrap gap-4">
                 <motion.button
+                  onClick={scrollToHowItWorks}
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 0 20px rgba(255, 69, 0, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-semibold rounded-xl shadow-lg`}
+                  className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-semibold rounded-xl shadow-lg cursor-pointer`}
                 >
                   See How It Works →
                 </motion.button>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`${montserrat.className} px-8 py-4 border border-[#ff4500] text-[#ffae42] font-semibold rounded-xl`}
-                >
-                  Book Free Consultation
-                </motion.button>
+                <Link href="/lead">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`${montserrat.className} px-8 py-4 border border-[#ff4500] text-[#ffae42] font-semibold rounded-xl cursor-pointer`}
+                  >
+                    Book Free Consultation
+                  </motion.button>
+                </Link>
               </div>
             </div>
 

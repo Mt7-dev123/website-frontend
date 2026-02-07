@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import {
   Check,
@@ -62,12 +63,18 @@ const INFRASTRUCTURE_COMPARISON = [
   },
 ];
 
+const scrollToHowItWorks = () => {
+  const el = document.getElementById("flow");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
 const ComparisonSection = () => {
   return (
-    <section
-      id="comparison"
-      className="relative py-10 bg-transparent overflow-hidden flex justify-center w-full"
-    >
+    <section className="relative py-10 bg-transparent overflow-hidden flex justify-center w-full">
+      <div id="comparison" className="absolute top-0 left-0 h-px w-px" />
+
       <div className="absolute inset-0 pointer-events-none overflow-hidden" />
 
       <div className="relative z-30 w-full max-w-[1300px] px-6 md:px-14">
@@ -96,8 +103,8 @@ const ComparisonSection = () => {
           <p
             className={`${montserrat.className} text-zinc-400 text-sm md:text-base leading-relaxed`}
           >
-            Managing agencies directly drains founder time and kills focus.
-            MT7 replaces chaos with a single, accountable operations layer.
+            Managing agencies directly drains founder time and kills focus. MT7
+            replaces chaos with a single, accountable operations layer.
           </p>
         </div>
 
@@ -249,23 +256,30 @@ const ComparisonSection = () => {
             <p
               className={`${montserrat.className} text-zinc-400 text-sm md:text-base mb-8`}
             >
-              Get professional operations without long contracts or vendor drama.
+              Get professional operations without long contracts or vendor
+              drama.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <motion.button
-                whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(255, 69, 0, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
-                className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-bold text-sm rounded-full transition-all shadow-lg shadow-orange-900/20 flex items-center justify-center gap-2`}
-              >
-                <Rocket className="w-5 h-5" />
-                Book Free Consultation
-              </motion.button>
+              <Link href="/lead">
+                <motion.button
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 0 30px rgba(255, 69, 0, 0.3)",
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-bold text-sm rounded-full transition-all shadow-lg shadow-orange-900/20 flex items-center justify-center gap-2 cursor-pointer`}
+                >
+                  <Rocket className="w-5 h-5" />
+                  Book Free Consultation
+                </motion.button>
+              </Link>
 
               <motion.button
+                onClick={scrollToHowItWorks}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`${montserrat.className} px-8 py-4 bg-transparent border border-white/10 text-white font-bold text-sm rounded-full hover:border-orange-500/50 transition-all flex items-center justify-center gap-2`}
+                className={`${montserrat.className} px-8 py-4 bg-transparent border border-white/10 text-white font-bold text-sm rounded-full hover:border-orange-500/50 transition-all flex items-center justify-center gap-2 cursor-pointer`}
               >
                 <BarChart className="w-5 h-5" />
                 See How It Works
@@ -274,26 +288,38 @@ const ComparisonSection = () => {
 
             <div className="flex items-center justify-center gap-6 pt-8 border-t border-white/5">
               <div className="text-center">
-                <div className={`${montserrat.className} text-2xl font-bold text-white mb-1`}>
+                <div
+                  className={`${montserrat.className} text-2xl font-bold text-white mb-1`}
+                >
                   10–15h
                 </div>
-                <div className={`${montserrat.className} text-xs text-zinc-400`}>
+                <div
+                  className={`${montserrat.className} text-xs text-zinc-400`}
+                >
                   Saved Weekly
                 </div>
               </div>
               <div className="text-center">
-                <div className={`${montserrat.className} text-2xl font-bold text-white mb-1`}>
+                <div
+                  className={`${montserrat.className} text-2xl font-bold text-white mb-1`}
+                >
                   ₹0
                 </div>
-                <div className={`${montserrat.className} text-xs text-zinc-400`}>
+                <div
+                  className={`${montserrat.className} text-xs text-zinc-400`}
+                >
                   Switching Cost
                 </div>
               </div>
               <div className="text-center">
-                <div className={`${montserrat.className} text-2xl font-bold text-white mb-1`}>
+                <div
+                  className={`${montserrat.className} text-2xl font-bold text-white mb-1`}
+                >
                   7–10 Days
                 </div>
-                <div className={`${montserrat.className} text-xs text-zinc-400`}>
+                <div
+                  className={`${montserrat.className} text-xs text-zinc-400`}
+                >
                   To Go Live
                 </div>
               </div>

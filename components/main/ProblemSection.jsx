@@ -46,7 +46,7 @@ const painPoints = [
 
 const ProblemSection = () => {
   return (
-    <section className="relative py-20 md:py-10 bg-transparent overflow-hidden">
+    <section id="problem" className="relative py-20 md:py-10 bg-transparent overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(6)].map((_, i) => (

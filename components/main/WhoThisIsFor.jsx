@@ -2,16 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Montserrat } from "next/font/google";
-import { 
-  Rocket, 
-  Users, 
-  Layers, 
-  Clock, 
-  TrendingUp, 
-  XCircle, 
+import {
+  Rocket,
+  Users,
+  Layers,
+  Clock,
+  TrendingUp,
+  XCircle,
   ArrowRight,
-  Check
+  Check,
 } from "lucide-react";
 
 const montserrat = Montserrat({
@@ -54,15 +55,13 @@ const painPoints = [
 
 export default function WhoThisIsFor() {
   return (
-    <section className="relative py-24 bg-transparent overflow-hidden">
+    <section id="who-this-for" className="relative py-24 bg-transparent overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
-
         {/* ================= HEADER (ORIGINAL POSITION RESTORED) ================= */}
         <div className="flex flex-col items-start max-w-3xl mb-16">
-          
           {/* LABEL + UNDERLINE (Left Aligned) */}
           <div className="inline-flex flex-col items-start">
             <span
@@ -107,16 +106,20 @@ export default function WhoThisIsFor() {
               className="group relative p-8 rounded-[1.5rem] bg-zinc-900/40 border border-white/5 hover:border-orange-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[1.5rem]" />
-              
+
               <div className="relative z-10">
                 <div className="mb-6 p-4 rounded-2xl bg-white/5 w-fit border border-white/5 group-hover:border-orange-500/20 transition-colors">
                   {profile.icon}
                 </div>
-                
-                <h3 className={`${montserrat.className} text-xl font-bold text-white mb-1`}>
+
+                <h3
+                  className={`${montserrat.className} text-xl font-bold text-white mb-1`}
+                >
                   {profile.title}
                 </h3>
-                <p className={`${montserrat.className} text-orange-500 text-xs font-bold uppercase tracking-wider mb-4`}>
+                <p
+                  className={`${montserrat.className} text-orange-500 text-xs font-bold uppercase tracking-wider mb-4`}
+                >
                   {profile.subtitle}
                 </p>
                 <p className="text-zinc-400 text-sm leading-relaxed">
@@ -148,16 +151,19 @@ export default function WhoThisIsFor() {
 
         {/* ================= "NOT RIGHT FOR" SECTION ================= */}
         <div className="relative max-w-5xl mx-auto mb-16">
-           {/* Red glow behind this specific section */}
+          {/* Red glow behind this specific section */}
           <div className="absolute inset-0 bg-red-500/5 blur-3xl -z-10 rounded-full" />
-          
+
           <div className="bg-zinc-950/80 border border-red-500/10 rounded-[2rem] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
-              <h4 className={`${montserrat.className} text-white font-bold text-xl mb-2`}>
+              <h4
+                className={`${montserrat.className} text-white font-bold text-xl mb-2`}
+              >
                 Who is this <span className="text-red-500">NOT</span> for?
               </h4>
               <p className="text-zinc-500 text-sm max-w-xs">
-                We believe in transparency. We are likely not a good fit if you are:
+                We believe in transparency. We are likely not a good fit if you
+                are:
               </p>
             </div>
 
@@ -167,7 +173,10 @@ export default function WhoThisIsFor() {
                 "Zero Budget Solopreneur",
                 "Need 100% In-House Control",
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 px-4 py-3 rounded-full bg-red-500/5 border border-red-500/10 text-red-400/80 text-xs font-medium">
+                <div
+                  key={i}
+                  className="flex items-center gap-2 px-4 py-3 rounded-full bg-red-500/5 border border-red-500/10 text-red-400/80 text-xs font-medium"
+                >
                   <XCircle size={14} />
                   {item}
                 </div>
@@ -178,23 +187,24 @@ export default function WhoThisIsFor() {
 
         {/* ================= CTA ================= */}
         <div className="text-center">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`${montserrat.className}
-              inline-flex items-center gap-3
-              px-10 py-4 rounded-full
-              bg-orange-500 text-white
-              font-bold text-lg
-              shadow-xl shadow-orange-900/30
-              hover:bg-orange-600 transition-all
-            `}
-          >
-            Let’s Talk
-            <ArrowRight size={18} />
-          </motion.button>
+          <Link href="/lead">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`${montserrat.className}
+        inline-flex items-center gap-3
+        px-10 py-4 rounded-full
+        bg-orange-500 text-white
+        font-bold text-lg
+        shadow-xl shadow-orange-900/30
+        hover:bg-orange-600 transition-all cursor-pointer
+      `}
+            >
+              Let’s Talk
+              <ArrowRight size={18} />
+            </motion.button>
+          </Link>
         </div>
-
       </div>
     </section>
   );

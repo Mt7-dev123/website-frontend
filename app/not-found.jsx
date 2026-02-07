@@ -21,7 +21,7 @@ export default function NotFound() {
           className="flex justify-center mb-10"
         >
           <div className=" flex items-baseline gap-2 text-white text-5xl md:text-6xl">
-            <span className="text-4xl">MT7</span>
+            <span className="text-4xl">Mt7</span>
             <span className="text-3xl text-red-500">.in</span>
           </div>
         </motion.div>
@@ -72,13 +72,13 @@ export default function NotFound() {
             <motion.button
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
-              className="px-7 py-3 rounded-md bg-orange-500 text-white font-semibold hover:bg-orange-600 transition"
+              className="px-7 py-3 rounded-md bg-red-600 text-white font-semibold hover:bg-orange-600 transition"
             >
               Go Home
             </motion.button>
           </Link>
 
-          <Link href="/contact">
+          {/* <Link href="/contact">
             <motion.button
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
@@ -86,7 +86,7 @@ export default function NotFound() {
             >
               Contact Us
             </motion.button>
-          </Link>
+          </Link> */}
         </motion.div>
       </div>
     </section>

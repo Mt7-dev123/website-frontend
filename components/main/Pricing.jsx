@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import {
   Check,
@@ -22,7 +23,6 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
-
 
 const plans = [
   {
@@ -70,8 +70,7 @@ const plans = [
       "Dedicated manager (your POC)",
     ],
     extra: "Choose: Marketing, Finance, HR (or all 3 bundled)",
-    perfectFor:
-      "Founders who want professional ops without the overhead",
+    perfectFor: "Founders who want professional ops without the overhead",
     badge: "MOST POPULAR",
     highlight: true,
     cta: "See Full Stack Details",
@@ -97,8 +96,16 @@ const plans = [
 
 const steps = [
   { num: "01", title: "Book Consultation", desc: "Tell us what you need." },
-  { num: "02", title: "We Get Quotes", desc: "Budget-matched to requirements." },
-  { num: "03", title: "Transparent Margin", desc: "You see our markup clearly." },
+  {
+    num: "02",
+    title: "We Get Quotes",
+    desc: "Budget-matched to requirements.",
+  },
+  {
+    num: "03",
+    title: "Transparent Margin",
+    desc: "You see our markup clearly.",
+  },
   { num: "04", title: "You Approve", desc: "7–10 days to go live." },
 ];
 
@@ -126,9 +133,11 @@ const faqs = [
 
 export default function PlansAndPricing() {
   return (
-    <section className="relative py-10 bg-transparent overflow-hidden">
+    <section
+      id="plans"
+      className="relative py-10 bg-transparent overflow-hidden"
+    >
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
-
         {/* ================= HEADER ================= */}
         <div className="max-w-3xl mb-20">
           {/* Section label + underline */}
@@ -158,7 +167,8 @@ export default function PlansAndPricing() {
           </h2>
 
           <p className="text-zinc-400 mt-4">
-            Whether you have agencies or need us to find them, we have a plan that fits.
+            Whether you have agencies or need us to find them, we have a plan
+            that fits.
           </p>
         </div>
 
@@ -172,9 +182,11 @@ export default function PlansAndPricing() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className={`relative p-6 rounded-2xl border backdrop-blur-md flex flex-col
-                ${plan.highlight
-                  ? "bg-zinc-900/90 border-orange-500/50 shadow-xl shadow-orange-900/20"
-                  : "bg-zinc-900/50 border-white/10"}
+                ${
+                  plan.highlight
+                    ? "bg-zinc-900/90 border-orange-500/50 shadow-xl shadow-orange-900/20"
+                    : "bg-zinc-900/50 border-white/10"
+                }
               `}
             >
               {plan.badge && (
@@ -198,7 +210,10 @@ export default function PlansAndPricing() {
               <ul className="space-y-2 text-xs text-zinc-300 mb-5">
                 {plan.features.map((f, idx) => (
                   <li key={idx} className="flex gap-2">
-                    <CheckCircle2 size={14} className="text-orange-500 mt-0.5" />
+                    <CheckCircle2
+                      size={14}
+                      className="text-orange-500 mt-0.5"
+                    />
                     {f}
                   </li>
                 ))}
@@ -221,16 +236,20 @@ export default function PlansAndPricing() {
                 </p>
               )}
 
-              <button
-                className={`mt-auto w-full py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2
-                  ${plan.highlight
-                    ? "bg-orange-500 text-white hover:bg-orange-600"
-                    : "bg-white/10 text-white border border-white/20 hover:bg-white hover:text-black"}
-                `}
-              >
-                {plan.cta}
-                <ArrowRight size={14} />
-              </button>
+              <Link href="/lead" className="mt-auto block">
+                <button
+                  className={`w-full py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer
+                    ${
+                      plan.highlight
+                        ? "bg-orange-500 text-white hover:bg-orange-600"
+                        : "bg-white/10 text-white border border-white/20 hover:bg-white hover:text-black cursor-pointer"
+                    } 
+                    `}
+                >
+                  {plan.cta}
+                  <ArrowRight size={14} />
+                </button>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -311,15 +330,16 @@ export default function PlansAndPricing() {
 
         {/* ================= FINAL CTA ================= */}
         <div className="text-center">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-5 bg-orange-500 text-white font-bold text-lg rounded-full shadow-xl hover:bg-orange-600"
-          >
-            Get Your Custom Quote →
-          </motion.button>
+          <Link href="/lead" className="mt-auto block">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-5 bg-orange-500 text-white font-bold text-lg rounded-full shadow-xl hover:bg-orange-600 cursor-pointer"
+            >
+              Get Your Custom Quote →
+            </motion.button>
+          </Link>
         </div>
-
       </div>
     </section>
   );

@@ -19,9 +19,9 @@
 //     visible: {
 //       pathLength: 1,
 //       opacity: 1,
-//       transition: { 
-//         pathLength: { duration: 1.5, ease: "easeInOut" }, 
-//         opacity: { duration: 0.2 } 
+//       transition: {
+//         pathLength: { duration: 1.5, ease: "easeInOut" },
+//         opacity: { duration: 0.2 }
 //       }
 //     }
 //   };
@@ -35,7 +35,7 @@
 //             <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
 //               How it works
 //             </p>
-//             <motion.div 
+//             <motion.div
 //               initial={{ width: 0 }}
 //               whileInView={{ width: "100%" }}
 //               viewport={{ once: true }}
@@ -54,7 +54,7 @@
 //           {/* 1. LEFT STACK (Entering Flow) */}
 //           <div className="relative flex flex-row lg:flex-col gap-3 w-full lg:w-auto justify-center">
 //              <div className="absolute -bottom-8 left-1/2 w-px h-8 bg-[#f97316] lg:hidden">
-//                 <motion.div 
+//                 <motion.div
 //                   initial={{ opacity: 0, y: -10 }}
 //                   whileInView={{ opacity: 1, y: 0 }}
 //                   className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
@@ -64,7 +64,7 @@
 //                   </svg>
 //                 </motion.div>
 //              </div>
-            
+
 //             {STACK.map((_, i) => (
 //               <motion.div
 //                 key={i}
@@ -81,10 +81,10 @@
 
 //           {/* 2. MIDDLE AREA (Concave Flow Hub) */}
 //           <div className="relative w-full max-w-[600px] aspect-[16/11] md:aspect-[16/9] min-h-[280px] md:min-h-[300px] flex items-center justify-center scale-90 md:scale-100">
-            
-//             <svg 
-//               className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" 
-//               viewBox="0 0 600 400" 
+
+//             <svg
+//               className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+//               viewBox="0 0 600 400"
 //               preserveAspectRatio="xMidYMid meet"
 //             >
 //               <defs>
@@ -97,7 +97,7 @@
 //               <motion.path d="M 200,170 C 200,50 400,50 450,170" stroke="#f97316" strokeWidth="1.5" fill="none" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={draw} markerEnd="url(#arrow)" />
 //               <motion.path d="M 450,230 C 400,350 200,350 200,230" stroke="#f97316" strokeWidth="1.5" fill="none" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={draw} markerEnd="url(#arrow)" />
 //               <motion.path d="M 230,200 L 380,200" stroke="#f97316" strokeWidth="1.5" fill="none" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={draw} markerEnd="url(#arrow)" />
-              
+
 //               {/* UPDATED: Path extended to 750 for a longer horizontal arrow */}
 //               <path className="hidden lg:block" d="M 520,200 L 750,200" stroke="#f97316" strokeWidth="1.5" fill="none" markerEnd="url(#arrow)" />
 
@@ -124,7 +124,7 @@
 //           {/* 3. FAR RIGHT: OUTCOMES (Exiting Flow) */}
 //           <div className="relative flex flex-row lg:flex-col gap-4 w-full lg:w-auto justify-center">
 //             <div className="absolute -top-8 left-1/2 w-px h-8 bg-[#f97316] lg:hidden">
-//                 <motion.div 
+//                 <motion.div
 //                   initial={{ opacity: 0, y: -10 }}
 //                   whileInView={{ opacity: 1, y: 0 }}
 //                   className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
@@ -157,20 +157,21 @@
 
 // export default memo(FlowSection);
 
-
-
-
 //new flowsection code :
-
-
-
 
 "use client";
 
 import React, { memo } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Montserrat } from "next/font/google";
-import { FiSearch, FiLayers, FiShield, FiArrowRight, FiArrowDown } from "react-icons/fi";
+import {
+  FiSearch,
+  FiLayers,
+  FiShield,
+  FiArrowRight,
+  FiArrowDown,
+} from "react-icons/fi";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -183,37 +184,52 @@ const STEPS = [
     id: "01",
     icon: <FiSearch className="text-orange-500" />,
     title: "WE FIND THE RIGHT AGENCIES",
-    description: "Tell us your needs and budget. We match you with pre-vetted agencies (Budget tier to Premium).",
+    description:
+      "Tell us your needs and budget. We match you with pre-vetted agencies (Budget tier to Premium).",
     footer: "No more endless research. We've done the vetting.",
   },
   {
     id: "02",
     icon: <FiLayers className="text-orange-500" />,
     title: "WE MANAGE EVERYTHING DAILY",
-    description: "Your dedicated Mt7 manager coordinates all agencies, tracks deadlines, and checks quality.",
+    description:
+      "Your dedicated Mt7 manager coordinates all agencies, tracks deadlines, and checks quality.",
     footer: "You get weekly updates, not daily headaches.",
   },
   {
     id: "03",
     icon: <FiShield className="text-orange-500" />,
     title: "WE GUARANTEE RESULTS",
-    description: "Agency underperforming? We replace them within 7-15 days at zero cost to you.",
+    description:
+      "Agency underperforming? We replace them within 7-15 days at zero cost to you.",
     footer: "3 strikes and they're out. You're never stuck.",
   },
 ];
 
+const scrollToHowItWorks = () => {
+  const el = document.getElementById("plans");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
 const FlowSection = () => {
   return (
     // Updated py-20 to py-10 to remove top/bottom extra space
-    <section className="relative py-10 bg-transparent overflow-hidden flex flex-col items-center w-full">
+    <section
+      id="flow"
+      className="relative py-10 bg-transparent overflow-hidden flex flex-col items-center w-full"
+    >
       <div className="relative z-30 w-full max-w-7xl px-6 md:px-14 mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl mb-12">
           <div className="inline-block">
-            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
+            <p
+              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}
+            >
               HOW IT WORKS
             </p>
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
@@ -221,13 +237,15 @@ const FlowSection = () => {
               className="h-0.5 bg-gradient-to-r from-orange-500 to-transparent"
             />
           </div>
-          <h2 className={`
+          <h2
+            className={`
             ${montserrat.className} 
             text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] 
             bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] 
             bg-clip-text text-transparent 
             drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]
-          `}>
+          `}
+          >
             Your Complete Operations Team In 3 Simple Steps
           </h2>
         </div>
@@ -249,7 +267,9 @@ const FlowSection = () => {
               <div className="mb-6 p-4 w-fit rounded-2xl bg-orange-500/10 border border-orange-500/20 text-2xl">
                 {step.icon}
               </div>
-              <h3 className={`${montserrat.className} text-sm font-black text-white tracking-widest mb-4`}>
+              <h3
+                className={`${montserrat.className} text-sm font-black text-white tracking-widest mb-4`}
+              >
                 {step.title}
               </h3>
               <p className="text-zinc-400 text-sm leading-relaxed mb-6">
@@ -265,18 +285,21 @@ const FlowSection = () => {
         {/* VISUAL DIAGRAM AREA - Optimized padding md:py-10 */}
         <div className="relative w-full max-w-[1100px] mx-auto p-6 md:py-10 md:px-16 rounded-[2.5rem] md:rounded-[4rem] border border-white/5 bg-black/20 backdrop-blur-sm">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center justify-center w-full gap-8 md:gap-0">
-            
             {/* LEFT: YOU */}
             <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4">
               <div className="flex flex-col items-center gap-3 shrink-0">
-                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-zinc-700 bg-zinc-800 flex items-center justify-center text-white font-bold shadow-lg text-sm md:text-base">YOU</div>
-                 <span className="text-[9px] md:text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Client</span>
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-zinc-700 bg-zinc-800 flex items-center justify-center text-white font-bold shadow-lg text-sm md:text-base">
+                  YOU
+                </div>
+                <span className="text-[9px] md:text-[10px] text-zinc-500 uppercase tracking-widest font-bold">
+                  Client
+                </span>
               </div>
-              
+
               {/* Desktop Arrow */}
               <div className="flex-1 h-[2px] bg-orange-500/20 hidden md:flex items-center justify-end relative min-w-[80px]">
-                  <div className="absolute left-0 w-full h-full bg-gradient-to-r from-transparent to-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]" />
-                  <FiArrowRight className="text-orange-400 text-xl relative z-10 translate-x-1 drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]" />
+                <div className="absolute left-0 w-full h-full bg-gradient-to-r from-transparent to-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]" />
+                <FiArrowRight className="text-orange-400 text-xl relative z-10 translate-x-1 drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]" />
               </div>
 
               {/* Mobile Arrow Down */}
@@ -286,20 +309,26 @@ const FlowSection = () => {
             </div>
 
             {/* CENTRE: MANAGER */}
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.02 }}
               className="relative p-5 md:p-6 px-8 md:px-14 rounded-2xl border-2 border-orange-500 bg-black shadow-[0_0_50px_rgba(249,115,22,0.25)] flex flex-col items-center gap-1 z-20 shrink-0 mx-auto"
             >
-              <span className="text-orange-500 text-[9px] md:text-[10px] font-black tracking-widest uppercase">Dedicated</span>
-              <span className="text-white font-bold text-base md:text-xl tracking-tight text-center">MT7 MANAGER</span>
-              <div className="md:absolute md:-bottom-8 mt-2 md:mt-0 text-[9px] md:text-[10px] text-zinc-400 italic whitespace-nowrap">One point of contact</div>
+              <span className="text-orange-500 text-[9px] md:text-[10px] font-black tracking-widest uppercase">
+                Dedicated
+              </span>
+              <span className="text-white font-bold text-base md:text-xl tracking-tight text-center">
+                MT7 MANAGER
+              </span>
+              <div className="md:absolute md:-bottom-8 mt-2 md:mt-0 text-[9px] md:text-[10px] text-zinc-400 italic whitespace-nowrap">
+                One point of contact
+              </div>
             </motion.div>
 
             {/* RIGHT: AGENCIES */}
             <div className="flex flex-col md:flex-row items-center justify-center md:justify-end gap-4">
               <div className="flex-1 h-[2px] bg-orange-500/20 hidden md:flex items-center justify-end relative min-w-[80px]">
-                  <div className="absolute left-0 w-full h-full bg-gradient-to-r from-transparent to-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]" />
-                  <FiArrowRight className="text-orange-400 text-xl relative z-10 translate-x-1 drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]" />
+                <div className="absolute left-0 w-full h-full bg-gradient-to-r from-transparent to-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]" />
+                <FiArrowRight className="text-orange-400 text-xl relative z-10 translate-x-1 drop-shadow-[0_0_5px_rgba(249,115,22,0.8)]" />
               </div>
 
               <div className="md:hidden flex flex-col items-center py-2">
@@ -307,11 +336,16 @@ const FlowSection = () => {
               </div>
 
               <div className="flex flex-col gap-3 w-full md:w-auto">
-                {["Marketing Agency", "Finance Agency", "HR Agency"].map((agency, i) => (
-                  <div key={i} className="px-6 py-3 rounded-xl border border-white/10 bg-white/5 text-[10px] md:text-[12px] text-zinc-200 font-semibold whitespace-nowrap shadow-md border-l-2 border-l-orange-500/50 text-center md:text-left">
-                    {agency}
-                  </div>
-                ))}
+                {["Marketing Agency", "Finance Agency", "HR Agency"].map(
+                  (agency, i) => (
+                    <div
+                      key={i}
+                      className="px-6 py-3 rounded-xl border border-white/10 bg-white/5 text-[10px] md:text-[12px] text-zinc-200 font-semibold whitespace-nowrap shadow-md border-l-2 border-l-orange-500/50 text-center md:text-left"
+                    >
+                      {agency}
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           </div>
@@ -320,9 +354,10 @@ const FlowSection = () => {
         {/* CTA BUTTON - Reduced mt from 16/20 to 10/12 */}
         <div className="mt-10 md:mt-12 flex justify-center w-full">
           <motion.button
+            onClick={scrollToHowItWorks}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 md:px-10 py-4 md:py-5 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold flex items-center gap-3 shadow-[0_10px_30px_rgba(249,115,22,0.3)] transition-shadow hover:shadow-orange-500/40"
+            className="px-8 md:px-10 py-4 md:py-5 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold flex items-center gap-3 shadow-[0_10px_30px_rgba(249,115,22,0.3)] transition-shadow hover:shadow-orange-500/40 cursor-pointer"
           >
             See Our Plans & Pricing
             <FiArrowRight />

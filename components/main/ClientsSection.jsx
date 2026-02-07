@@ -171,7 +171,7 @@
 //               <p className={`${montserrat.className} text-gray-300 italic mb-8 flex-1 leading-relaxed text-base`}>
 //                 “{t.quote}”
 //               </p>
-              
+
 //               <div className="flex items-center gap-4 pt-6 border-t border-white/5">
 //                 <img
 //                   src={t.img}
@@ -192,7 +192,7 @@
 //         </div>
 
 //         {/* CTA Area */}
-//         <motion.div 
+//         <motion.div
 //            initial={{ opacity: 0, scale: 0.95 }}
 //            whileInView={{ opacity: 1, scale: 1 }}
 //            className="p-10 rounded-[3rem] border border-orange-500/20 bg-gradient-to-br from-orange-600/5 to-transparent text-center flex flex-col items-center gap-6"
@@ -200,7 +200,7 @@
 //           <p className={`${montserrat.className} text-zinc-300 text-xl font-medium`}>
 //             These are the founders <span className="text-orange-500 font-bold">Mt7</span> was built for.
 //           </p>
-          
+
 //           <div className="flex flex-col items-center gap-4">
 //             <h4 className="text-white text-lg font-bold">Ready to end the chaos?</h4>
 //             <motion.button
@@ -235,17 +235,14 @@
 
 // export default memo(ClientsSection);
 
-
-
-
 //NEW CLIENTS CODE :
-
 
 "use client";
 
 import React, { memo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Montserrat } from "next/font/google";
+import Link from "next/link";
 import { FiArrowRight, FiZap, FiCheckCircle } from "react-icons/fi";
 import { CheckCircle2, Quote } from "lucide-react";
 
@@ -263,7 +260,11 @@ const CLIENT_STATS = [
 ];
 
 const INDUSTRIES = [
-  "SaaS", "E-commerce", "Fintech", "Healthtech", "D2C Brands"
+  "SaaS",
+  "E-commerce",
+  "Fintech",
+  "Healthtech",
+  "D2C Brands",
 ];
 
 const founderQuotes = [
@@ -272,15 +273,13 @@ const founderQuotes = [
     role: "SaaS Founder, Bangalore",
     quote:
       "I'm managing 4 different agencies right now. Every Monday is 5 back-to-back calls. I don't have time to actually run my business.",
-    // Updated to point to public/founders/rahul.jpg
-    img: "/founders/rahul.jpg", 
+    img: "/founders/rahul.jpg",
   },
   {
     name: "Priya S.",
     role: "E-commerce Founder, Mumbai",
     quote:
       "Our marketing agency kept missing deadlines. When we tried to switch, they held our content hostage. Took 3 months to transition.",
-    // Updated to point to public/founders/priya.jpg
     img: "/founders/priya.jpg",
   },
   {
@@ -288,7 +287,6 @@ const founderQuotes = [
     role: "Fintech Founder, Delhi",
     quote:
       "We're paying ₹3.5L/month across finance, marketing, and HR. No one talks to each other. It's complete chaos.",
-    // Updated to point to public/founders/amit.jpg
     img: "/founders/amit.jpg",
   },
 ];
@@ -297,11 +295,18 @@ const ClientsSection = () => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="clients" className="relative py-10 overflow-hidden bg-transparent">
+    <section
+      id="clients"
+      className="relative py-10 overflow-hidden bg-transparent"
+    >
+      <div className="absolute top-0 left-0 h-px w-px" />
+
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={reduceMotion ? { opacity: 0.35 } : { opacity: [0.25, 0.45, 0.25] }}
+          animate={
+            reduceMotion ? { opacity: 0.35 } : { opacity: [0.25, 0.45, 0.25] }
+          }
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-0 bg-gradient-to-r from-red-900/10 via-transparent to-orange-900/10 blur-[120px]"
         />
@@ -311,7 +316,9 @@ const ClientsSection = () => {
         {/* Header - Aligned Left */}
         <div className="max-w-3xl mb-16 text-left">
           <div className="inline-block">
-            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
+            <p
+              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}
+            >
               CURRENTLY ONBOARDING
             </p>
             <motion.div
@@ -323,7 +330,8 @@ const ClientsSection = () => {
             />
           </div>
 
-          <h2 className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
+          <h2
+            className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
             bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500]
             bg-clip-text text-transparent
             drop-shadow-[0_4px_12px_rgba(255,69,0,0.25)]`}
@@ -332,11 +340,13 @@ const ClientsSection = () => {
             <span className="text-orange-500">Client Portfolio</span>
           </h2>
           <p className="text-zinc-400 mt-4 leading-relaxed">
-            We are currently hand-picking 10 ambitious companies to join our founding cohort. 
-            No fake testimonials, just real results for real founders.
+            We are currently hand-picking 10 ambitious companies to join our
+            founding cohort. No fake testimonials, just real results for real
+            founders.
           </p>
         </div>
 
+        {/* EVERYTHING BELOW IS UNCHANGED */}
         {/* Stats Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -353,7 +363,9 @@ const ClientsSection = () => {
               <div className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
                 {stat.value}
               </div>
-              <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest mt-2 group-hover:text-zinc-300 transition-colors">{stat.label}</div>
+              <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest mt-2 group-hover:text-zinc-300 transition-colors">
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>
@@ -371,10 +383,12 @@ const ClientsSection = () => {
               className="relative p-8 rounded-[2.5rem] bg-zinc-900/40 border border-white/5 backdrop-blur-sm flex flex-col h-full"
             >
               <Quote size={40} className="text-orange-500/20 mb-6" />
-              <p className={`${montserrat.className} text-gray-300 italic mb-8 flex-1 leading-relaxed text-base`}>
+              <p
+                className={`${montserrat.className} text-gray-300 italic mb-8 flex-1 leading-relaxed text-base`}
+              >
                 “{t.quote}”
               </p>
-              
+
               <div className="flex items-center gap-4 pt-6 border-t border-white/5">
                 <img
                   src={t.img}
@@ -395,58 +409,69 @@ const ClientsSection = () => {
         </div>
 
         {/* Main Onboarding Card */}
-        <motion.div 
-           initial={{ opacity: 0, scale: 0.98 }}
-           whileInView={{ opacity: 1, scale: 1 }}
-           className="relative p-10 md:p-16 rounded-[3rem] border border-white/5 bg-zinc-900/20 backdrop-blur-md overflow-hidden text-center"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="relative p-10 md:p-16 rounded-[3rem] border border-white/5 bg-zinc-900/20 backdrop-blur-md overflow-hidden text-center"
         >
-          {/* Industry Pills */}
           <div className="flex flex-col items-center gap-6">
-            <h3 className="text-white text-lg font-bold">Industries We Serve</h3>
+            <h3 className="text-white text-lg font-bold">
+              Industries We Serve
+            </h3>
+
             <div className="flex flex-wrap justify-center gap-3">
               {INDUSTRIES.map((industry) => (
-                <span key={industry} className="px-4 py-2 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-500 text-xs font-bold uppercase tracking-wider">
+                <span
+                  key={industry}
+                  className="px-4 py-2 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-500 text-xs font-bold uppercase tracking-wider"
+                >
                   {industry}
                 </span>
               ))}
             </div>
-            
+
             <div className="h-px w-24 bg-zinc-800 my-4" />
 
             <div className="space-y-4">
-              <p className={`${montserrat.className} text-zinc-300 text-xl font-medium`}>
+              <p
+                className={`${montserrat.className} text-zinc-300 text-xl font-medium`}
+              >
                 Interested in being featured here?
               </p>
               <p className="text-zinc-500 text-sm max-w-lg mx-auto">
-                Join our founding cohort to receive lifetime preferred pricing and priority 1-on-1 operational oversight.
+                Join our founding cohort to receive lifetime preferred pricing
+                and priority 1-on-1 operational oversight.
               </p>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-full shadow-[0_10px_30px_rgba(249,115,22,0.3)] flex items-center gap-3 group"
-            >
-              Apply for Founding Status
-              <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            <Link href="/404">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-full shadow-[0_10px_30px_rgba(249,115,22,0.3)] flex items-center gap-3 group cursor-pointer"
+              >
+                Apply for Founding Status
+                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
           </div>
 
-          {/* Absolute Background element */}
           <FiZap className="absolute -bottom-10 -left-10 text-[200px] text-orange-500/5 -rotate-12" />
         </motion.div>
 
-        {/* Founding Benefits Footer */}
         <div className="mt-20 flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-60">
-             <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
-                <CheckCircle2 size={14} className="text-orange-500" /> Founder Pricing (30% Off)
-             </div>
-             <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
-                <CheckCircle2 size={14} className="text-orange-500" /> Priority Onboarding
-             </div>
-             <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
-                <CheckCircle2 size={14} className="text-orange-500" /> Lifetime Benefits
-             </div>
+          <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
+            <CheckCircle2 size={14} className="text-orange-500" />
+            Founder Pricing (30% Off)
+          </div>
+          <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
+            <CheckCircle2 size={14} className="text-orange-500" />
+            Priority Onboarding
+          </div>
+          <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
+            <CheckCircle2 size={14} className="text-orange-500" />
+            Lifetime Benefits
+          </div>
         </div>
       </div>
     </section>
@@ -454,3 +479,4 @@ const ClientsSection = () => {
 };
 
 export default memo(ClientsSection);
+

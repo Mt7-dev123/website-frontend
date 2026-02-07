@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
+import Link from "next/link";
 import { FiAlertCircle, FiShield, FiRefreshCw, FiArrowRight, FiCheckCircle } from "react-icons/fi";
 
 const montserrat = Montserrat({
@@ -32,10 +33,17 @@ const STRIKES = [
   },
 ];
 
+const scrollToHowItWorks = () => {
+  const el = document.getElementById("plans");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
 const Guarantee = () => {
   return (
     // Reduced py-24 to py-10 to remove extra top/bottom padding
-    <section className="relative py-10 overflow-hidden flex flex-col items-center w-full bg-transparent">
+    <section id="guarantee" className="relative py-10 overflow-hidden flex flex-col items-center w-full bg-transparent">
       {/* Background Atmosphere - Flame Gradient */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-orange-600/10 blur-[120px] rounded-full" />
@@ -123,9 +131,10 @@ const Guarantee = () => {
         {/* CTA BUTTON - Reduced mt-20 to mt-12 */}
         <div className="mt-12 flex justify-center w-full">
           <motion.button
+            onClick={scrollToHowItWorks}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-5 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold flex items-center gap-3 shadow-[0_10px_30px_rgba(249,115,22,0.3)] transition-shadow hover:shadow-orange-500/40"
+            className="px-10 py-5 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold flex items-center gap-3 shadow-[0_10px_30px_rgba(249,115,22,0.3)] transition-shadow hover:shadow-orange-500/40 cursor-pointer"
           >
             See Plans & Pricing
             <FiArrowRight />
