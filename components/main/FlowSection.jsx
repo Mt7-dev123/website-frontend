@@ -199,7 +199,7 @@ const STEPS = [
   {
     id: "03",
     icon: <FiShield className="text-orange-500" />,
-    title: "WE GUARANTEE RESULTS",
+    title: "WE OPTIMIZE RESULTS",
     description:
       "Agency underperforming? We replace them within 7-15 days at zero cost to you.",
     footer: "3 strikes and they're out. You're never stuck.",

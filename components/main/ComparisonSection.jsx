@@ -75,8 +75,6 @@ const ComparisonSection = () => {
     <section className="relative py-10 bg-transparent overflow-hidden flex justify-center w-full">
       <div id="comparison" className="absolute top-0 left-0 h-px w-px" />
 
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" />
-
       <div className="relative z-30 w-full max-w-[1300px] px-6 md:px-14">
         <div className="flex flex-col items-start md:-mt-5 max-w-3xl mb-16">
           <div className="inline-block">
@@ -121,7 +119,7 @@ const ComparisonSection = () => {
               </span>
             </div>
             <div className="col-span-3 md:col-span-4 p-6 md:p-8 border-l border-white/5">
-              <span className="text-xs font-bold tracking-[0.3em] text-zinc-500 uppercase">
+              <span className="text-xs font-bold tracking-[0.3em] text-white uppercase">
                 Direct Agencies
               </span>
             </div>
@@ -166,11 +164,12 @@ const ComparisonSection = () => {
                   </div>
                 </div>
 
+                {/* FINAL FIX: Maximized Brightness and removed low opacity */}
                 <div className="col-span-3 md:col-span-4 p-6 md:p-8 border-l border-white/5 flex flex-col justify-center">
-                  <div className="flex items-center gap-2 mb-1 opacity-40">
-                    <X size={16} className="text-zinc-500" />
+                  <div className="flex items-center gap-2 mb-1 opacity-100">
+                    <X size={16} className="text-zinc-100" />
                     <span
-                      className={`${montserrat.className} text-zinc-400 font-medium text-[11px] md:text-sm`}
+                      className={`${montserrat.className} text-zinc-100 font-medium text-[11px] md:text-sm`}
                     >
                       {row.legacy}
                     </span>
