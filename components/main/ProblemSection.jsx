@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
-import { BarChart3, IndianRupee, Clock } from "lucide-react";
+import { BarChart3, IndianRupee, Clock, ShieldAlert } from "lucide-react"; // Added ShieldAlert for quality context
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,23 +23,23 @@ const painPoints = [
     ],
   },
   {
-    icon: <IndianRupee className="w-8 h-8" />,
-    title: "PAYING TOO MUCH",
+    icon: <ShieldAlert className="w-8 h-8" />, // Updated icon for quality
+    title: "QUALITY COMPROMISE", // Updated Heading
     lines: [
-      "Each agency charges premium rates",
-      "but delivers mediocre work.",
-      "Switching costs another ₹50K+",
-      "and 3 months of hassle.",
+      "Paying premium for junior-level", // Updated content
+      "work and generic templates.",
+      "Endless rounds of revisions",
+      "that never quite hit the mark.",
     ],
   },
   {
     icon: <Clock className="w-8 h-8" />,
-    title: "NO ACCOUNTABILITY",
+    title: "TIME CONSUMING",
     lines: [
-      "Missed deadlines. Poor quality.",
-      '"The algorithm changed."',
-      '"Market conditions are tough."',
-      "No one takes responsibility.",
+      "Follow-ups eat your entire morning.",
+      "Zero time left for actual strategy.",
+      "Operational bottlenecks stalling",
+      "your business growth.",
     ],
   },
 ];
