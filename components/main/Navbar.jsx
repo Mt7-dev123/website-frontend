@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Montserrat } from "next/font/google";
+import Link from "next/link"; // Imported Link
 import {
   Menu,
   X,
@@ -194,13 +195,13 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* CTA */}
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="px-6 py-2 rounded-full bg-red-600 text-white text-sm font-semibold"
+          {/* CTA LINKED TO /LEAD */}
+          <Link
+            href="/lead"
+            className="px-6 py-2 rounded-full bg-red-600 text-white text-sm font-semibold transition-transform hover:scale-105 active:scale-95"
           >
             Book Free Consultation
-          </button>
+          </Link>
         </motion.div>
       </div>
 
@@ -313,17 +314,15 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* CTA */}
+              {/* SIDEBAR CTA LINKED TO /LEAD */}
               <div className="mt-auto pt-8">
-                <button
-                  onClick={() => {
-                    scrollToSection("contact");
-                    closeMenu();
-                  }}
-                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-red-600 text-white font-bold shadow-lg shadow-red-900/20"
+                <Link
+                  href="/lead"
+                  onClick={closeMenu}
+                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-red-600 text-white font-bold shadow-lg shadow-red-900/20 transition-transform active:scale-95"
                 >
                   Book Free Consultation <ArrowRight size={18} />
-                </button>
+                </Link>
               </div>
             </motion.aside>
           </>

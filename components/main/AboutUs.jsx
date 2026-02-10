@@ -236,11 +236,10 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* --- TEAM SECTION --- */}
-        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center mb-20 bg-zinc-900/20 p-6 md:p-10 rounded-[1.5rem] border border-white/5">
+        {/* --- TEAM SECTION (COMMENTED OUT AS REQUESTED) --- */}
+        {/* <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center mb-20 bg-zinc-900/20 p-6 md:p-10 rounded-[1.5rem] border border-white/5">
           <div className="md:col-span-4 relative group">
             <div className="aspect-[4/5] relative rounded-xl overflow-hidden bg-zinc-800 border border-white/10">
-              {/* PLACEHOLDER FOR ABDUL ADNAN'S PHOTO */}
               <Image
                 src="/abdul-adnan.jpg"
                 alt="Abdul Adnan"
@@ -278,7 +277,8 @@ const AboutSection = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> 
+        */}
 
         {/* --- VALUES GRID --- */}
         <div className="mb-20">
@@ -318,21 +318,21 @@ const AboutSection = () => {
           >
             Ready to simplify your operations?
           </h2>
-            <Link href="/lead">
-              <motion.button
-                whileHover={{
-                  scale: 1.02,
-                  boxShadow: "0 0 30px rgba(255, 69, 0, 0.3)",
-                }}
-                whileTap={{ scale: 0.98 }}
-                className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-bold text-sm md:text-base rounded-full transition-all shadow-lg shadow-orange-900/20 cursor-pointer`}
-              >
-                <span className="flex items-center gap-3">
-                  Book Free Consultation
-                  <ArrowRight size={18} />
-                </span>
-              </motion.button>
-            </Link>
+          <Link href="/lead">
+            <motion.button
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 0 30px rgba(255, 69, 0, 0.3)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-bold text-sm md:text-base rounded-full transition-all shadow-lg shadow-orange-900/20 cursor-pointer`}
+            >
+              <span className="flex items-center gap-3">
+                Book Free Consultation
+                <ArrowRight size={18} />
+              </span>
+            </motion.button>
+          </Link>
         </div>
       </div>
     </section>

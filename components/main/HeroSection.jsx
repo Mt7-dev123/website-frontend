@@ -20,10 +20,10 @@ const scrollToHowItWorks = () => {
 
 export default function HeroSection() {
   const memberImages = [
-    "/person1.jpeg",
-    "/person2.jpeg",
-    "/person3.jpeg",
-    "/person4.jpeg",
+    "/person1.jpg",
+    "/person2.jpg",
+    "/person3.jpg",
+    // "/person4.jpeg",
   ];
 
   return (
@@ -140,17 +140,17 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#050000] via-transparent to-transparent" />
             </motion.div>
 
-            {/* FIXED: 100+ AGENCY PARTNERS CARD */}
-            <div className="absolute -bottom-8 md:-bottom-5 -left-4 md:-left-8 w-44 h-24 md:w-60 md:h-28 flex items-center justify-center">
+            {/* UPDATED: COMPACT TWO-LINE CARD */}
+            <div className="absolute -bottom-6 md:-bottom-4 -left-3 md:-left-6 w-32 h-24 md:w-40 md:h-32 flex items-center justify-center">
               {/* Pulse effect border */}
               <div className="absolute inset-0 rounded-2xl border-2 md:border-4 border-[#ff4500]/20 blur-[2px] animate-pulse" />
 
-              <div className="relative w-full h-full rounded-2xl bg-black/90 backdrop-blur-xl border-2 md:border-4 border-[#ff4500]/50 px-4 flex flex-col items-center justify-center shadow-[0_0_40px_rgba(255,69,0,0.25)]">
-                <div className="text-gray-300 text-[9px] md:text-[10px] mb-1 font-medium tracking-widest uppercase">
+              <div className="relative w-full h-full rounded-2xl bg-black/90 backdrop-blur-xl border-2 md:border-4 border-[#ff4500]/50 px-2 flex flex-col items-center justify-center shadow-[0_0_40px_rgba(255,69,0,0.25)]">
+                <div className="text-gray-300 text-[8px] md:text-[10px] mb-1 font-medium tracking-widest uppercase">
                   Connected
                 </div>
-                <div className="text-sm md:text-base lg:text-lg font-bold text-[#ff4500] drop-shadow-[0_0_12px_rgba(255,69,0,0.6)] whitespace-nowrap text-center">
-                  100+ Agency Partners
+                <div className="text-xs md:text-base lg:text-lg font-bold text-[#ff4500] drop-shadow-[0_0_12px_rgba(255,69,0,0.6)] text-center leading-tight">
+                  100+ Agency <br /> Partners
                 </div>
               </div>
             </div>

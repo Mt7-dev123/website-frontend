@@ -188,10 +188,10 @@ import * as THREE from "three";
 const LightPillar = ({
   topColor = "#FFA500",
   bottomColor = "#E65100",
-  intensity = 1.3,
+  intensity = 1.43, // Increased by 10% (1.3 * 1.1)
   rotationSpeed = 0.5,
   className = "",
-  glowAmount = 0.005,
+  glowAmount = 0.0055, // Increased by 10% (0.005 * 1.1)
   pillarWidth = 3.0,
   pillarHeight = 0.4,
   pillarRotation = 92,
@@ -322,13 +322,16 @@ const LightPillar = ({
               smoothstep(6.0, -6.0, p.y)
             );
 
+            // Using uGlowAmount to feed the brightness of each step
             col += grad * (uGlowAmount / d);
             depth += d * 1.4;
 
             if (depth > 20.0) break;
           }
 
-          gl_FragColor = vec4(tanh(col * uIntensity), 1.0);
+          // Apply intensity and use a slightly more aggressive tone mapping for bloom effect
+          vec3 finalCol = col * uIntensity;
+          gl_FragColor = vec4(tanh(finalCol), 1.0);
         }
       `,
     });
