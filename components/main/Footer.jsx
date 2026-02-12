@@ -258,7 +258,7 @@ export default function Footer() {
             </div>
 
             <div className="text-xs text-gray-500">
-              © 2026 Mt7 Private Limited. All rights reserved.
+              © 2026 Mt7 All rights reserved.
             </div>
           </div>
         </div>
