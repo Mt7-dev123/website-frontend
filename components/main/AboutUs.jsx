@@ -49,7 +49,7 @@ const AboutSection = () => {
             <p
               className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}
             >
-              About MT7
+              About Mt7
             </p>
             <motion.div
               initial={{ width: 0 }}

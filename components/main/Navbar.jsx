@@ -168,7 +168,7 @@ export default function Navbar() {
         >
           {/* LOGO */}
           <span className={`${montserrat.className} font-bold text-white text-xl`}>
-            MT7<span className="text-red-500">.in</span>
+            Mt7<span className="text-red-500">.in</span>
           </span>
 
           {/* NAV LINKS */}

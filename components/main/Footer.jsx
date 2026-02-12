@@ -158,7 +158,7 @@ export default function Footer() {
               </div>
 
               <p className="text-gray-400 text-sm max-w-xl leading-relaxed">
-                <strong className="text-white">Mt7 Pvt. Ltd.</strong> — The 7
+                <strong className="text-white">Mt7</strong> — The 7
                 Layers Multi Tasking Company. Your business operations system
                 for marketing, finance, and HR management.
               </p>
@@ -251,7 +251,7 @@ export default function Footer() {
 
             {/* GSTIN & Disclaimer */}
             <div className="text-xs text-gray-500 max-w-3xl leading-relaxed mt-2">
-              <div>Mt7 Private Limited | GSTIN: 09AATCM9258Q1Z2</div>
+              <div>Mt7 | GSTIN: 09AATCM9258Q1Z2</div>
               <div className="mt-1">
                 Services delivered through vetted agency partners.
               </div>

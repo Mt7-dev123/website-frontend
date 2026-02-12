@@ -95,13 +95,13 @@ const ComparisonSection = () => {
           <h2
             className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]`}
           >
-            The MT7 Difference
+            The Mt7 Difference
           </h2>
 
           <p
             className={`${montserrat.className} text-zinc-400 text-sm md:text-base leading-relaxed`}
           >
-            Managing agencies directly drains founder time and kills focus. MT7
+            Managing agencies directly drains founder time and kills focus. Mt7
             replaces chaos with a single, accountable operations layer.
           </p>
         </div>
@@ -115,7 +115,7 @@ const ComparisonSection = () => {
             </div>
             <div className="col-span-3 md:col-span-3 p-6 md:p-8 border-l border-white/5 bg-orange-500/5">
               <span className="text-xs font-bold tracking-[0.3em] text-orange-500 uppercase flex items-center gap-2">
-                MT7 Managed <Zap size={14} className="fill-orange-500" />
+                Mt7 Managed <Zap size={14} className="fill-orange-500" />
               </span>
             </div>
             <div className="col-span-3 md:col-span-4 p-6 md:p-8 border-l border-white/5">
@@ -185,7 +185,7 @@ const ComparisonSection = () => {
             <h3
               className={`${montserrat.className} text-2xl md:text-3xl font-bold text-white mb-4`}
             >
-              Why Founders Choose MT7
+              Why Founders Choose Mt7
             </h3>
             <p
               className={`${montserrat.className} text-zinc-400 text-sm md:text-base max-w-2xl mx-auto`}
