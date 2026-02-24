@@ -1,15 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import {
-  Check,
   CheckCircle2,
   ArrowRight,
-  HelpCircle,
-  Clock,
   ShieldCheck,
   Users,
   Zap,
@@ -30,23 +27,23 @@ const plans = [
     title: "COORDINATOR",
     subtitle: "Manage Your Existing Agencies",
     description: "You already have agencies? We'll manage them for you.",
-    icon: <Users className="text-blue-400" size={22} />,
+    icon: <Users className="text-blue-400" size={24} />,
     features: [
       "Daily task coordination",
       "Quality oversight",
       "Deadline tracking",
       "Weekly reports",
     ],
-    perfectFor:
-      "Companies with existing vendors who need professional management",
+    perfectFor: "Companies with existing vendors who need professional management",
     cta: "Get Custom Quote",
+    themeColor: "blue",
   },
   {
     id: 2,
     title: "SOURCING",
     subtitle: "We Find, You Manage",
     description: "Need agencies but want to manage them yourself?",
-    icon: <Zap className="text-yellow-400" size={22} />,
+    icon: <Zap className="text-yellow-400" size={24} />,
     features: [
       "Pre-vetted agency matching",
       "Budget-tier options",
@@ -55,13 +52,14 @@ const plans = [
     ],
     perfectFor: "DIY founders who want quality partners without the search",
     cta: "Get Custom Quote",
+    themeColor: "yellow",
   },
   {
     id: 3,
     title: "FULL STACK",
     subtitle: "We Find + Manage Everything",
     description: "Complete hands-off operations. We handle it all.",
-    icon: <ShieldCheck className="text-orange-500" size={22} />,
+    icon: <ShieldCheck className="text-orange-500" size={24} />,
     features: [
       "Agency matching & vetting",
       "Daily coordination & QA",
@@ -74,13 +72,14 @@ const plans = [
     badge: "MOST POPULAR",
     highlight: true,
     cta: "See Full Stack Details",
+    themeColor: "orange",
   },
   {
     id: 4,
     title: "MINI (BETA)",
     subtitle: "For Bootstrap Startups",
     description: "Budget-friendly bundled ops for early-stage companies.",
-    icon: <Briefcase className="text-purple-400" size={22} />,
+    icon: <Briefcase className="text-purple-400" size={24} />,
     features: [
       "2+ departments minimum",
       "Budget-tier agencies",
@@ -91,60 +90,22 @@ const plans = [
     badge: "LIMITED SLOTS",
     slots: "Only 10 slots available",
     cta: "Apply for Beta",
-  },
-];
-
-const steps = [
-  { num: "01", title: "Book Consultation", desc: "Tell us what you need." },
-  {
-    num: "02",
-    title: "We Get Quotes",
-    desc: "Budget-matched to requirements.",
-  },
-  {
-    num: "03",
-    title: "Transparent Margin",
-    desc: "You see our markup clearly.",
-  },
-  { num: "04", title: "You Approve", desc: "7–10 days to go live." },
-];
-
-const included = [
-  "Dedicated POC",
-  "Daily oversight",
-  "Weekly updates",
-  "Monthly reviews",
-  "Free agency switching",
-  "24-hour response time",
-];
-
-const faqs = [
-  {
-    q: "Why custom pricing?",
-    a: "Every business has different needs. Pricing is based on actual scope: number of agencies, complexity, and hours required.",
-  },
-  {
-    q: "Can pricing change later?",
-    a: "Not without approval. Any scope change requires a new quote. No surprises.",
+    themeColor: "purple",
   },
 ];
 
 /* ---------------- COMPONENT ---------------- */
 
-export default function PlansAndPricing() {
+const PlansAndPricing = () => {
   return (
-    <section
-      id="plans"
-      className="relative py-10 bg-transparent overflow-hidden"
-    >
+    // Updated padding to py-10 as requested
+    <section id="plans" className="relative py-10 bg-transparent overflow-hidden antialiased">
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
         {/* ================= HEADER ================= */}
-        <div className="max-w-3xl mb-20">
-          {/* Section label + underline */}
+        {/* Balanced spacing at mb-10 */}
+        <div className="max-w-3xl mb-10">
           <div className="inline-block">
-            <p
-              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}
-            >
+            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-orange-500 mb-2`}>
               Choose Your Plan
             </p>
             <motion.div
@@ -156,24 +117,18 @@ export default function PlansAndPricing() {
             />
           </div>
 
-          {/* Gradient headline */}
-          <h2
-            className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
-            bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500]
-            bg-clip-text text-transparent
-            drop-shadow-[0_4px_12px_rgba(255,69,0,0.25)]`}
-          >
+          <h2 className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent`}>
             From Coordination to Complete Management
           </h2>
 
-          <p className="text-zinc-400 mt-4">
-            Whether you have agencies or need us to find them, we have a plan
-            that fits.
+          <p className="text-zinc-200 mt-4 font-medium opacity-90">
+            Whether you have agencies or need us to find them, we have a plan that fits.
           </p>
         </div>
 
         {/* ================= PLANS GRID ================= */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        {/* Balanced bottom margin at mb-10 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.id}
@@ -181,166 +136,84 @@ export default function PlansAndPricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`relative p-6 rounded-2xl border backdrop-blur-md flex flex-col
+              className={`relative p-8 rounded-[2rem] border backdrop-blur-xl flex flex-col transition-all duration-300
                 ${
                   plan.highlight
-                    ? "bg-zinc-900/90 border-orange-500/50 shadow-xl shadow-orange-900/20"
-                    : "bg-zinc-900/50 border-white/10"
+                    ? "bg-zinc-900/80 border-orange-500 shadow-2xl shadow-orange-900/30 scale-105 z-20"
+                    : "bg-zinc-950/60 border-white/10 hover:border-white/20"
                 }
               `}
             >
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold bg-orange-500 text-black flex items-center gap-1">
-                  {plan.highlight ? <Star size={12} /> : <Rocket size={12} />}
+                <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[10px] font-black text-black flex items-center gap-1.5 whitespace-nowrap shadow-xl bg-orange-500`}>
+                  {plan.highlight ? <Star size={12} fill="black" /> : <Rocket size={12} fill="black" />}
                   {plan.badge}
                 </div>
               )}
 
-              <div className="mb-4 p-3 bg-white/5 rounded-xl w-fit">
+              <div className="mb-6 p-4 bg-white/5 rounded-2xl w-fit shadow-inner">
                 {plan.icon}
               </div>
 
-              <h3 className="text-white font-bold">{plan.title}</h3>
-              <p className="text-orange-400 text-xs font-semibold mb-3">
+              <h3 className="text-white text-xl font-bold tracking-tight mb-1">{plan.title}</h3>
+              <p className="text-orange-500 text-xs font-black tracking-wide mb-4 uppercase">
                 {plan.subtitle}
               </p>
 
-              <p className="text-zinc-300 text-sm mb-5">{plan.description}</p>
+              <p className="text-zinc-100 text-sm mb-6 leading-relaxed font-medium">
+                {plan.description}
+              </p>
 
-              <ul className="space-y-2 text-xs text-zinc-300 mb-5">
+              <ul className="space-y-3 text-xs text-zinc-200 mb-8 flex-1">
                 {plan.features.map((f, idx) => (
-                  <li key={idx} className="flex gap-2">
-                    <CheckCircle2
-                      size={14}
-                      className="text-orange-500 mt-0.5"
-                    />
-                    {f}
+                  <li key={idx} className="flex gap-3 items-start">
+                    <CheckCircle2 size={16} className="text-orange-500 shrink-0 mt-0.5" />
+                    <span className="leading-snug font-medium">{f}</span>
                   </li>
                 ))}
               </ul>
 
               {plan.extra && (
-                <p className="text-orange-400/80 text-xs italic mb-4">
+                <p className="text-orange-400 text-xs italic mb-6 font-medium bg-orange-500/5 p-2 rounded-lg border border-orange-500/10">
                   {plan.extra}
                 </p>
               )}
 
-              <p className="text-[11px] text-zinc-400 mb-5">
-                <span className="text-white font-semibold">Perfect for:</span>{" "}
-                {plan.perfectFor}
-              </p>
+              <div className="mb-8 p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                <p className="text-[11px] text-zinc-100 leading-relaxed font-medium">
+                  <span className="text-white font-black uppercase text-[10px] tracking-widest block mb-1">Perfect for:</span>
+                  {plan.perfectFor}
+                </p>
+              </div>
 
               {plan.slots && (
-                <p className="text-red-400 text-[10px] font-semibold mb-3">
+                <p className="text-red-500 text-[11px] font-black uppercase tracking-tighter mb-4 text-center">
                   {plan.slots}
                 </p>
               )}
 
-              <Link href="/lead" className="mt-auto block">
-                <button
-                  className={`w-full py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer
+              <Link href="/lead" passHref>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`w-full py-4 rounded-2xl text-xs font-black tracking-widest uppercase flex items-center justify-center gap-2 transition-all cursor-pointer
                     ${
                       plan.highlight
-                        ? "bg-orange-500 text-white hover:bg-orange-600"
-                        : "bg-white/10 text-white border border-white/20 hover:bg-white hover:text-black cursor-pointer"
+                        ? "bg-orange-500 text-white shadow-lg shadow-orange-600/40 hover:bg-orange-600"
+                        : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
                     } 
-                    `}
+                  `}
                 >
                   {plan.cta}
-                  <ArrowRight size={14} />
-                </button>
+                  <ArrowRight size={16} strokeWidth={3} />
+                </motion.button>
               </Link>
             </motion.div>
           ))}
         </div>
-
-        {/* ================= HOW PRICING WORKS ================= */}
-        <div className="mb-24">
-          <h3 className="text-white text-2xl font-bold mb-10 text-center">
-            How Pricing Works
-          </h3>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {steps.map((s, i) => (
-              <div
-                key={i}
-                className="p-6 rounded-2xl bg-white/5 border border-white/10"
-              >
-                <div className="text-4xl font-black text-white/10 mb-3">
-                  {s.num}
-                </div>
-                <h4 className="text-white font-bold mb-1">{s.title}</h4>
-                <p className="text-zinc-400 text-sm">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ================= INCLUDED + TERMS ================= */}
-        <div className="grid md:grid-cols-3 gap-8 mb-24">
-          <div className="md:col-span-2 p-8 rounded-3xl bg-zinc-900/50 border border-white/10">
-            <h3 className="text-white font-bold mb-6 flex items-center gap-2">
-              <Zap className="text-orange-500" size={18} />
-              All Plans Include
-            </h3>
-            <div className="grid sm:grid-cols-3 gap-4">
-              {included.map((item, i) => (
-                <div key={i} className="flex gap-2 text-zinc-300 text-sm">
-                  <Check className="text-green-500 mt-0.5" size={16} />
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-zinc-900/50 border border-white/10">
-            <h3 className="text-white font-bold mb-6 flex items-center gap-2">
-              <Clock className="text-orange-500" size={18} />
-              Payment Terms
-            </h3>
-            <ul className="space-y-2 text-zinc-400 text-sm list-disc list-inside">
-              <li>Prepaid monthly</li>
-              <li>3-month minimum</li>
-              <li>14-day cancellation</li>
-              <li>Late fee: ₹1K/day after 5th</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* ================= FAQ ================= */}
-        <div className="max-w-3xl mx-auto mb-24">
-          <h3 className="text-white text-2xl font-bold mb-8 text-center">
-            Frequently Asked Questions
-          </h3>
-          <div className="space-y-6">
-            {faqs.map((f, i) => (
-              <div
-                key={i}
-                className="p-6 rounded-2xl bg-zinc-900/40 border border-white/10"
-              >
-                <h4 className="text-white font-bold flex items-center gap-2 mb-2">
-                  <HelpCircle size={16} className="text-orange-500" />
-                  {f.q}
-                </h4>
-                <p className="text-zinc-400 text-sm pl-6">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ================= FINAL CTA ================= */}
-        <div className="text-center">
-          <Link href="/lead" className="mt-auto block">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-orange-500 text-white font-bold text-lg rounded-full shadow-xl hover:bg-orange-600 cursor-pointer"
-            >
-              Get Your Custom Quote →
-            </motion.button>
-          </Link>
-        </div>
       </div>
     </section>
   );
-}
+};
+
+export default memo(PlansAndPricing);
