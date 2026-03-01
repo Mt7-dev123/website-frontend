@@ -243,7 +243,7 @@ import React, { memo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Montserrat } from "next/font/google";
 import Link from "next/link";
-import { FiArrowRight, FiZap, FiCheckCircle } from "react-icons/fi";
+import { FiArrowRight, FiZap } from "react-icons/fi";
 import { CheckCircle2, Quote } from "lucide-react";
 
 const montserrat = Montserrat({
@@ -297,12 +297,10 @@ const ClientsSection = () => {
   return (
     <section
       id="clients"
-      className="relative py-10 overflow-hidden bg-transparent"
+      className="relative py-10 overflow-hidden bg-transparent antialiased"
     >
-      <div className="absolute top-0 left-0 h-px w-px" />
-
       {/* Background Glow */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <motion.div
           animate={
             reduceMotion ? { opacity: 0.35 } : { opacity: [0.25, 0.45, 0.25] }
@@ -312,12 +310,12 @@ const ClientsSection = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
-        {/* Header - Aligned Left */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-14">
+        {/* Header */}
         <div className="max-w-3xl mb-16 text-left">
           <div className="inline-block">
             <p
-              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}
+              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-orange-500 mb-2`}
             >
               CURRENTLY ONBOARDING
             </p>
@@ -327,26 +325,27 @@ const ClientsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "circOut", delay: 0.4 }}
               className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
+              aria-hidden="true"
             />
           </div>
 
           <h2
             className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
-            bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500]
+            bg-gradient-to-r from-white via-zinc-200 to-orange-500
             bg-clip-text text-transparent
             drop-shadow-[0_4px_12px_rgba(255,69,0,0.25)]`}
           >
             Building Our Founding <br />
             <span className="text-orange-500">Client Portfolio</span>
           </h2>
-          <p className="text-zinc-400 mt-4 leading-relaxed">
+          {/* ACCESSIBILITY FIX: Text brightness bumped to zinc-200 */}
+          <p className="text-zinc-200 mt-4 leading-relaxed font-medium opacity-90">
             We are currently hand-picking 10 ambitious companies to join our
             founding cohort. No fake testimonials, just real results for real
             founders.
           </p>
         </div>
 
-        {/* EVERYTHING BELOW IS UNCHANGED */}
         {/* Stats Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -358,12 +357,12 @@ const ClientsSection = () => {
           {CLIENT_STATS.map((stat) => (
             <div
               key={stat.label}
-              className="bg-zinc-900/40 border border-white/5 backdrop-blur-sm rounded-2xl p-6 text-center group hover:border-orange-500/30 transition-all"
+              className="bg-zinc-950/60 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center group hover:border-orange-500/40 transition-all shadow-xl"
             >
-              <div className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+              <div className="text-3xl font-black bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
                 {stat.value}
               </div>
-              <div className="text-zinc-500 text-[10px] uppercase font-black tracking-widest mt-2 group-hover:text-zinc-300 transition-colors">
+              <div className="text-zinc-300 text-[10px] uppercase font-black tracking-widest mt-2 group-hover:text-white transition-colors">
                 {stat.label}
               </div>
             </div>
@@ -373,38 +372,41 @@ const ClientsSection = () => {
         {/* Founder Quote Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {founderQuotes.map((t, index) => (
-            <motion.div
+            <motion.article
               key={t.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="relative p-8 rounded-[2.5rem] bg-zinc-900/40 border border-white/5 backdrop-blur-sm flex flex-col h-full"
+              whileHover={{ y: -8 }}
+              className="relative p-8 rounded-[2.5rem] bg-zinc-950/80 border border-white/10 backdrop-blur-xl flex flex-col h-full shadow-2xl"
             >
-              <Quote size={40} className="text-orange-500/20 mb-6" />
+              <Quote size={40} className="text-orange-500/20 mb-6" aria-hidden="true" />
+              {/* ACCESSIBILITY FIX: Gray-300 bumped to Zinc-100 */}
               <p
-                className={`${montserrat.className} text-gray-300 italic mb-8 flex-1 leading-relaxed text-base`}
+                className={`${montserrat.className} text-zinc-100 italic mb-8 flex-1 leading-relaxed text-base font-medium`}
               >
                 “{t.quote}”
               </p>
 
-              <div className="flex items-center gap-4 pt-6 border-t border-white/5">
+              <div className="flex items-center gap-4 pt-6 border-t border-white/10">
                 <img
                   src={t.img}
-                  alt={t.name}
+                  alt={`Founder ${t.name}`}
                   width={44}
                   height={44}
-                  className="rounded-full grayscale group-hover:grayscale-0 transition-all object-cover aspect-square"
+                  loading="lazy"
+                  decoding="async"
+                  className="rounded-full grayscale group-hover:grayscale-0 transition-all object-cover aspect-square border border-white/10"
                 />
                 <div>
                   <p className="text-white font-bold text-sm">{t.name}</p>
-                  <p className="text-orange-500/80 text-[10px] uppercase font-bold tracking-widest">
+                  <p className="text-orange-400 text-[10px] font-black uppercase tracking-widest">
                     {t.role}
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
@@ -412,10 +414,11 @@ const ClientsSection = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="relative p-10 md:p-16 rounded-[3rem] border border-white/5 bg-zinc-900/20 backdrop-blur-md overflow-hidden text-center"
+          viewport={{ once: true }}
+          className="relative p-10 md:p-16 rounded-[3rem] border border-orange-500/20 bg-zinc-950/40 backdrop-blur-md overflow-hidden text-center shadow-2xl"
         >
           <div className="flex flex-col items-center gap-6">
-            <h3 className="text-white text-lg font-bold">
+            <h3 className="text-white text-lg font-black uppercase tracking-tight">
               Industries We Serve
             </h3>
 
@@ -423,53 +426,54 @@ const ClientsSection = () => {
               {INDUSTRIES.map((industry) => (
                 <span
                   key={industry}
-                  className="px-4 py-2 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-500 text-xs font-bold uppercase tracking-wider"
+                  className="px-5 py-2 rounded-full border border-orange-500/30 bg-orange-500/10 text-white text-xs font-black uppercase tracking-widest shadow-sm"
                 >
                   {industry}
                 </span>
               ))}
             </div>
 
-            <div className="h-px w-24 bg-zinc-800 my-4" />
+            <div className="h-px w-24 bg-zinc-800 my-4" aria-hidden="true" />
 
             <div className="space-y-4">
               <p
-                className={`${montserrat.className} text-zinc-300 text-xl font-medium`}
+                className={`${montserrat.className} text-white text-xl font-bold tracking-tight`}
               >
                 Interested in being featured here?
               </p>
-              <p className="text-zinc-500 text-sm max-w-lg mx-auto">
+              <p className="text-zinc-200 text-sm max-w-lg mx-auto font-medium">
                 Join our founding cohort to receive lifetime preferred pricing
                 and priority 1-on-1 operational oversight.
               </p>
             </div>
 
-            <Link href="/404">
+            <Link href="/lead" passHref>
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 69, 0, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-6 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-full shadow-[0_10px_30px_rgba(249,115,22,0.3)] flex items-center gap-3 group cursor-pointer"
+                className="mt-6 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-black rounded-full shadow-lg flex items-center gap-3 group cursor-pointer transition-all"
               >
                 Apply for Founding Status
-                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+                <FiArrowRight strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
           </div>
 
-          <FiZap className="absolute -bottom-10 -left-10 text-[200px] text-orange-500/5 -rotate-12" />
+          <FiZap className="absolute -bottom-10 -left-10 text-[200px] text-orange-500/5 -rotate-12" aria-hidden="true" />
         </motion.div>
 
-        <div className="mt-20 flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-60">
-          <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
-            <CheckCircle2 size={14} className="text-orange-500" />
+        {/* Benefits Bar */}
+        <div className="mt-20 flex flex-wrap justify-center gap-x-12 gap-y-6">
+          <div className="flex items-center gap-2 text-zinc-300 text-[10px] font-black uppercase tracking-[0.2em]">
+            <CheckCircle2 size={14} className="text-orange-500" aria-hidden="true" />
             Founder Pricing (30% Off)
           </div>
-          <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
-            <CheckCircle2 size={14} className="text-orange-500" />
+          <div className="flex items-center gap-2 text-zinc-300 text-[10px] font-black uppercase tracking-[0.2em]">
+            <CheckCircle2 size={14} className="text-orange-500" aria-hidden="true" />
             Priority Onboarding
           </div>
-          <div className="flex items-center gap-2 text-zinc-400 text-[10px] font-black uppercase tracking-[0.2em]">
-            <CheckCircle2 size={14} className="text-orange-500" />
+          <div className="flex items-center gap-2 text-zinc-300 text-[10px] font-black uppercase tracking-[0.2em]">
+            <CheckCircle2 size={14} className="text-orange-500" aria-hidden="true" />
             Lifetime Benefits
           </div>
         </div>
