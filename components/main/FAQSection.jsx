@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Montserrat } from "next/font/google";
-import { Plus, Minus, ArrowRight, HelpCircle } from "lucide-react";
-import Link from "next/link";
+import { Plus, Minus, HelpCircle } from "lucide-react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -72,10 +71,12 @@ export default function FAQSection() {
   };
 
   return (
-    // Updated py-24 to py-10 to remove extra top/bottom padding
-    <section id="faq" className="relative py-10 bg-transparent overflow-hidden">
+    <section id="faq" className="relative py-10 bg-transparent overflow-hidden antialiased">
       {/* Background Glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
+      <div 
+        className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" 
+        aria-hidden="true" 
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
         
@@ -83,7 +84,7 @@ export default function FAQSection() {
         <div className="flex flex-col items-start max-w-3xl mb-16">
           <div className="inline-flex flex-col items-start">
             <span
-              className={`${montserrat.className} uppercase tracking-[0.28em] text-xs font-bold text-orange-500 mb-2`}
+              className={`${montserrat.className} uppercase tracking-[0.28em] text-xs font-black text-orange-500 mb-2`}
             >
               Frequently Asked Questions
             </span>
@@ -93,11 +94,12 @@ export default function FAQSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "circOut", delay: 0.25 }}
               className="origin-left mt-2 h-[2px] w-full bg-gradient-to-r from-orange-500 to-transparent"
+              aria-hidden="true"
             />
           </div>
 
           <h2
-            className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent leading-tight`}
+            className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 bg-gradient-to-r from-white via-zinc-200 to-orange-500 bg-clip-text text-transparent leading-tight`}
           >
             Everything You Need to Know
           </h2>
@@ -115,27 +117,39 @@ export default function FAQSection() {
               className={`group relative rounded-[1.5rem] border transition-all duration-300 overflow-hidden
                 ${
                   openIndex === index
-                    ? "bg-zinc-900/80 border-orange-500/40 shadow-xl shadow-orange-900/10"
+                    ? "bg-zinc-950/80 border-orange-500/40 shadow-xl shadow-orange-900/10"
                     : "bg-zinc-900/40 border-white/5 hover:border-orange-500/20 hover:bg-zinc-900/60"
                 }
               `}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-start justify-between p-6 text-left"
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
+                className="w-full flex items-start justify-between p-6 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50 rounded-[1.5rem]"
               >
                 <div className="flex items-start gap-4">
-                  <div className={`mt-1 p-2 rounded-xl transition-colors duration-300 ${openIndex === index ? "bg-orange-500/10 text-orange-500" : "bg-white/5 text-zinc-500 group-hover:text-zinc-300"}`}>
+                  <div 
+                    className={`mt-1 p-2 rounded-xl transition-colors duration-300 ${
+                      openIndex === index ? "bg-orange-500/10 text-orange-500" : "bg-white/5 text-zinc-400 group-hover:text-zinc-200"
+                    }`}
+                    aria-hidden="true"
+                  >
                     <HelpCircle size={20} />
                   </div>
                   <span
-                    className={`${montserrat.className} text-sm md:text-base font-bold text-white pr-4 pt-1.5`}
+                    className={`${montserrat.className} text-sm md:text-base font-bold text-white pr-4 pt-1.5 leading-tight`}
                   >
                     {faq.question}
                   </span>
                 </div>
                 
-                <div className={`mt-1 p-1 rounded-full transition-transform duration-300 ${openIndex === index ? "rotate-180 text-orange-500" : "text-zinc-500"}`}>
+                <div 
+                  className={`mt-1 p-1 rounded-full transition-transform duration-300 ${
+                    openIndex === index ? "rotate-180 text-orange-500" : "text-zinc-300"
+                  }`}
+                  aria-hidden="true"
+                >
                    {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
                 </div>
               </button>
@@ -143,13 +157,16 @@ export default function FAQSection() {
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
+                    id={`faq-answer-${index}`}
+                    role="region"
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="px-6 pb-6 pl-[4.5rem] pr-8">
-                      <p className={`${montserrat.className} text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4`}>
+                      {/* ACCESSIBILITY FIX: Bumped brightness to Zinc-100 */}
+                      <p className={`${montserrat.className} text-zinc-100 text-sm leading-relaxed border-t border-white/5 pt-4 font-medium`}>
                         {faq.answer}
                       </p>
                     </div>

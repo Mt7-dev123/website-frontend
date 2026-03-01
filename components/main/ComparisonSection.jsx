@@ -101,18 +101,23 @@ const ComparisonSection = () => {
 
         {/* Comparison Table */}
         <div className="relative overflow-hidden rounded-[1.2rem] border border-white/10 bg-zinc-950/80 backdrop-blur-md mb-20 shadow-2xl">
-          {/* Table Header */}
+          
+          {/* Table Header - Aligned for Mobile */}
           <div className="grid grid-cols-12 border-b border-white/10 bg-white/[0.03]">
-            <div className="col-span-6 md:col-span-5 p-6 md:p-8">
-              <span className="text-xs font-black tracking-widest text-zinc-400 uppercase">Area</span>
+            <div className="col-span-5 md:col-span-5 p-4 md:p-8">
+              <span className="text-[10px] md:text-xs font-black tracking-widest text-zinc-400 uppercase">Area</span>
             </div>
-            <div className="col-span-3 md:col-span-3 p-6 md:p-8 border-l border-white/10 bg-orange-500/10">
-              <span className="text-xs font-black tracking-widest text-orange-400 uppercase flex items-center gap-2">
-                Mt7 Managed <Zap size={14} className="fill-orange-400" aria-hidden="true" />
+            {/* Restored exact heading: Mt7 Managed */}
+            <div className="col-span-3 md:col-span-3 p-4 md:p-8 border-l border-white/10 bg-orange-500/10 flex items-center justify-center">
+              <span className="text-[9px] md:text-xs font-black tracking-widest text-orange-400 uppercase flex items-center gap-1 md:gap-2 text-center leading-tight">
+                Mt7 Managed <Zap size={12} className="fill-orange-400 shrink-0" aria-hidden="true" />
               </span>
             </div>
-            <div className="col-span-3 md:col-span-4 p-6 md:p-8 border-l border-white/10">
-              <span className="text-xs font-black tracking-widest text-white uppercase">Direct Agencies</span>
+            {/* Restored exact heading: Direct Agencies */}
+            <div className="col-span-4 md:col-span-4 p-4 md:p-8 border-l border-white/10 flex items-center justify-center">
+              <span className="text-[9px] md:text-xs font-black tracking-widest text-white uppercase text-center leading-tight">
+                Direct Agencies
+              </span>
             </div>
           </div>
 
@@ -127,35 +132,33 @@ const ComparisonSection = () => {
                 transition={{ delay: idx * 0.1 }}
                 className="grid grid-cols-12 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors group"
               >
-                <div className="col-span-6 md:col-span-5 p-6 md:p-8 flex gap-4 md:gap-6 items-start">
+                <div className="col-span-5 md:col-span-5 p-4 md:p-8 flex gap-3 md:gap-6 items-start">
                   <div className="hidden md:flex w-10 h-10 rounded-xl bg-white/5 border border-white/10 items-center justify-center text-zinc-400 group-hover:text-orange-500 group-hover:border-orange-500/30 transition-all shadow-inner">
                     {row.icon}
                   </div>
                   <div>
-                    <h4 className={`${montserrat.className} text-white font-bold text-sm md:text-base mb-1`}>
+                    <h4 className={`${montserrat.className} text-white font-bold text-[11px] md:text-base mb-1`}>
                       {row.feature}
                     </h4>
-                    {/* ACCESSIBILITY FIX: Text-zinc-300 */}
                     <p className={`${montserrat.className} text-zinc-300 text-[11px] md:text-xs leading-relaxed hidden md:block opacity-80`}>
                       {row.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="col-span-3 md:col-span-3 p-6 md:p-8 border-l border-white/10 bg-orange-500/[0.02] flex flex-col justify-center">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Check size={18} className="text-orange-500 stroke-[3px]" aria-hidden="true" />
-                    <span className={`${montserrat.className} text-white font-black text-[11px] md:text-sm`}>
+                <div className="col-span-3 md:col-span-3 p-4 md:p-8 border-l border-white/10 bg-orange-500/[0.02] flex flex-col justify-center items-center">
+                  <div className="flex items-center gap-1 md:gap-2 mb-1">
+                    <Check size={16} className="text-orange-500 stroke-[3px] shrink-0" aria-hidden="true" />
+                    <span className={`${montserrat.className} text-white font-black text-[9px] md:text-sm leading-tight text-center`}>
                       {row.mt7}
                     </span>
                   </div>
                 </div>
 
-                <div className="col-span-3 md:col-span-4 p-6 md:p-8 border-l border-white/10 flex flex-col justify-center">
-                  <div className="flex items-center gap-2 mb-1">
-                    <X size={18} className="text-zinc-400 stroke-[2px]" aria-hidden="true" />
-                    {/* ACCESSIBILITY FIX: text-zinc-100 */}
-                    <span className={`${montserrat.className} text-zinc-100 font-bold text-[11px] md:text-sm opacity-90`}>
+                <div className="col-span-4 md:col-span-4 p-4 md:p-8 border-l border-white/10 flex flex-col justify-center items-center">
+                  <div className="flex items-center gap-1 md:gap-2 mb-1">
+                    <X size={16} className="text-zinc-400 stroke-[2px] shrink-0" aria-hidden="true" />
+                    <span className={`${montserrat.className} text-zinc-100 font-bold text-[9px] md:text-sm leading-tight opacity-90 text-center`}>
                       {row.legacy}
                     </span>
                   </div>
@@ -219,7 +222,7 @@ const ComparisonSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Link href="/lead" passHref>
                 <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 69, 0, 0.4)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 69, 0, 0.3)" }}
                   whileTap={{ scale: 0.95 }}
                   className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-black text-sm rounded-full transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer`}
                 >

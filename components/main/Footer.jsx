@@ -10,7 +10,7 @@ import {
   Twitter,
   Linkedin,
   ArrowRight,
-  MapPin, // Added MapPin import
+  MapPin,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
@@ -90,35 +90,30 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter/X" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { isWhatsApp: true, href: "https://wa.me/917800007500", label: "WhatsApp" },
+    { icon: Instagram, href: "https://instagram.com", label: "Follow us on Instagram" },
+    { icon: Twitter, href: "https://twitter.com", label: "Follow us on Twitter" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "Connect with us on LinkedIn" },
+    { isWhatsApp: true, href: "https://wa.me/917800007500", label: "Message us on WhatsApp" },
   ];
 
   return (
     <>
-      {/* TOAST (non-blocking, fixed) */}
       <AnimatePresence>
         {toast && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className={`fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl text-sm font-medium shadow-lg
-              ${
-                toast.type === "success"
-                  ? "bg-green-600 text-white"
-                  : "bg-red-600 text-white"
-              }`}
+            className={`fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl text-sm font-bold shadow-2xl
+              ${toast.type === "success" ? "bg-green-600 text-white" : "bg-red-600 text-white"}`}
           >
             {toast.message}
           </motion.div>
         )}
       </AnimatePresence>
 
-      <footer className="relative bg-zinc-900/40 backdrop-blur-md pt-14 pb-6 overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
+      <footer className="relative bg-zinc-950/40 backdrop-blur-md pt-14 pb-6 overflow-hidden antialiased border-t border-white/5">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" aria-hidden="true" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
@@ -138,51 +133,46 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-white/5 border border-white/10 hover:border-red-500/50"
+                      aria-label={social.label}
+                      className="p-2 rounded-lg bg-white/5 border border-white/10 hover:border-red-500/50 transition-colors"
                       whileHover={{ y: -2 }}
                     >
                       {social.isWhatsApp ? (
-                        <FaWhatsapp
-                          size={17}
-                          className="text-gray-400 hover:text-[#25D366]"
-                        />
+                        <FaWhatsapp size={17} className="text-zinc-300 hover:text-[#25D366]" />
                       ) : (
-                        <social.icon
-                          size={17}
-                          className="text-gray-400 hover:text-white"
-                        />
+                        <social.icon size={17} className="text-zinc-300 hover:text-white" />
                       )}
                     </motion.a>
                   ))}
                 </div>
               </div>
 
-              <p className="text-gray-400 text-sm max-w-xl leading-relaxed">
-                <strong className="text-white">Mt7 Pvt. Ltd.</strong> — The 7
+              <p className="text-zinc-300 text-sm max-w-xl leading-relaxed font-medium">
+                <strong className="text-white font-bold">Mt7 Pvt. Ltd.</strong> — The 7
                 Layers Multi Tasking Company. Your business operations system
                 for marketing, finance, and HR management.
               </p>
 
-              <form
-                onSubmit={handleSubscribe}
-                className="flex flex-col sm:flex-row gap-3 max-w-md"
-              >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-red-500"
-                  required
-                />
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md">
+                <div className="flex-1 relative">
+                  <label htmlFor="footer-email" className="sr-only">Email Address</label>
+                  <input
+                    id="footer-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your email address"
+                    className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
+                    required
+                  />
+                </div>
                 <motion.button
-                  layout={false}
                   type="submit"
-                  className="px-6 py-2.5 bg-red-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 text-center"
+                  className="px-6 py-2.5 bg-red-600 text-white font-bold rounded-xl flex items-center justify-center gap-2 text-center shadow-lg shadow-red-900/20"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Subscribe <ArrowRight size={15} />
+                  Subscribe <ArrowRight size={15} strokeWidth={3} />
                 </motion.button>
               </form>
             </div>
@@ -190,7 +180,7 @@ export default function Footer() {
             <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-4 gap-6">
               {Object.entries(footerLinks).map(([title, links]) => (
                 <div key={title}>
-                  <h3 className="text-white text-[10px] uppercase tracking-widest font-bold mb-4">
+                  <h3 className="text-white text-[10px] uppercase tracking-widest font-black mb-5">
                     {title}
                   </h3>
                   <ul className="flex flex-col gap-3">
@@ -198,7 +188,7 @@ export default function Footer() {
                       <li key={link.label}>
                         <Link
                           href={link.href}
-                          className="text-gray-400 text-sm hover:text-white"
+                          className="text-zinc-300 text-sm hover:text-white transition-colors font-medium"
                         >
                           {link.label}
                         </Link>
@@ -210,54 +200,39 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" aria-hidden="true" />
 
-          <div className="flex flex-col items-center gap-4 text-center text-sm text-gray-400">
-            {/* Contact Row: Emails, Phone, and Address */}
-            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3">
-              <a
-                href="mailto:founder@Mt7.in"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <Mail size={14} className="text-red-500" />
+          <div className="flex flex-col items-center gap-6 text-center text-sm text-zinc-300 font-medium">
+            <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
+              <a href="mailto:founder@Mt7.in" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Mail size={14} className="text-red-500" aria-hidden="true" />
                 founder@Mt7.in
               </a>
-              <a
-                href="mailto:support@Mt7.in"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <Mail size={14} className="text-red-500" />
+              <a href="mailto:support@Mt7.in" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Mail size={14} className="text-red-500" aria-hidden="true" />
                 support@Mt7.in
               </a>
-              <a
-                href="tel:+917800007500"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <Phone size={14} className="text-red-500" />
+              <a href="tel:+917800007500" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Phone size={14} className="text-red-500" aria-hidden="true" />
                 +91 7800007500
               </a>
-
-              {/* Added Address Link Here */}
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Bahraich,+Uttar+Pradesh,+India"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-white transition-colors"
               >
-                <MapPin size={14} className="text-red-500" />
-                Bahraich, Uttar Pradesh, India
+                <MapPin size={14} className="text-red-500" aria-hidden="true" />
+                Bahraich, UP, India
               </a>
             </div>
 
-            {/* GSTIN & Disclaimer */}
-            <div className="text-xs text-gray-500 max-w-3xl leading-relaxed mt-2">
+            <div className="text-xs text-zinc-400 space-y-1">
               <div>Mt7 Pvt. Ltd. | GSTIN: 09AATCM9258Q1Z2</div>
-              <div className="mt-1">
-                Services delivered through vetted agency partners.
-              </div>
+              <div>Services delivered through vetted agency partners.</div>
             </div>
 
-            <div className="text-xs text-gray-500">
+            <div className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">
               © 2026 Mt7 Pvt. Ltd. All rights reserved.
             </div>
           </div>
