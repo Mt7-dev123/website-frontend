@@ -3,7 +3,7 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Montserrat } from "next/font/google";
-import Link from "next/link"; // Imported Link
+import Link from "next/link";
 import {
   Menu,
   X,
@@ -159,20 +159,20 @@ export default function Navbar() {
   return (
     <>
       {/* ================= DESKTOP NAV ================= */}
-      <div className="fixed top-6 left-0 right-0 z-50 hidden md:flex justify-center px-4 pointer-events-none">
+      <div className="fixed top-6 left-0 right-0 z-50 hidden md:flex justify-center px-4 pointer-events-none antialiased">
         <motion.div
           initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="pointer-events-auto flex items-center justify-between px-6 sm:px-8 lg:px-10 py-3 rounded-full w-full max-w-screen-xl bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl"
+          className="pointer-events-auto flex items-center justify-between px-6 sm:px-8 lg:px-10 py-3 rounded-full w-full max-w-screen-xl bg-zinc-950/60 backdrop-blur-md border border-white/10 shadow-2xl"
         >
           {/* LOGO */}
-          <span className={`${montserrat.className} font-bold text-white text-xl`}>
+          <Link href="/" className={`${montserrat.className} font-black text-white text-xl tracking-tight cursor-pointer`}>
             Mt7<span className="text-red-500">.in</span>
-          </span>
+          </Link>
 
           {/* NAV LINKS */}
-          <div className={`${montserrat.className} flex gap-10 text-sm`}>
+          <nav className={`${montserrat.className} flex gap-8 lg:gap-10 text-sm font-bold`}>
             {SECTIONS.map(({ id, label }) => {
               const active = activeSection === id;
 
@@ -180,25 +180,25 @@ export default function Navbar() {
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className={`relative py-1 transition-colors ${
-                    active ? "text-white" : "text-gray-400 hover:text-white"
+                  className={`relative py-1 transition-colors cursor-pointer ${
+                    active ? "text-white" : "text-zinc-300 hover:text-white"
                   }`}
                 >
                   {label}
                   <span
-                    className={`absolute left-0 -bottom-1 h-0.5 bg-red-500 transition-all ${
+                    className={`absolute left-0 -bottom-1.5 h-[2px] bg-red-500 transition-all duration-300 ${
                       active ? "w-full" : "w-0"
                     }`}
                   />
                 </button>
               );
             })}
-          </div>
+          </nav>
 
           {/* CTA LINKED TO /LEAD */}
           <Link
             href="/lead"
-            className="px-6 py-2 rounded-full bg-red-600 text-white text-sm font-semibold transition-transform hover:scale-105 active:scale-95"
+            className="px-6 py-2.5 rounded-full bg-red-600 text-white text-sm font-black transition-all hover:scale-105 hover:bg-red-700 active:scale-95 shadow-lg shadow-red-900/20"
           >
             Book Free Consultation
           </Link>
@@ -206,9 +206,9 @@ export default function Navbar() {
       </div>
 
       {/* ================= MOBILE TOP BAR ================= */}
-      <div className="fixed top-4 left-4 right-4 z-50 md:hidden h-14">
-        <div className="relative flex items-center justify-between px-5 h-full rounded-2xl bg-black/60 backdrop-blur-lg border border-white/10">
-          <span className={`${montserrat.className} font-bold text-white text-lg`}>
+      <div className="fixed top-4 left-4 right-4 z-50 md:hidden h-14 antialiased">
+        <div className="relative flex items-center justify-between px-5 h-full rounded-2xl bg-zinc-950/80 backdrop-blur-lg border border-white/10 shadow-xl">
+          <span className={`${montserrat.className} font-black text-white text-lg tracking-tight`}>
             MT7<span className="text-red-500">.in</span>
           </span>
 
@@ -221,7 +221,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
-                  className={`${montserrat.className} text-sm font-semibold text-white`}
+                  className={`${montserrat.className} text-[10px] uppercase tracking-widest font-black text-orange-500`}
                 >
                   {activeLabel}
                 </motion.span>
@@ -229,8 +229,12 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <button onClick={toggleMenu} className="text-white">
-            <Menu size={24} />
+          <button 
+            onClick={toggleMenu} 
+            className="text-white p-2 cursor-pointer"
+            aria-label="Open Menu"
+          >
+            <Menu size={24} aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -244,27 +248,29 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-60"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-60"
+              aria-hidden="true"
             />
 
             <motion.aside
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 30, stiffness: 350 }}
-              className="fixed inset-y-0 right-0 z-70 w-full sm:max-w-sm bg-zinc-950 border-l border-white/10 p-6 sm:p-8 flex flex-col shadow-2xl"
+              transition={{ type: "spring", damping: 35, stiffness: 400 }}
+              className="fixed inset-y-0 right-0 z-70 w-full sm:max-w-sm bg-zinc-950 border-l border-white/10 p-6 sm:p-8 flex flex-col shadow-2xl antialiased"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 blur-[100px] rounded-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 blur-[120px] rounded-full pointer-events-none" />
 
               <div className="flex justify-between items-center mb-10">
-                <span className={`${montserrat.className} text-xl font-bold text-white`}>
+                <span className={`${montserrat.className} text-2xl font-black text-white tracking-tight`}>
                   MT7<span className="text-red-500">.in</span>
                 </span>
                 <button
                   onClick={closeMenu}
-                  className="p-2 text-gray-400 hover:text-white"
+                  className="p-2 text-zinc-300 hover:text-white cursor-pointer"
+                  aria-label="Close Menu"
                 >
-                  <X size={24} />
+                  <X size={28} aria-hidden="true" />
                 </button>
               </div>
 
@@ -279,27 +285,28 @@ export default function Navbar() {
                       scrollToSection(id);
                       closeMenu();
                     }}
-                    className="group flex items-center justify-between py-4 border-b border-white/5"
+                    className="group flex items-center justify-between py-5 border-b border-white/5 cursor-pointer"
                   >
                     <span
-                      className={`${montserrat.className} text-base ${
+                      className={`${montserrat.className} text-lg font-bold ${
                         activeSection === id
-                          ? "text-white"
-                          : "text-gray-300 group-hover:text-white"
+                          ? "text-orange-500"
+                          : "text-zinc-100 group-hover:text-white"
                       }`}
                     >
                       {label}
                     </span>
                     <ArrowRight
-                      size={18}
-                      className="text-red-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+                      size={20}
+                      className="text-red-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                      aria-hidden="true"
                     />
                   </motion.button>
                 ))}
               </nav>
 
               {/* SOCIAL ICONS */}
-              <div className="flex justify-center gap-6 mt-8 text-gray-400">
+              <div className="flex justify-center gap-8 mt-12 text-zinc-400">
                 {SOCIALS.map(({ label, href, icon: Icon }) => (
                   <a
                     key={label}
@@ -307,21 +314,21 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-white transition-all transform hover:scale-110"
                   >
-                    <Icon size={20} />
+                    <Icon size={24} aria-hidden="true" />
                   </a>
                 ))}
               </div>
 
-              {/* SIDEBAR CTA LINKED TO /LEAD */}
+              {/* SIDEBAR CTA */}
               <div className="mt-auto pt-8">
                 <Link
                   href="/lead"
                   onClick={closeMenu}
-                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-red-600 text-white font-bold shadow-lg shadow-red-900/20 transition-transform active:scale-95"
+                  className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl bg-red-600 text-white font-black text-lg shadow-xl shadow-red-900/30 transition-all hover:bg-red-700 active:scale-95"
                 >
-                  Book Free Consultation <ArrowRight size={18} />
+                  Book Free Consultation <ArrowRight size={22} strokeWidth={3} />
                 </Link>
               </div>
             </motion.aside>
