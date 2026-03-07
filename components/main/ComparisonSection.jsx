@@ -76,7 +76,8 @@ const ComparisonSection = () => {
         {/* Header */}
         <div className="flex flex-col items-start md:-mt-5 max-w-3xl mb-16">
           <div className="inline-block">
-            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-orange-500 mb-2`}>
+            {/* Updated to Dark Orange #d83b00 */}
+            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-[#d83b00] mb-2`}>
               Comparison
             </p>
             <motion.div
@@ -84,12 +85,12 @@ const ComparisonSection = () => {
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "circOut", delay: 0.5 }}
-              className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
+              className="h-[2px] bg-gradient-to-r from-[#d83b00] to-transparent"
               aria-hidden="true"
             />
           </div>
 
-          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-zinc-200 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)]`}>
+          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-zinc-200 to-[#d83b00] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(216,59,0,0.2)]`}>
             The Mt7 Difference
           </h2>
 
@@ -108,9 +109,9 @@ const ComparisonSection = () => {
               <span className="text-[10px] md:text-xs font-black tracking-widest text-zinc-400 uppercase">Area</span>
             </div>
             {/* Restored exact heading: Mt7 Managed */}
-            <div className="col-span-3 md:col-span-3 p-4 md:p-8 border-l border-white/10 bg-orange-500/10 flex items-center justify-center">
-              <span className="text-[9px] md:text-xs font-black tracking-widest text-orange-400 uppercase flex items-center gap-1 md:gap-2 text-center leading-tight">
-                Mt7 Managed <Zap size={12} className="fill-orange-400 shrink-0" aria-hidden="true" />
+            <div className="col-span-3 md:col-span-3 p-4 md:p-8 border-l border-white/10 bg-[#d83b00]/10 flex items-center justify-center">
+              <span className="text-[9px] md:text-xs font-black tracking-widest text-[#d83b00] uppercase flex items-center gap-1 md:gap-2 text-center leading-tight">
+                Mt7 Managed <Zap size={12} className="fill-[#d83b00] shrink-0" aria-hidden="true" />
               </span>
             </div>
             {/* Restored exact heading: Direct Agencies */}
@@ -133,7 +134,7 @@ const ComparisonSection = () => {
                 className="grid grid-cols-12 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors group"
               >
                 <div className="col-span-5 md:col-span-5 p-4 md:p-8 flex gap-3 md:gap-6 items-start">
-                  <div className="hidden md:flex w-10 h-10 rounded-xl bg-white/5 border border-white/10 items-center justify-center text-zinc-400 group-hover:text-orange-500 group-hover:border-orange-500/30 transition-all shadow-inner">
+                  <div className="hidden md:flex w-10 h-10 rounded-xl bg-white/5 border border-white/10 items-center justify-center text-zinc-400 group-hover:text-[#d83b00] group-hover:border-[#d83b00]/30 transition-all shadow-inner">
                     {row.icon}
                   </div>
                   <div>
@@ -146,9 +147,9 @@ const ComparisonSection = () => {
                   </div>
                 </div>
 
-                <div className="col-span-3 md:col-span-3 p-4 md:p-8 border-l border-white/10 bg-orange-500/[0.02] flex flex-col justify-center items-center">
+                <div className="col-span-3 md:col-span-3 p-4 md:p-8 border-l border-white/10 bg-[#d83b00]/[0.02] flex flex-col justify-center items-center">
                   <div className="flex items-center gap-1 md:gap-2 mb-1">
-                    <Check size={16} className="text-orange-500 stroke-[3px] shrink-0" aria-hidden="true" />
+                    <Check size={16} className="text-[#d83b00] stroke-[3px] shrink-0" aria-hidden="true" />
                     <span className={`${montserrat.className} text-white font-black text-[9px] md:text-sm leading-tight text-center`}>
                       {row.mt7}
                     </span>
@@ -193,9 +194,9 @@ const ComparisonSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                className="p-6 rounded-[1.2rem] bg-zinc-950/60 border border-white/10 hover:border-orange-500/40 transition-all shadow-xl"
+                className="p-6 rounded-[1.2rem] bg-zinc-950/60 border border-white/10 hover:border-[#d83b00]/40 transition-all shadow-xl"
               >
-                <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4 text-orange-500">
+                <div className="w-10 h-10 rounded-xl bg-[#d83b00]/10 flex items-center justify-center mb-4 text-[#d83b00]">
                   <item.icon size={20} aria-hidden="true" />
                 </div>
                 <h4 className={`${montserrat.className} text-white font-bold text-sm mb-2`}>
@@ -209,7 +210,7 @@ const ComparisonSection = () => {
           </div>
         </div>
 
-        {/* Ready Section */}
+        {/* Ready Section - Updated CTA to Option B #d83b00 */}
         <div className="bg-zinc-950/60 p-6 md:p-12 rounded-[2rem] border border-white/10 mb-20 shadow-2xl">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className={`${montserrat.className} text-2xl md:text-3xl font-black text-white mb-4`}>
@@ -222,9 +223,9 @@ const ComparisonSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Link href="/lead" passHref>
                 <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 69, 0, 0.3)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(216, 59, 0, 0.4)" }}
                   whileTap={{ scale: 0.95 }}
-                  className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-black text-sm rounded-full transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer`}
+                  className={`${montserrat.className} px-8 py-4 bg-[#d83b00] text-white font-black text-sm rounded-full transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer hover:bg-[#b33100]`}
                 >
                   <Rocket className="w-5 h-5" aria-hidden="true" />
                   Book Free Consultation

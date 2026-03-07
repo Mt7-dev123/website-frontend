@@ -168,7 +168,7 @@ export default function Navbar() {
         >
           {/* LOGO */}
           <Link href="/" className={`${montserrat.className} font-black text-white text-xl tracking-tight cursor-pointer`}>
-            Mt7<span className="text-red-500">.in</span>
+            Mt7<span className="text-[#d83b00]">.in</span>
           </Link>
 
           {/* NAV LINKS */}
@@ -186,7 +186,7 @@ export default function Navbar() {
                 >
                   {label}
                   <span
-                    className={`absolute left-0 -bottom-1.5 h-[2px] bg-red-500 transition-all duration-300 ${
+                    className={`absolute left-0 -bottom-1.5 h-[2px] bg-[#d83b00] transition-all duration-300 ${
                       active ? "w-full" : "w-0"
                     }`}
                   />
@@ -195,10 +195,10 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* CTA LINKED TO /LEAD */}
+          {/* CTA - OPTION B: Darkened orange with White Text */}
           <Link
             href="/lead"
-            className="px-6 py-2.5 rounded-full bg-red-600 text-white text-sm font-black transition-all hover:scale-105 hover:bg-red-700 active:scale-95 shadow-lg shadow-red-900/20"
+            className="px-6 py-2.5 rounded-full bg-[#d83b00] text-white text-sm font-black transition-all hover:scale-105 hover:bg-[#b33100] active:scale-95 shadow-lg shadow-[#d83b00]/20"
           >
             Book Free Consultation
           </Link>
@@ -209,7 +209,7 @@ export default function Navbar() {
       <div className="fixed top-4 left-4 right-4 z-50 md:hidden h-14 antialiased">
         <div className="relative flex items-center justify-between px-5 h-full rounded-2xl bg-zinc-950/80 backdrop-blur-lg border border-white/10 shadow-xl">
           <span className={`${montserrat.className} font-black text-white text-lg tracking-tight`}>
-            MT7<span className="text-red-500">.in</span>
+            MT7<span className="text-[#d83b00]">.in</span>
           </span>
 
           <div className="absolute left-1/2 -translate-x-1/2">
@@ -221,7 +221,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
-                  className={`${montserrat.className} text-[10px] uppercase tracking-widest font-black text-orange-500`}
+                  className={`${montserrat.className} text-[10px] uppercase tracking-widest font-black text-[#d83b00]`}
                 >
                   {activeLabel}
                 </motion.span>
@@ -259,11 +259,11 @@ export default function Navbar() {
               transition={{ type: "spring", damping: 35, stiffness: 400 }}
               className="fixed inset-y-0 right-0 z-70 w-full sm:max-w-sm bg-zinc-950 border-l border-white/10 p-6 sm:p-8 flex flex-col shadow-2xl antialiased"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 blur-[120px] rounded-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#d83b00]/5 blur-[120px] rounded-full pointer-events-none" />
 
               <div className="flex justify-between items-center mb-10">
                 <span className={`${montserrat.className} text-2xl font-black text-white tracking-tight`}>
-                  MT7<span className="text-red-500">.in</span>
+                  MT7<span className="text-[#d83b00]">.in</span>
                 </span>
                 <button
                   onClick={closeMenu}
@@ -290,7 +290,7 @@ export default function Navbar() {
                     <span
                       className={`${montserrat.className} text-lg font-bold ${
                         activeSection === id
-                          ? "text-orange-500"
+                          ? "text-[#d83b00]"
                           : "text-zinc-100 group-hover:text-white"
                       }`}
                     >
@@ -298,7 +298,7 @@ export default function Navbar() {
                     </span>
                     <ArrowRight
                       size={20}
-                      className="text-red-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                      className="text-[#d83b00] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                       aria-hidden="true"
                     />
                   </motion.button>
@@ -321,12 +321,12 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* SIDEBAR CTA */}
+              {/* MOBILE CTA - OPTION B: Darkened orange with White Text */}
               <div className="mt-auto pt-8">
                 <Link
                   href="/lead"
                   onClick={closeMenu}
-                  className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl bg-red-600 text-white font-black text-lg shadow-xl shadow-red-900/30 transition-all hover:bg-red-700 active:scale-95"
+                  className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl bg-[#d83b00] text-white font-black text-lg shadow-xl shadow-[#d83b00]/30 transition-all hover:bg-[#b33100] active:scale-95"
                 >
                   Book Free Consultation <ArrowRight size={22} strokeWidth={3} />
                 </Link>

@@ -306,7 +306,7 @@ const ClientsSection = () => {
             reduceMotion ? { opacity: 0.35 } : { opacity: [0.25, 0.45, 0.25] }
           }
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-gradient-to-r from-red-900/10 via-transparent to-orange-900/10 blur-[120px]"
+          className="absolute inset-0 bg-gradient-to-r from-red-900/10 via-transparent to-[#d83b00]/10 blur-[120px]"
         />
       </div>
 
@@ -315,7 +315,7 @@ const ClientsSection = () => {
         <div className="max-w-3xl mb-16 text-left">
           <div className="inline-block">
             <p
-              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-orange-500 mb-2`}
+              className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-[#d83b00] mb-2`}
             >
               CURRENTLY ONBOARDING
             </p>
@@ -324,22 +324,21 @@ const ClientsSection = () => {
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "circOut", delay: 0.4 }}
-              className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
+              className="h-[2px] bg-gradient-to-r from-[#d83b00] to-transparent"
               aria-hidden="true"
             />
           </div>
 
           <h2
             className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 leading-tight
-            bg-gradient-to-r from-white via-zinc-200 to-orange-500
+            bg-gradient-to-r from-white via-zinc-200 to-[#d83b00]
             bg-clip-text text-transparent
-            drop-shadow-[0_4px_12px_rgba(255,69,0,0.25)]`}
+            drop-shadow-[0_4px_12px_rgba(216,59,0,0.25)]`}
           >
             Building Our Founding <br />
-            <span className="text-orange-500">Client Portfolio</span>
+            <span className="text-[#d83b00]">Client Portfolio</span>
           </h2>
-          {/* ACCESSIBILITY FIX: Text brightness bumped to zinc-200 */}
-          <p className="text-zinc-200 mt-4 leading-relaxed font-medium opacity-90">
+          <p className="text-zinc-200 mt-4 font-medium opacity-90">
             We are currently hand-picking 10 ambitious companies to join our
             founding cohort. No fake testimonials, just real results for real
             founders.
@@ -357,9 +356,9 @@ const ClientsSection = () => {
           {CLIENT_STATS.map((stat) => (
             <div
               key={stat.label}
-              className="bg-zinc-950/60 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center group hover:border-orange-500/40 transition-all shadow-xl"
+              className="bg-zinc-950/60 border border-white/10 backdrop-blur-sm rounded-2xl p-6 text-center group hover:border-[#d83b00]/40 transition-all shadow-xl"
             >
-              <div className="text-3xl font-black bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+              <div className="text-3xl font-black bg-gradient-to-r from-[#d83b00] to-red-500 bg-clip-text text-transparent">
                 {stat.value}
               </div>
               <div className="text-zinc-300 text-[10px] uppercase font-black tracking-widest mt-2 group-hover:text-white transition-colors">
@@ -381,8 +380,7 @@ const ClientsSection = () => {
               whileHover={{ y: -8 }}
               className="relative p-8 rounded-[2.5rem] bg-zinc-950/80 border border-white/10 backdrop-blur-xl flex flex-col h-full shadow-2xl"
             >
-              <Quote size={40} className="text-orange-500/20 mb-6" aria-hidden="true" />
-              {/* ACCESSIBILITY FIX: Gray-300 bumped to Zinc-100 */}
+              <Quote size={40} className="text-[#d83b00]/20 mb-6" aria-hidden="true" />
               <p
                 className={`${montserrat.className} text-zinc-100 italic mb-8 flex-1 leading-relaxed text-base font-medium`}
               >
@@ -401,7 +399,7 @@ const ClientsSection = () => {
                 />
                 <div>
                   <p className="text-white font-bold text-sm">{t.name}</p>
-                  <p className="text-orange-400 text-[10px] font-black uppercase tracking-widest">
+                  <p className="text-[#d83b00] text-[10px] font-black uppercase tracking-widest">
                     {t.role}
                   </p>
                 </div>
@@ -415,7 +413,7 @@ const ClientsSection = () => {
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative p-10 md:p-16 rounded-[3rem] border border-orange-500/20 bg-zinc-950/40 backdrop-blur-md overflow-hidden text-center shadow-2xl"
+          className="relative p-10 md:p-16 rounded-[3rem] border border-[#d83b00]/20 bg-zinc-950/40 backdrop-blur-md overflow-hidden text-center shadow-2xl"
         >
           <div className="flex flex-col items-center gap-6">
             <h3 className="text-white text-lg font-black uppercase tracking-tight">
@@ -426,7 +424,7 @@ const ClientsSection = () => {
               {INDUSTRIES.map((industry) => (
                 <span
                   key={industry}
-                  className="px-5 py-2 rounded-full border border-orange-500/30 bg-orange-500/10 text-white text-xs font-black uppercase tracking-widest shadow-sm"
+                  className="px-5 py-2 rounded-full border border-[#d83b00]/30 bg-[#d83b00]/10 text-white text-xs font-black uppercase tracking-widest shadow-sm"
                 >
                   {industry}
                 </span>
@@ -449,9 +447,9 @@ const ClientsSection = () => {
 
             <Link href="/lead" passHref>
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 69, 0, 0.4)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(216, 59, 0, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-6 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-black rounded-full shadow-lg flex items-center gap-3 group cursor-pointer transition-all"
+                className="mt-6 px-10 py-5 bg-gradient-to-r from-[#d83b00] to-red-700 text-white font-black rounded-full shadow-lg flex items-center gap-3 group cursor-pointer transition-all"
               >
                 Apply for Founding Status
                 <FiArrowRight strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
@@ -459,21 +457,21 @@ const ClientsSection = () => {
             </Link>
           </div>
 
-          <FiZap className="absolute -bottom-10 -left-10 text-[200px] text-orange-500/5 -rotate-12" aria-hidden="true" />
+          <FiZap className="absolute -bottom-10 -left-10 text-[200px] text-[#d83b00]/5 -rotate-12" aria-hidden="true" />
         </motion.div>
 
         {/* Benefits Bar */}
         <div className="mt-20 flex flex-wrap justify-center gap-x-12 gap-y-6">
           <div className="flex items-center gap-2 text-zinc-300 text-[10px] font-black uppercase tracking-[0.2em]">
-            <CheckCircle2 size={14} className="text-orange-500" aria-hidden="true" />
+            <CheckCircle2 size={14} className="text-[#d83b00]" aria-hidden="true" />
             Founder Pricing (30% Off)
           </div>
           <div className="flex items-center gap-2 text-zinc-300 text-[10px] font-black uppercase tracking-[0.2em]">
-            <CheckCircle2 size={14} className="text-orange-500" aria-hidden="true" />
+            <CheckCircle2 size={14} className="text-[#d83b00]" aria-hidden="true" />
             Priority Onboarding
           </div>
           <div className="flex items-center gap-2 text-zinc-300 text-[10px] font-black uppercase tracking-[0.2em]">
-            <CheckCircle2 size={14} className="text-orange-500" aria-hidden="true" />
+            <CheckCircle2 size={14} className="text-[#d83b00]" aria-hidden="true" />
             Lifetime Benefits
           </div>
         </div>

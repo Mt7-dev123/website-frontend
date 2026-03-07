@@ -46,21 +46,21 @@ export default function HeroSection() {
               <motion.h1
                 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-6`}
               >
-                {/* EYEBROW - Increased brightness for contrast */}
-                <span className="block text-sm tracking-widest uppercase mb-3 bg-gradient-to-r from-white via-orange-300 to-orange-500 bg-clip-text text-transparent opacity-100">
+                {/* EYEBROW - Updated to darkened orange #d83b00 */}
+                <span className="block text-sm tracking-widest uppercase mb-3 bg-gradient-to-r from-white via-orange-300 to-[#d83b00] bg-clip-text text-transparent opacity-100">
                   For Startups Drowning in Agency Chaos
                 </span>
 
-                <span className="block bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-white via-[#ffae42] to-[#d83b00] bg-clip-text text-transparent">
                   Stop Juggling Agencies.
                 </span>
 
                 <span className="block relative mt-2">
-                  <span className="bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.3)]">
+                  <span className="bg-gradient-to-r from-white via-[#ffae42] to-[#d83b00] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(216,59,0,0.3)]">
                     Start Growing Your Business.
                   </span>
                   <motion.span
-                    className="absolute -bottom-3 left-0 h-1 bg-[#ff4500] rounded-full shadow-[0_0_15px_#ff4500]"
+                    className="absolute -bottom-3 left-0 h-1 bg-[#d83b00] rounded-full shadow-[0_0_15px_rgba(216,59,0,0.5)]"
                     initial={{ width: 0 }}
                     animate={{ width: "220px" }}
                     transition={{ delay: 0.8, duration: 1 }}
@@ -69,7 +69,6 @@ export default function HeroSection() {
               </motion.h1>
             </header>
 
-            {/* Paragraph brightness bumped for readability (Accessibility Fix) */}
             <p
               className={`${montserrat.className} text-lg text-zinc-100 font-light leading-relaxed mb-10 max-w-xl`}
             >
@@ -102,15 +101,16 @@ export default function HeroSection() {
               </div>
 
               <div className="flex flex-wrap gap-4">
+                {/* BUTTON OPTION B: Darkened orange #d83b00 with White Text */}
                 <motion.button
                   onClick={scrollToHowItWorks}
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 0 25px rgba(255, 69, 0, 0.5)",
+                    boxShadow: "0 0 25px rgba(216, 59, 0, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Learn how our process works"
-                  className={`${montserrat.className} px-8 py-4 bg-[#ff4500] text-white font-bold rounded-xl shadow-lg cursor-pointer transition-shadow`}
+                  className={`${montserrat.className} px-8 py-4 bg-[#d83b00] text-white font-bold rounded-xl shadow-lg cursor-pointer transition-shadow`}
                 >
                   See How It Works →
                 </motion.button>
@@ -119,7 +119,7 @@ export default function HeroSection() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`${montserrat.className} px-8 py-4 border-2 border-[#ff4500] text-[#ffae42] font-bold rounded-xl cursor-pointer hover:bg-[#ff4500]/5 transition-colors`}
+                    className={`${montserrat.className} px-8 py-4 border-2 border-[#d83b00] text-[#ffae42] font-bold rounded-xl cursor-pointer hover:bg-[#d83b00]/5 transition-colors`}
                   >
                     Book Free Consultation
                   </motion.button>
@@ -139,7 +139,7 @@ export default function HeroSection() {
                 src="/work.png"
                 alt="Operational Management Dashboard Preview"
                 fill
-                priority // Performance Fix: Loads hero image immediately
+                priority 
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover opacity-90"
               />
@@ -148,13 +148,13 @@ export default function HeroSection() {
 
             {/* 100+ AGENCY PARTNERS CARD */}
             <div className="absolute -bottom-6 md:-bottom-4 -left-3 md:-left-6 w-32 h-24 md:w-40 md:h-32 flex items-center justify-center">
-              <div className="absolute inset-0 rounded-2xl border-2 md:border-4 border-[#ff4500]/30 blur-[1px] animate-pulse" />
+              <div className="absolute inset-0 rounded-2xl border-2 md:border-4 border-[#d83b00]/30 blur-[1px] animate-pulse" />
 
-              <div className="relative w-full h-full rounded-2xl bg-black/95 backdrop-blur-xl border-2 md:border-4 border-[#ff4500]/60 px-2 flex flex-col items-center justify-center shadow-[0_0_40px_rgba(255,69,0,0.3)]">
+              <div className="relative w-full h-full rounded-2xl bg-black/95 backdrop-blur-xl border-2 md:border-4 border-[#d83b00]/60 px-2 flex flex-col items-center justify-center shadow-[0_0_40px_rgba(216,59,0,0.3)]">
                 <div className="text-zinc-300 text-[8px] md:text-[10px] mb-1 font-bold tracking-widest uppercase">
                   Connected
                 </div>
-                <div className="text-xs md:text-base lg:text-lg font-black text-[#ff4500] drop-shadow-[0_0_8px_rgba(255,69,0,0.6)] text-center leading-tight">
+                <div className="text-xs md:text-base lg:text-lg font-black text-[#d83b00] drop-shadow-[0_0_8px_rgba(216,59,0,0.6)] text-center leading-tight">
                   100+ Agency <br /> Partners
                 </div>
               </div>

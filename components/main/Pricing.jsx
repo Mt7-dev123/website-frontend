@@ -17,7 +17,7 @@ import {
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -59,7 +59,7 @@ const plans = [
     title: "FULL STACK",
     subtitle: "We Find + Manage Everything",
     description: "Complete hands-off operations. We handle it all.",
-    icon: <ShieldCheck className="text-orange-500" size={24} />,
+    icon: <ShieldCheck className="text-[#d83b00]" size={24} />,
     features: [
       "Agency matching & vetting",
       "Daily coordination & QA",
@@ -98,14 +98,13 @@ const plans = [
 
 const PlansAndPricing = () => {
   return (
-    // Updated padding to py-10 as requested
     <section id="plans" className="relative py-10 bg-transparent overflow-hidden antialiased">
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-14">
         {/* ================= HEADER ================= */}
-        {/* Balanced spacing at mb-10 */}
         <div className="max-w-3xl mb-10">
           <div className="inline-block">
-            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-orange-500 mb-2`}>
+            {/* Updated to Option B Dark Orange */}
+            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-black text-[#d83b00] mb-2`}>
               Choose Your Plan
             </p>
             <motion.div
@@ -113,7 +112,7 @@ const PlansAndPricing = () => {
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "circOut", delay: 0.4 }}
-              className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
+              className="h-[2px] bg-gradient-to-r from-[#d83b00] to-transparent"
             />
           </div>
 
@@ -127,7 +126,6 @@ const PlansAndPricing = () => {
         </div>
 
         {/* ================= PLANS GRID ================= */}
-        {/* Balanced bottom margin at mb-10 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {plans.map((plan, i) => (
             <motion.div
@@ -139,14 +137,14 @@ const PlansAndPricing = () => {
               className={`relative p-8 rounded-[2rem] border backdrop-blur-xl flex flex-col transition-all duration-300
                 ${
                   plan.highlight
-                    ? "bg-zinc-900/80 border-orange-500 shadow-2xl shadow-orange-900/30 scale-105 z-20"
+                    ? "bg-zinc-900/80 border-[#d83b00] shadow-2xl shadow-[#d83b00]/20 scale-105 z-20"
                     : "bg-zinc-950/60 border-white/10 hover:border-white/20"
                 }
               `}
             >
               {plan.badge && (
-                <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[10px] font-black text-black flex items-center gap-1.5 whitespace-nowrap shadow-xl bg-orange-500`}>
-                  {plan.highlight ? <Star size={12} fill="black" /> : <Rocket size={12} fill="black" />}
+                <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[10px] font-black text-white flex items-center gap-1.5 whitespace-nowrap shadow-xl bg-[#d83b00]`}>
+                  {plan.highlight ? <Star size={12} fill="white" /> : <Rocket size={12} fill="white" />}
                   {plan.badge}
                 </div>
               )}
@@ -156,7 +154,9 @@ const PlansAndPricing = () => {
               </div>
 
               <h3 className="text-white text-xl font-bold tracking-tight mb-1">{plan.title}</h3>
-              <p className="text-orange-500 text-xs font-black tracking-wide mb-4 uppercase">
+              
+              {/* Updated to Option B Dark Orange */}
+              <p className="text-[#d83b00] text-xs font-black tracking-wide mb-4 uppercase">
                 {plan.subtitle}
               </p>
 
@@ -167,14 +167,14 @@ const PlansAndPricing = () => {
               <ul className="space-y-3 text-xs text-zinc-200 mb-8 flex-1">
                 {plan.features.map((f, idx) => (
                   <li key={idx} className="flex gap-3 items-start">
-                    <CheckCircle2 size={16} className="text-orange-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={16} className="text-[#d83b00] shrink-0 mt-0.5" />
                     <span className="leading-snug font-medium">{f}</span>
                   </li>
                 ))}
               </ul>
 
               {plan.extra && (
-                <p className="text-orange-400 text-xs italic mb-6 font-medium bg-orange-500/5 p-2 rounded-lg border border-orange-500/10">
+                <p className="text-[#d83b00]/90 text-xs italic mb-6 font-medium bg-[#d83b00]/5 p-2 rounded-lg border border-[#d83b00]/10">
                   {plan.extra}
                 </p>
               )}
@@ -187,7 +187,7 @@ const PlansAndPricing = () => {
               </div>
 
               {plan.slots && (
-                <p className="text-red-500 text-[11px] font-black uppercase tracking-tighter mb-4 text-center">
+                <p className="text-red-400 text-[11px] font-black uppercase tracking-tighter mb-4 text-center">
                   {plan.slots}
                 </p>
               )}
@@ -199,7 +199,7 @@ const PlansAndPricing = () => {
                   className={`w-full py-4 rounded-2xl text-xs font-black tracking-widest uppercase flex items-center justify-center gap-2 transition-all cursor-pointer
                     ${
                       plan.highlight
-                        ? "bg-orange-500 text-white shadow-lg shadow-orange-600/40 hover:bg-orange-600"
+                        ? "bg-[#d83b00] text-white shadow-lg shadow-[#d83b00]/30 hover:bg-[#b33100]"
                         : "bg-white/5 text-white border border-white/10 hover:bg-white/10"
                     } 
                   `}

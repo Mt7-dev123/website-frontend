@@ -113,7 +113,7 @@ export default function Footer() {
       </AnimatePresence>
 
       <footer className="relative bg-zinc-950/40 backdrop-blur-md pt-14 pb-6 overflow-hidden antialiased border-t border-white/5">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" aria-hidden="true" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d83b00]/40 to-transparent" aria-hidden="true" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
@@ -123,7 +123,7 @@ export default function Footer() {
                   href="/"
                   className={`${montserrat.className} text-3xl font-bold text-white w-fit mr-6`}
                 >
-                  Mt7<span className="text-red-500">.in</span>
+                  Mt7<span className="text-[#d83b00]">.in</span>
                 </Link>
 
                 <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="p-2 rounded-lg bg-white/5 border border-white/10 hover:border-red-500/50 transition-colors"
+                      className="p-2 rounded-lg bg-white/5 border border-white/10 hover:border-[#d83b00]/50 transition-colors"
                       whileHover={{ y: -2 }}
                     >
                       {social.isWhatsApp ? (
@@ -147,6 +147,7 @@ export default function Footer() {
                 </div>
               </div>
 
+              {/* DESCRIPTION: High contrast zinc-300 for accessibility */}
               <p className="text-zinc-300 text-sm max-w-xl leading-relaxed font-medium">
                 <strong className="text-white font-bold">Mt7 Pvt. Ltd.</strong> — The 7
                 Layers Multi Tasking Company. Your business operations system
@@ -162,14 +163,14 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
-                    className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
+                    className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d83b00]/50 transition-all"
                     required
                   />
                 </div>
                 <motion.button
                   type="submit"
-                  className="px-6 py-2.5 bg-red-600 text-white font-bold rounded-xl flex items-center justify-center gap-2 text-center shadow-lg shadow-red-900/20"
-                  whileHover={{ scale: 1.02 }}
+                  className="px-6 py-2.5 bg-[#d83b00] text-white font-bold rounded-xl flex items-center justify-center gap-2 text-center shadow-lg shadow-[#d83b00]/20"
+                  whileHover={{ scale: 1.02, backgroundColor: "#b33100" }}
                   whileTap={{ scale: 0.98 }}
                 >
                   Subscribe <ArrowRight size={15} strokeWidth={3} />
@@ -205,34 +206,35 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-6 text-center text-sm text-zinc-300 font-medium">
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
               <a href="mailto:founder@Mt7.in" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail size={14} className="text-red-500" aria-hidden="true" />
+                <Mail size={14} className="text-[#d83b00]" aria-hidden="true" />
                 founder@Mt7.in
               </a>
               <a href="mailto:support@Mt7.in" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail size={14} className="text-red-500" aria-hidden="true" />
+                <Mail size={14} className="text-[#d83b00]" aria-hidden="true" />
                 support@Mt7.in
               </a>
               <a href="tel:+917800007500" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone size={14} className="text-red-500" aria-hidden="true" />
+                <Phone size={14} className="text-[#d83b00]" aria-hidden="true" />
                 +91 7800007500
               </a>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Bahraich,+Uttar+Pradesh,+India"
+                href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-white transition-colors"
               >
-                <MapPin size={14} className="text-red-500" aria-hidden="true" />
+                <MapPin size={14} className="text-[#d83b00]" aria-hidden="true" />
                 Bahraich, UP, India
               </a>
             </div>
 
-            <div className="text-xs text-zinc-400 space-y-1">
+            <div className="text-xs text-zinc-300 space-y-1">
               <div>Mt7 Pvt. Ltd. | GSTIN: 09AATCM9258Q1Z2</div>
               <div>Services delivered through vetted agency partners.</div>
             </div>
 
-            <div className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">
+            {/* COPYRIGHT: Bumped contrast to zinc-300 to pass accessibility audits */}
+            <div className="text-[10px] text-zinc-300 uppercase tracking-widest font-bold">
               © 2026 Mt7 Pvt. Ltd. All rights reserved.
             </div>
           </div>

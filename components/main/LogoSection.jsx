@@ -35,8 +35,9 @@ const LogoSection = () => {
           {/* HEADER */}
           <div className="flex flex-col items-center text-center mb-16">
             <div className="inline-block mb-6">
+              {/* Updated to Dark Orange #d83b00 */}
               <p
-                className={`${montserrat.className} uppercase tracking-[0.4em] text-[10px] font-black text-orange-500`}
+                className={`${montserrat.className} uppercase tracking-[0.4em] text-[10px] font-black text-[#d83b00]`}
               >
                 Trusted Partners
               </p>
@@ -44,7 +45,7 @@ const LogoSection = () => {
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="h-[1.5px] bg-[#ff4500] rounded-full shadow-[0_0_10px_#ff4500] mt-1"
+                className="h-[1.5px] bg-[#d83b00] rounded-full shadow-[0_0_10px_rgba(216,59,0,0.5)] mt-1"
                 aria-hidden="true"
               />
             </div>
@@ -81,7 +82,7 @@ const LogoSection = () => {
                     className="flex items-center gap-5 group transition-all duration-300"
                   >
                     <div
-                      className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-orange-500/20 group-hover:border-orange-500/50"
+                      className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#d83b00]/20 group-hover:border-[#d83b00]/50"
                     >
                       <Image
                         src={logo.src}
@@ -98,7 +99,7 @@ const LogoSection = () => {
                     </span>
                   </div>
                 ))}
-                {/* Duplicate Set for Loop (Hidden from Screen Readers) */}
+                {/* Duplicate Set for Loop */}
                 {LOGOS.map((logo, i) => (
                   <div
                     key={`logo-2-${i}`}
@@ -106,7 +107,7 @@ const LogoSection = () => {
                     className="flex items-center gap-5 group transition-all duration-300"
                   >
                     <div
-                      className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-orange-500/20 group-hover:border-orange-500/50"
+                      className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-[#d83b00]/20 group-hover:border-[#d83b00]/50"
                     >
                       <Image
                         src={logo.src}
@@ -127,7 +128,7 @@ const LogoSection = () => {
             </div>
           </div>
 
-          {/* FOOTER TEXT - Contrast Fixed */}
+          {/* FOOTER TEXT */}
           <p
             className={`${montserrat.className} text-center mt-16 text-zinc-100 text-xs font-black tracking-widest uppercase opacity-80`}
           >

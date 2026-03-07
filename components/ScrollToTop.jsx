@@ -12,10 +12,7 @@ export default function ScrollToTop() {
       setShowScrollTop(window.scrollY > 300);
     };
     
-    // Add scroll listener
     window.addEventListener("scroll", handleScroll);
-    
-    // Initial check
     handleScroll();
     
     return () => window.removeEventListener("scroll", handleScroll);
@@ -33,12 +30,12 @@ export default function ScrollToTop() {
         scale: showScrollTop ? 1 : 0.8
       }}
       onClick={scrollToTop}
-      className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 p-2 md:p-3 rounded-full bg-red-600 hover:bg-red-500 border border-red-500/30 shadow-lg shadow-red-900/30 transition-all duration-200 group"
+      className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 p-2 md:p-3 rounded-full bg-[#d83b00] hover:bg-[#b33100] border border-[#d83b00]/30 shadow-lg shadow-orange-900/30 transition-all duration-200 group cursor-pointer flex items-center justify-center"
       aria-label="Scroll to top"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
-      <ArrowUp className="text-white group-hover:-translate-y-0.5 transition-transform" size={16} />
+      <ArrowUp className="text-white group-hover:-translate-y-0.5 transition-transform" size={20} strokeWidth={3} />
     </motion.button>
   );
 }

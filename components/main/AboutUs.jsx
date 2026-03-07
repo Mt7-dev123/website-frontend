@@ -43,7 +43,7 @@ const AboutSection = () => {
         {/* --- HEADER SECTION --- */}
         <div className="flex flex-col items-start md:-mt-5 max-w-3xl mb-16">
           <div className="inline-block">
-            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
+            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-[#d83b00] mb-2`}>
               About Mt7
             </p>
             <motion.div
@@ -51,11 +51,11 @@ const AboutSection = () => {
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "circOut", delay: 0.5 }}
-              className="h-[2px] bg-gradient-to-r from-orange-500 to-transparent"
+              className="h-[2px] bg-gradient-to-r from-[#d83b00] to-transparent"
             />
           </div>
 
-          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.2)] tracking-tight`}>
+          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-orange-200 to-[#d83b00] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(216,59,0,0.2)] tracking-tight`}>
             The 7 Layers Multi Tasking Company
           </h2>
 
@@ -106,9 +106,9 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="p-6 md:p-8 rounded-[1.2rem] border border-orange-500/30 bg-gradient-to-br from-orange-500/[0.08] to-transparent backdrop-blur-md relative overflow-hidden shadow-2xl"
+            className="p-6 md:p-8 rounded-[1.2rem] border border-[#d83b00]/30 bg-gradient-to-br from-[#d83b00]/[0.08] to-transparent backdrop-blur-md relative overflow-hidden shadow-2xl"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 blur-[50px] rounded-full" aria-hidden="true" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#d83b00]/10 blur-[50px] rounded-full" aria-hidden="true" />
 
             <div className="flex items-center gap-3 mb-5">
               <div className="p-2.5 bg-orange-500/20 rounded-full text-orange-400">
@@ -131,7 +131,7 @@ const AboutSection = () => {
                 { title: "Guaranteed Quality", desc: "Free replacement if standards drop." },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-orange-600 text-white font-black text-[10px]">
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#d83b00] text-white font-black text-[10px]">
                     {i + 1}
                   </span>
                   <div>
@@ -165,10 +165,10 @@ const AboutSection = () => {
               <motion.div
                 key={idx}
                 whileHover={{ y: -5 }}
-                className="p-6 rounded-[1.2rem] border border-white/10 bg-zinc-900/60 flex flex-col items-center text-center hover:border-orange-500/40 transition-colors"
+                className="p-6 rounded-[1.2rem] border border-white/10 bg-zinc-900/60 flex flex-col items-center text-center hover:border-[#d83b00]/40 transition-colors"
               >
-                <Layers className="text-orange-500 mb-4" size={28} />
-                <h4 className="text-white font-extrabold text-lg mb-3 tracking-tight">
+                <Layers className="text-[#d83b00]" size={28} />
+                <h4 className="text-white font-extrabold text-lg mt-4 mb-3 tracking-tight">
                   {domain.title}
                 </h4>
                 <div className="flex flex-wrap justify-center gap-2">
@@ -183,50 +183,6 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* --- TEAM SECTION (COMMENTED OUT AS REQUESTED) --- */}
-        {/* <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center mb-20 bg-zinc-900/20 p-6 md:p-10 rounded-[1.5rem] border border-white/5">
-          <div className="md:col-span-4 relative group">
-            <div className="aspect-[4/5] relative rounded-xl overflow-hidden bg-zinc-800 border border-white/10">
-              <Image
-                src="/abdul-adnan.jpg"
-                alt="Abdul Adnan"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-zinc-900 text-zinc-600 font-bold text-xs pointer-events-none">
-                [Founder Photo]
-              </div>
-            </div>
-          </div>
-
-          <div className="md:col-span-8">
-            <p className="text-orange-500 font-bold tracking-widest text-[10px] mb-2 uppercase">
-              Meet The Founder
-            </p>
-            <h3
-              className={`${montserrat.className} text-2xl md:text-3xl font-bold text-white mb-2`}
-            >
-              Abdul Adnan
-            </h3>
-            <p className="text-zinc-500 text-xs md:text-sm mb-6">
-              Founder & CEO
-            </p>
-
-            <div className="space-y-4 text-zinc-300 text-sm leading-relaxed font-light">
-              <p>
-                Abdul has managed operations for multiple startups across
-                hospitality, e-commerce, SaaS, and AI. He&apos;s built systems
-                that scale from ₹0 to ₹10Cr+ revenue.
-              </p>
-              <p>
-                After watching too many founders waste time on vendor
-                management, he created Mt7 to solve this problem systematically.
-              </p>
-            </div>
-          </div>
-        </div> 
-        */}
-
         {/* --- VALUES GRID --- */}
         <div className="mb-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -236,8 +192,8 @@ const AboutSection = () => {
               { title: "Flexibility", desc: "Month-to-month, no lock-ins." },
               { title: "Alignment", desc: "We only succeed when you succeed." },
             ].map((val, idx) => (
-              <div key={idx} className="p-5 rounded-[1rem] bg-zinc-900/60 border border-white/10 hover:border-orange-500/40 transition-colors shadow-lg">
-                <CheckCircle2 className="text-orange-500 mb-3" size={20} />
+              <div key={idx} className="p-5 rounded-[1rem] bg-zinc-900/60 border border-white/10 hover:border-[#d83b00]/40 transition-colors shadow-lg">
+                <CheckCircle2 className="text-[#d83b00] mb-3" size={20} />
                 <h4 className="text-white font-bold text-sm mb-1">{val.title}</h4>
                 <p className="text-zinc-100 text-xs leading-relaxed font-medium">{val.desc}</p>
               </div>
@@ -252,9 +208,9 @@ const AboutSection = () => {
           </h2>
           <Link href="/lead" passHref>
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 69, 0, 0.4)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(216, 59, 0, 0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className={`${montserrat.className} px-10 py-5 bg-[#ff4500] text-white font-black text-sm md:text-base rounded-full shadow-lg shadow-orange-900/40 cursor-pointer flex items-center gap-3 transition-shadow`}
+              className={`${montserrat.className} px-10 py-5 bg-[#d83b00] text-white font-black text-sm md:text-base rounded-full shadow-lg shadow-orange-900/40 cursor-pointer flex items-center gap-3 transition-all`}
             >
               Book Free Consultation
               <ArrowRight size={20} strokeWidth={3} />

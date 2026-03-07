@@ -23,7 +23,7 @@ const montserrat = Montserrat({
 
 const idealProfiles = [
   {
-    icon: <Rocket className="text-orange-500" size={28} aria-hidden="true" />,
+    icon: <Rocket className="text-[#d83b00]" size={28} aria-hidden="true" />,
     title: "Funded Startups",
     subtitle: "Seed to Series B",
     desc: "You have capital (₹50L – ₹100Cr) but need operational speed to hit your next milestone.",
@@ -59,9 +59,9 @@ export default function WhoThisIsFor() {
       id="who-this-for" 
       className="relative py-10 bg-transparent overflow-hidden antialiased"
     >
-      {/* Background Glow */}
+      {/* Background Glow - Updated to d83b00 */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#d83b00]/5 rounded-full blur-[100px] pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -71,7 +71,7 @@ export default function WhoThisIsFor() {
           <div className="inline-flex flex-col items-start">
             <span
               className={`${montserrat.className}
-                uppercase tracking-[0.28em] text-xs font-black text-orange-500`}
+                uppercase tracking-[0.28em] text-xs font-black text-[#d83b00]`}
             >
               Is MT7 Right For You?
             </span>
@@ -81,7 +81,7 @@ export default function WhoThisIsFor() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "circOut", delay: 0.25 }}
-              className="origin-left mt-2 h-[2px] w-full bg-gradient-to-r from-orange-500 to-transparent"
+              className="origin-left mt-2 h-[2px] w-full bg-gradient-to-r from-[#d83b00] to-transparent"
               aria-hidden="true"
             />
           </div>
@@ -89,7 +89,7 @@ export default function WhoThisIsFor() {
           <h2
             className={`${montserrat.className}
               text-3xl md:text-4xl font-bold mt-4
-              bg-gradient-to-r from-white via-zinc-200 to-orange-500
+              bg-gradient-to-r from-white via-zinc-200 to-[#d83b00]
               bg-clip-text text-transparent
               leading-tight
             `}
@@ -108,22 +108,21 @@ export default function WhoThisIsFor() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className="group relative p-8 rounded-[1.5rem] bg-zinc-950/60 border border-white/10 backdrop-blur-md transition-all duration-300 shadow-xl hover:border-orange-500/40"
+              className="group relative p-8 rounded-[1.5rem] bg-zinc-950/60 border border-white/10 backdrop-blur-md transition-all duration-300 shadow-xl hover:border-[#d83b00]/40"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[1.5rem]" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d83b00]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[1.5rem]" aria-hidden="true" />
 
               <div className="relative z-10">
-                <div className="mb-6 p-4 rounded-2xl bg-white/5 w-fit border border-white/10 group-hover:border-orange-500/20 transition-colors shadow-inner">
+                <div className="mb-6 p-4 rounded-2xl bg-white/5 w-fit border border-white/10 group-hover:border-[#d83b00]/20 transition-colors shadow-inner">
                   {profile.icon}
                 </div>
 
                 <h3 className={`${montserrat.className} text-xl font-bold text-white mb-1`}>
                   {profile.title}
                 </h3>
-                <p className={`${montserrat.className} text-orange-400 text-xs font-black uppercase tracking-widest mb-4`}>
+                <p className={`${montserrat.className} text-[#d83b00] text-xs font-black uppercase tracking-widest mb-4`}>
                   {profile.subtitle}
                 </p>
-                {/* ACCESSIBILITY FIX: zinc-100 for high contrast */}
                 <p className="text-zinc-100 text-sm leading-relaxed font-medium">
                   {profile.desc}
                 </p>
@@ -145,7 +144,7 @@ export default function WhoThisIsFor() {
               <div className="shrink-0">{point.icon}</div>
               <p className="text-zinc-100 text-sm font-bold opacity-90">{point.text}</p>
               <div className="ml-auto" aria-hidden="true">
-                <Check size={18} className="text-orange-500 stroke-[3px]" />
+                <Check size={18} className="text-[#d83b00] stroke-[3px]" />
               </div>
             </motion.div>
           ))}
@@ -160,7 +159,6 @@ export default function WhoThisIsFor() {
               <h4 className={`${montserrat.className} text-white font-black text-xl mb-2`}>
                 Who is this <span className="text-red-500">NOT</span> for?
               </h4>
-              {/* ACCESSIBILITY FIX: zinc-300 for readability */}
               <p className="text-zinc-300 text-sm max-w-xs font-medium opacity-90">
                 We believe in transparency. We are likely not a good fit if you
                 are:
@@ -185,19 +183,19 @@ export default function WhoThisIsFor() {
           </div>
         </div>
 
-        {/* ================= CTA ================= */}
+        {/* ================= CTA - Updated with Darkened Orange #d83b00 ================= */}
         <div className="text-center pb-10">
           <Link href="/lead" passHref>
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 69, 0, 0.4)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(216, 59, 0, 0.4)" }}
               whileTap={{ scale: 0.95 }}
               className={`${montserrat.className}
                 inline-flex items-center gap-3
                 px-12 py-5 rounded-full
-                bg-orange-500 text-white
+                bg-[#d83b00] text-white
                 font-black text-lg uppercase tracking-tight
-                shadow-xl shadow-orange-900/40
-                hover:bg-orange-600 transition-all cursor-pointer
+                shadow-xl shadow-[#d83b00]/40
+                hover:bg-[#b33100] transition-all cursor-pointer
               `}
             >
               Let’s Talk

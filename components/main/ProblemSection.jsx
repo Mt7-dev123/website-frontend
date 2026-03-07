@@ -67,7 +67,8 @@ const ProblemSection = () => {
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl mb-12">
           <div className="inline-block">
-            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-orange-500 mb-2`}>
+            {/* Updated to Dark Orange #d83b00 */}
+            <p className={`${montserrat.className} uppercase tracking-[0.3em] text-xs font-bold text-[#d83b00] mb-2`}>
               THE FOUNDER&apos;S NIGHTMARE
             </p>
             <motion.div
@@ -75,11 +76,11 @@ const ProblemSection = () => {
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "circOut", delay: 0.3 }}
-              className="h-0.5 bg-gradient-to-r from-orange-500 to-transparent"
+              className="h-0.5 bg-gradient-to-r from-[#d83b00] to-transparent"
             />
           </div>
 
-          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-[#ffae42] to-[#ff4500] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(255,69,0,0.3)]`}>
+          <h2 className={`${montserrat.className} text-2xl md:text-3xl lg:text-4xl font-bold mt-2 mb-4 leading-[1.15] bg-gradient-to-r from-white via-orange-200 to-[#d83b00] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(216,59,0,0.3)]`}>
             Managing Agencies Is Killing Your Productivity
           </h2>
         </div>
@@ -96,14 +97,14 @@ const ProblemSection = () => {
               whileHover={{ y: -8 }}
               className="relative group h-full"
             >
-              {/* Glow effect on hover */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-orange-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
+              {/* Glow effect on hover updated to d83b00 */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-[#d83b00]/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
 
               {/* Card */}
-              <div className="relative h-full rounded-2xl p-8 bg-zinc-950/80 backdrop-blur-xl border border-white/10 group-hover:border-orange-500/40 transition-all duration-300 flex flex-col shadow-2xl">
-                {/* Icon Container */}
-                <div className="mb-6 p-4 rounded-xl bg-gradient-to-br from-orange-500/10 to-red-600/10 border border-orange-500/20 w-fit">
-                  <div className="text-orange-500">{point.icon}</div>
+              <div className="relative h-full rounded-2xl p-8 bg-zinc-950/80 backdrop-blur-xl border border-white/10 group-hover:border-[#d83b00]/40 transition-all duration-300 flex flex-col shadow-2xl">
+                {/* Icon Container - Updated with d83b00 base */}
+                <div className="mb-6 p-4 rounded-xl bg-gradient-to-br from-[#d83b00]/10 to-red-600/10 border border-[#d83b00]/20 w-fit">
+                  <div className="text-[#d83b00]">{point.icon}</div>
                 </div>
 
                 {/* Title */}
@@ -111,7 +112,7 @@ const ProblemSection = () => {
                   {point.title}
                 </h3>
 
-                {/* Description Lines - Bumped brightness to Zinc-100 for Accessibility */}
+                {/* Description Lines */}
                 <div className="space-y-2 flex-1">
                   {point.lines.map((line, i) => (
                     <p key={i} className={`${montserrat.className} text-zinc-100 text-sm leading-relaxed font-medium opacity-90`}>
@@ -120,13 +121,13 @@ const ProblemSection = () => {
                   ))}
                 </div>
 
-                {/* Bottom accent line */}
+                {/* Bottom accent line - Updated to d83b00 */}
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: "60px" }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + index * 0.15, duration: 0.8 }}
-                  className="mt-6 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full"
+                  className="mt-6 h-1 bg-gradient-to-r from-[#d83b00] to-transparent rounded-full"
                   aria-hidden="true"
                 />
               </div>
@@ -142,7 +143,7 @@ const ProblemSection = () => {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="text-center"
         >
-          <p className={`${montserrat.className} text-xl md:text-2xl font-bold bg-gradient-to-r from-white via-orange-200 to-white bg-clip-text text-transparent mb-3`}>
+          <p className={`${montserrat.className} text-xl md:text-2xl font-bold bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent mb-3`}>
             There&apos;s a better way.
           </p>
         </motion.div>

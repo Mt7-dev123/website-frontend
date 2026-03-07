@@ -72,9 +72,9 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="relative py-10 bg-transparent overflow-hidden antialiased">
-      {/* Background Glow */}
+      {/* Background Glow - Updated to #d83b00 */}
       <div 
-        className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" 
+        className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#d83b00]/5 rounded-full blur-[100px] pointer-events-none" 
         aria-hidden="true" 
       />
 
@@ -83,8 +83,9 @@ export default function FAQSection() {
         {/* ================= HEADER ================= */}
         <div className="flex flex-col items-start max-w-3xl mb-16">
           <div className="inline-flex flex-col items-start">
+            {/* Updated Header Label to #d83b00 */}
             <span
-              className={`${montserrat.className} uppercase tracking-[0.28em] text-xs font-black text-orange-500 mb-2`}
+              className={`${montserrat.className} uppercase tracking-[0.28em] text-xs font-black text-[#d83b00] mb-2`}
             >
               Frequently Asked Questions
             </span>
@@ -93,13 +94,13 @@ export default function FAQSection() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "circOut", delay: 0.25 }}
-              className="origin-left mt-2 h-[2px] w-full bg-gradient-to-r from-orange-500 to-transparent"
+              className="origin-left mt-2 h-[2px] w-full bg-gradient-to-r from-[#d83b00] to-transparent"
               aria-hidden="true"
             />
           </div>
 
           <h2
-            className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 bg-gradient-to-r from-white via-zinc-200 to-orange-500 bg-clip-text text-transparent leading-tight`}
+            className={`${montserrat.className} text-3xl md:text-4xl font-bold mt-4 bg-gradient-to-r from-white via-zinc-200 to-[#d83b00] bg-clip-text text-transparent leading-tight`}
           >
             Everything You Need to Know
           </h2>
@@ -117,8 +118,8 @@ export default function FAQSection() {
               className={`group relative rounded-[1.5rem] border transition-all duration-300 overflow-hidden
                 ${
                   openIndex === index
-                    ? "bg-zinc-950/80 border-orange-500/40 shadow-xl shadow-orange-900/10"
-                    : "bg-zinc-900/40 border-white/5 hover:border-orange-500/20 hover:bg-zinc-900/60"
+                    ? "bg-zinc-950/80 border-[#d83b00]/40 shadow-xl shadow-[#d83b00]/10"
+                    : "bg-zinc-900/40 border-white/5 hover:border-[#d83b00]/20 hover:bg-zinc-900/60"
                 }
               `}
             >
@@ -126,12 +127,13 @@ export default function FAQSection() {
                 onClick={() => toggleFAQ(index)}
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
-                className="w-full flex items-start justify-between p-6 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50 rounded-[1.5rem]"
+                className="w-full flex items-start justify-between p-6 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d83b00]/50 rounded-[1.5rem]"
               >
                 <div className="flex items-start gap-4">
+                  {/* Updated Icon Container Colors */}
                   <div 
                     className={`mt-1 p-2 rounded-xl transition-colors duration-300 ${
-                      openIndex === index ? "bg-orange-500/10 text-orange-500" : "bg-white/5 text-zinc-400 group-hover:text-zinc-200"
+                      openIndex === index ? "bg-[#d83b00]/10 text-[#d83b00]" : "bg-white/5 text-zinc-400 group-hover:text-zinc-200"
                     }`}
                     aria-hidden="true"
                   >
@@ -144,9 +146,10 @@ export default function FAQSection() {
                   </span>
                 </div>
                 
+                {/* Updated Toggle Icon Color */}
                 <div 
                   className={`mt-1 p-1 rounded-full transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180 text-orange-500" : "text-zinc-300"
+                    openIndex === index ? "rotate-180 text-[#d83b00]" : "text-zinc-300"
                   }`}
                   aria-hidden="true"
                 >
@@ -165,7 +168,6 @@ export default function FAQSection() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="px-6 pb-6 pl-[4.5rem] pr-8">
-                      {/* ACCESSIBILITY FIX: Bumped brightness to Zinc-100 */}
                       <p className={`${montserrat.className} text-zinc-100 text-sm leading-relaxed border-t border-white/5 pt-4 font-medium`}>
                         {faq.answer}
                       </p>
